@@ -1,0 +1,1244 @@
+%research.tex 26 October 2007
+\documentclass[11pt]{proposal}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{latexsym}
+%\usepackage{graphicx}
+\usepackage{fancyhdr}
+
+\voffset=10mm%to print: dvips *.dvi; ps2pdf *.ps
+\hoffset=-2mm
+\oddsidemargin=18pt     \evensidemargin=18pt
+\headheight=18pt        \topmargin=0pt
+%\textheight=602--658pt \textwidth=436--437pt
+\textheight=648pt       \textwidth=436pt
+\parskip=2pt plus 1pt
+
+\def\myname{\Large \bfseries E\normalsize ZRA \Large M\normalsize ILLER}
+
+\pagestyle{fancy}
+\cfoot{}				     % no footers (in pagestyle fancy) 
+\lhead{{\noindent\myname}}		     % running left heading
+\rhead{{\Large\bfseries \Large R\normalsize ESEARCH
+	\Large S\normalsize TATEMENT
+			\quad\Large\thepage}}% running right head
+
+\newcommand{\comment}[1]{{$\star$\sf\textbf{#1}$\star$}}
+\newcommand{\excise}[1]{}
+
+\def\refname{{\Large \bf References}}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{questions}[thm]{Questions}
+\newtheorem{Defn}[thm]{Definition}
+
+\newenvironment{defn}{\begin{Defn}\rm}{\end{Defn}}
+
+% For proofs
+\newenvironment{proof}{\begin{trivlist}\item {\it
+	Proof.\,}}{\mbox{}~\hfill~$\Box$\end{trivlist}}
+
+%For numbered lists with arabic 1. 2. 3. numbering
+\newenvironment{numbered}%
+        {\begin{list}
+                {\noindent\makebox[0mm][r]{\arabic{enumi}.}}
+                {\leftmargin=5.5ex \usecounter{enumi}
+		 \topsep=1.5mm \itemsep=-1.4mm}
+        }
+        {\end{list}}
+
+%For numbered lists within the main body of the text
+\newenvironment{romanlist}%
+        {\renewcommand\theenumi{\roman{enumi}}\begin{list}
+                {\noindent\makebox[0mm][r]{(\roman{enumi})}}
+                {\leftmargin=5.5ex \usecounter{enumi}
+		 \topsep=1.5mm \itemsep=0mm}
+        }
+        {\end{list}\renewcommand\theenumi{\arabic{enumi}}}
+
+%For sections within the bibliography
+\def\bibsec#1{\item[#1]\vspace{.5ex}\item[]\vspace{-2.5ex}}
+
+% bold sans-serif label for bibliography subsections
+\def\bibsubsec#1{\item[\textsf{\hspace{-2.2ex}\textbf{#1}}]\vspace{.5ex}\item[]\vspace{-2.5ex}}
+
+% marginal year labels for bibliography
+\reversemarginpar
+\def\bibyear#1{\makebox[-1ex][l]{}\marginpar[{\flushright{\small#1}}]{}}
+
+%Single characters, used in math mode
+\def\0{\mathbf 0}
+\def\1{\mathbf 1}
+\def\2{\mathbf 2}
+\def\<{\langle}
+\def\>{\rangle}
+\def\CC{{\mathbb C}}
+\def\EE{{\mathcal E}}
+\def\FF{{\mathcal F}}
+\def\GG{{\mathcal G}}
+\def\HH{{\mathcal H}}
+\def\MM{{\mathcal M}}
+\def\NN{{\mathbb N}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\ZZ{{\mathbb Z}}
+\def\aa{{\mathbf a}}
+\def\bb{{\mathbf b}}
+\def\del{\partial}
+\def\kk{\Bbbk}
+\def\mm{{\mathfrak m}}
+\def\nn{{\mathfrak n}}
+\def\pp{{\mathfrak p}}
+\def\qq{{\mathfrak q}}
+\def\rr{{\mathbf r}}
+\def\uu{{\mathbf u}}
+\def\vv{{\mathbf v}}
+\def\ww{{\mathbf w}}
+\def\xx{{\mathbf x}}
+\def\yy{{\mathbf y}}
+\def\zz{{\mathbf z}}
+\renewcommand\tt{{\mathbf{t}}}
+% use \texttt{#1} to put #1 in typewriter font
+
+\newcommand\KK{\hspace{.35ex}\ol{\hspace{-.35ex}K\hspace{-.05ex}}\hspace{.05ex}}
+\newcommand\Kv{K_{\hspace{-.2ex}v}}
+\newcommand\KKv{\KK_{\hspace{-.2ex}v}}
+
+%roman font words for math mode and
+%math symbols without arguments
+\def\K{{$K$}}
+\def\gl{{\mathit{G\!L}}}
+\def\th{{\rm th}}
+\def\dom{\backslash}
+\def\fln{{{\mathcal F}\ell_n}}
+\def\too{\longrightarrow}
+\def\dash{\hspace{.1ex}{\raisebox{.2ex}{\underline{\ \,}}\hspace{.18ex}}}
+\def\from{\leftarrow}
+\def\into{\hookrightarrow}
+\def\onto{\twoheadrightarrow}
+\def\rank{{\mathrm{rank}}}
+\def\spec{{\mathrm{Spec}}}
+%\def\spot{{\hbox{\raisebox{1.7pt}{\large\bf .}}\hspace{-.5pt}}}
+\def\spot{{\hbox{\raisebox{.33ex}{\large\bf .}}\hspace{-.5pt}}}
+\def\minus{\smallsetminus}
+\def\nothing{\varnothing}
+
+%math symbols taking arguments
+\def\IN#1{{\mathsf{in}_>#1}}
+\def\ol#1{{\overline {#1}}}
+\def\ub#1{\hbox{\underbar{$#1$\hspace{-.25ex}}\hspace{.25ex}}}
+\def\wt#1{{\widetilde {#1}}}
+\def\ubs#1{{\hbox{\underbar{$\scriptstyle#1$\hspace{-.25ex}}\hspace{.25ex}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%thispagestyle{plain}
+
+\mbox{}
+%smallskip
+%vspace{-7ex}
+
+\vspace{-4.3ex}
+\centerline{\Large\bf Combinatorics, geometry, algebra, and applications}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%section{Introduction}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%vspace{-.5em}
+\bigskip
+\noindent
+{\Large\bf Introduction}
+\medskip
+
+
+\label{s:intro}
+
+
+\noindent
+My research centers around combinatorial, computational, and
+cohomological problems originating in geometry and algebra, with ties
+to computer science.  Currently, my participation at the Institute for
+Mathematics and its Applications (IMA) year on Mathematics of
+Molecular and Cellular Biology is stimulating potential interactions
+with geometric methods in biology and statistics (not to be confused
+with algebraic statistics and the related questions in biology, which
+were topics of last year's IMA program).
+
+The unifying idea in my research has been to isolate or exploit
+combinatorial structures that govern or arise from continuous
+contexts.  For example, if a continuous process carries underlying
+discrete data, then those data might be harnessed to produce
+algorithms for the continuous process.  On the other hand, the goal
+could also be to understand the combinatorics rather than the
+geometry; the geometry then serves as a vehicle for interpolating
+between different interpretations of the combinatorics.
+
+The aim of this exposition is to give a broad
+perspective on more specific areas in which I have worked and am
+currently interested.  It is broken into four sections:
+% \noindent
+% \setcounter{tocdepth}{1}
+% \tableofcontents
+\begin{list}{\arabic{enumi}.}
+           {\leftmargin=5ex \rightmargin=2ex \usecounter{enumi}
+	    \itemsep=-1.5mm \topsep=-1.5mm}
+\item
+{\bf Metric polyhedral geometry}
+	\hfill\pageref{s:metric}
+\item
+{\bf Combinatorial positivity in algebraic geometry}
+	\hfill\pageref{s:positivity}
+\item
+{\bf Commutative and homological algebra}
+	\hfill\pageref{s:commalg}
+\item
+{\bf Interdisciplinary projects}
+	\hfill\pageref{s:inter}
+\item
+{\bf References}
+	\hfill\pageref{s:refs}
+\end{list} \vspace{1.5mm}
+These sections do not cover my expository works.  These include two
+graduate textbooks written: one recently completed with a number of
+coauthors on the muti-faceted topic of local
+cohomology~\cite{24hours}, and another with Bernd Sturmfels
+summarizing a decade's worth of developments in combinatorial
+commutative algebra \cite{cca}.  With Sturmfels and Vic Reiner, I
+edited the volume \cite{pcmi2004} of graduate courses from the PCMI
+Summer School on Geometric Combinatorics, which the three of us also
+organized; Vic Reiner and I wrote the overview~\cite{overview}.  In
+connection with the MSRI year on Commutative Algebra, I wrote an
+article on Hilbert schemes of points in the plane \cite{hilbAppendix},
+as part of my duties as a TA for Mark Haiman's short course.
+Subsequent to a COCOA (Computation in Commutative Algebra) conference,
+I wrote a long article on monomial ideals with David Perkinson
+\cite{eightLect}.  Finally, in connection with a lecture series I gave
+at CRM Montr\'eal, I am in the process of writing an article with
+Laura Matusevich as well as two of the students there, Huilan Li and
+Craig Sloss, on connections between binomial ideals and hypergeometric
+systems.
+
+
+%end{section}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Metric polyhedral geometry}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\label{s:metric}
+
+
+This project is currently undergoing rapid development, with two
+papers in progress \cite{unfolding,complexity}.  The stage for this
+research is set by joint work of mine with Igor Pak \cite{fold}.
+Motivated by relations to a number of classical algorithmic problems
+in discrete and computational geometry, our fundamental observation
+there is that convexity and polyhedrality together impose rich
+combinatorial structures on the collection of shortest paths in a
+metrized sphere.  The methods of metric combinatorics constitute a
+blend of differential geometry, classical polyhedral geometry, poset
+combinatorics, geometric topology, and complexity theory.
+
+The first main result of \cite{fold} says that the boundary~$S$ of any
+$(d+1)$-polytope has a certain polyhedral nonoverlapping unfolding
+into~$\RR^d$.  More precisely, the exponential map $T_v \to S$ from
+the tangent space at any generic point $v \in S$ is surjective, and
+the set of tangent vectors exponentiating to shortest paths
+(length-minimizing geodesics) is a closed, star-shaped, polyhedral set
+in~$T_v$, called the \emph{source foldout}.  Equivalently, the cut
+locus $\KKv \subseteq S$ for the source point~$v$ is a polyhedral
+complex of pure dimension $d-1$ (though not a subcomplex of~$S$), and
+slicing~$S$ open along~$\KKv$ results in a polyhedral ball that can be
+laid flat in~$\RR^d$ without overlap.  This construction had been
+known in dimension $d=2$ \cite{VP71,SS}, but there seems to have been
+no known unfolding at all for $d \geq 3$.
+
+The second main result of \cite{fold} is an effective algorithm for
+constructing the source foldout.  This involves imposing---and
+subsequently navigating---certain order-theoretic combinatorial
+structures on the set of shortest paths, using iterated tangent data
+from an expanding wavefront.  Currently, I am advising an undergradute
+(UROP) student, Nate Born, in a project to implement our algorithm;
+see Section~\ref{cs} for the importance of doing this.  The main
+mathematical open question from \cite{fold} is the complexity of the
+algorithm: although Pak and I were able to prove that it is polynomial
+in the size of the output, we could only conjecture that the output is
+polynomial in the number of facets of~$S$.  (It is exponential in the
+dimension~$d$, of course.)  I wish to stress that this is a natural,
+purely geometric question, and does not depend on the nature of our
+algorithm: given a point~$v$ on a polyhedral manifold~$S$ and a
+facet~$F$ of~$S$, how many shortest paths start at~$v$ and end in~$F$?
+The answer can be exponential in the number of facets if $S$ is
+allowed to have negative curvature, even if $S$ is a polyhedral
+$2$-sphere, but nonetheless the number of shortest paths from~$v$
+to~$F$ should be polynomial in the number of facets for convex
+polyhedral spheres.
+
+Before describing my approach to the metric complexity of polyhedral
+spheres, it will help to review one more observation from~\cite{fold}.
+In dimension $d=2$, there is a second \emph{Alexandrov unfolding}
+\cite{Ale48} of a polyhedral sphere~$S$, in a sense dual to the source
+foldout: fix any source point $v \in S$, and slice $S$ open along the
+shortest paths from~$v$ to the vertices of~$S$.  That the resulting
+locally flat disk can be globally laid flat in~$\RR^2$ without overlap
+was proved by Aronov and O'Rourke \cite{AO92}.  However, the
+construction itself fails in dimensions $d \geq 3$: the union of the
+shortest paths from a fixed source point~$v$ to the $(d-2)$-skeleton
+is not contractible.  Roughly speaking, the angles of the shortest
+paths to (say) an edge~$E$ make a quantum leap as they swing past any
+$(d-2)$-face between~$v$~and~$E$.
+
+The first part \cite{unfolding} of my current work aims to demonstrate
+that, nonetheless, Alexandrov unfoldings generalize naturally to
+dimensions $d \geq 3$.  The idea is to consider the \emph{gradient
+vector field} on~$S$, which points in the direction of steepest
+distance increase from~$v$.  That there even exists a unique such
+vector at each point of~$S$ is already nontrivial, and fails
+immediately for any polyhedral manifold exhibiting negative curvature
+of any sort.  More surprising still is the observation that this
+distinctly discontinuous vector field should determine a continuous
+flow on~$S$ away from~$v$.  For a generic source point~$v$, the
+\emph{Alexandrov slice set} is the union of the flow lines into the
+$(d-2)$-skeleton of~$S$; in dimension $d=2$, this is precisely the
+Alexandrov slice set from before, but in higher dimensions, it fills
+in the gaps left after joining $v$ to the $(d-2)$-skeleton by shortest
+paths.  In general, this slice set is contractible because the
+(continuous!)\ gradient flow pushes its complement onto a retract of
+the cut locus~$\KKv$.  Which retract?  The one obtained by gradient
+flow on~$\KKv$~itself.
+
+Aside from generalizing a classical $d=2$ construction to arbitrary
+dimension, why are Alexandrov unfoldings by gradient flow important?
+Simply put, the combinatorics of the Alexandrov slice set controls the
+metric complexity of the cut locus.  Making this statement precise is
+the goal of the second half \cite{complexity} of my current work.  The
+intuition is as follows.  Imagine that $S$ is your universe, and you
+are standing at the source point~$v$.  As you look out, your horizon
+is studded with pieces of $(d-2)$-faces, where there is nontrivial
+curvature.  These pieces don't subdivide your horizon into regions
+(this is why the union of shortest paths isn't a slice set); however,
+the union of the gradient flow lines into the boundary of each facet
+should.
+
+In dimension $d=3$, the picture is just small enough to be describable
+in everyday terms: your horizon is a $2$-sphere, and the flow lines to
+the boundary of a single facet of~$S$ should pierce the sphere in a
+polygon.  Taking all of the facets at once, you see a constellation of
+polygons.  These subdivide your horizon into regions, and we need the
+number of these regions to be polynomial in the number of facets.  The
+underlying structure, which I am developing for~\cite{complexity}, is
+a certain generalization of oriented matroids, the motivation being
+that the number of regions in a hyperplane arrangement is polynomial
+in the number of hyperplanes (but exponential in the dimension~$d$, of
+course).
+
+An oriented matroid can be represented as a collection of
+pseudospheres, each of which divides the horizon into two pieces.
+Here, instead, we have a collection of \emph{hedroids}, the
+flow-projections of the edges (in $d=3$; for higher~$d$, these will be
+faces of dimension $d-2$), each of which only locally divides the
+horizon into two pieces.  The \emph{polyhedroid} structure, which
+generalizes the notion of oriented matroid, amounts to control over
+how these hedroids are allowed to meet.  In a matroid, the nonempty
+intersections of pseudospheres look locally like oriented matroids of
+smaller dimension; in a polyhedroid, these intersections are required
+to look like arbitrary polyhedral fans (or perhaps like general
+polyhedroids) of smaller dimension.  The goal of~\cite{complexity},
+then, is twofold: first, develop a theory of polyhedroids enough to
+conclude polynomiality for the number of regions; and second, prove
+that the Alexandrov slice set is a polyhedroid.  This latter part, if
+true, would encode fundamental geometric statements about the
+collections of shortest paths in a convex polyhedral sphere.
+
+
+Where, in general, do I see the program of flows on polyhedral spaces
+going?  In geometric topology, \emph{entropy} is a measure of the
+exponential geodesic complexity of a manifold \cite{manning79}.  In
+that context, however, entropy is always zero for positively curved
+manifolds.  Here, in contrast, the facial structure provides us with
+growth rate measures finer than the topological ones,
+% after all, boundaries of polytopes are topologically pretty
+% simple.  *careful: homotopy groups of spheres are pretty
+% interesting; the point here is that geodesic complexity is a
+% \pi_1 thing, not a general homotopy group thing*
+allowing us to make meaningful statements about subexponential numbers
+of combinatorial types of geodesics.  I wonder what can be said about
+metric complexity for geodesics that aren't shortest paths, or on
+general polyhedral manifolds; for example, is there anything between
+polynomial and exponential growth?  Still in the topological realm,
+a~number of geometrically defined flows in polyhedral geometry could
+potentially be viewed as flows on higher-dimensional polyhedral
+spaces; for example, consider the combinatorial Yamabe \cite{glick05},
+Ricci \cite{CL03}, or scalar curvature flows on polyhedral
+$3$-manifolds (the latter having been used by Bobenko and Izmestiev
+\cite{BI06} to give an effective algorithmic version of Alexandrov's
+embedding theorem for convex polyhedral $2$-spheres).  In another
+direction, it was noticed already by Volkov \cite{Vol68} (or see
+\cite[Section~12.1]{Ale50} for a translation) that the intrinsic
+metric on a convex polyhedral sphere~$S$ can be intimately tied to the
+extrinsic geometry of its convex hull in dimension $d=2$.  It would be
+very interesting to see what can be said in higher dimensions.  In any
+case, I find our limited understanding of the metric geometry of
+convex polyhedra in general to be an impediment to progress on the
+most basic of questions, even in $d=2$: do polyhedra admit
+nonoverlapping foldouts by slicing along ridges---that is, faces of
+dimension $d-1$?
+
+
+%end{section}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Combinatorial positivity in algebraic geometry}%%%%%%%%%%%%%%
+
+
+\label{s:positivity}
+
+
+One of the major ways in which combinatorics interacts with algebraic
+geometry is through questions of positivity.  In my
+work~\cite{grobGeom} with Knutson, we provide a proof by geometric
+degeneration that the coefficients of Schubert polynomials are
+positive.  These polynomials represent the classes Poincar\'e dual to
+Schubert varieties in the cohomology ring of the flag variety.  Their
+coefficients had been known since their inception \cite{LSpolySchub}
+to be positive, but the connection of these particular polynomial
+representatives to geometry had been more tenuous.  In contrast, the
+polynomials we prove geometrically to be positive in joint work
+additionally with Shimozono~\cite{quivers} were not known to be
+so---by combinatorics or by any other means.  In particular, one of
+our four formulae proves the essence of the main Conjecture of Buch
+and Fulton in~\cite{BF99}.
+
+The first part of my work~\cite{flagTab} with Knutson and Yong brings
+the combinatorics of decompositions of simplicial complexes to bear on
+the algebraic geometry of degenerations.  In particular, we introduce
+\emph{geometric vertex decomposition}, a procedure to squeeze
+algebraic varieties onto coordinate subspaces one by one.  The rest is
+an embellishment on~\cite{grobGeom}: we use our new technology to show
+that degenerating by an opposite torus weight---equivalently, using a
+diagonal term order instead of an antidiagonal one---yields different
+combinatorial formulae for Schubert polynomials when the permutation
+is grassmannian.  In another offshoot of~\cite{grobGeom}, Kogan and I
+show that under the Gonciulea--Lakshmibai degeneration~\cite{GL96} of
+the flag variety to a toric variety, the Schubert varieties degenerate
+to reduced unions of toric faces~\cite{deform} combinatorially
+identifiable as summands in Schubert polynomials.
+
+In $K$-theory, as opposed to cohomology, positivity really means
+sign-alternation: for some fixed degree~$c$, all of the coefficients
+in degree $c+i$ have sign $(-1)^i$.  Knutson and I observed in 2000,
+while working on~\cite{grobGeom}, that this phenomenon for $K$-classes
+of Schubert varieties arises from Cohen--Macaulay initial ideals by
+Alexander duality.  A different sign alternation was conjectured by
+Buch \cite{buchLR} for multiplication in the ordinary $K$-theory of
+flag varieties with its basis of Schubert structure sheaves, and it
+was proved by Brion \cite{brion02}.  Brion's proof relied on a certain
+transversality theorem for $K$-theory on homogeneous spaces.  A~number
+of other results in Schubert calculus depend on related (but not
+equal) versions of this transversality.  To avoid endlessly proving
+minor extensions of the known such Kleiman--Bertini type results,
+Speyer and I proved a rather general version of vanishing for sheaf
+Tor on homogeneous spaces~\cite{torVanish}, which holds even in
+positive characteristic.  As general as Brion's sign alternation
+theorem is, it does not cover the alternation in Buch's conjecture
+\cite{buch02} for the expansion of quiver $K$-polynomials in terms of
+Grothen\-dieck polynomials for partitions.  This required separate
+proofs, which Buch \cite{buchAlt} and~I~\cite{kquiv}
+\mbox{independently produced}.
+
+In a current project with Stephen Griffeth, a postdoc I am mentoring
+at Minnesota (and former student at Wisconsin under Arun Ram), we are
+thinking about sign alternation in \emph{equivariant} $K$-theory of
+homogeneous spaces.  We intend to apply ideas from equivariant Chow
+theory combined with Brion's sign alternation theorem in ordinary
+$K$-theory.  If this works, it will generalize Graham's positivity
+\cite{grahamPos} in the case of equivariant cohomology for flag
+varieties.
+
+Sometimes algebraic geometry like that above can give rise to purely
+combinatorial problems---or solutions.  In the course of our study of
+Schubert polynomials, Knuston and I found a positive combinatorial
+rule for generating Schubert polynomials, and I subsequently used it
+to give a quick positive construction of Schubert polynomials from
+scratch~\cite{mitosis}.  A~student, Ning Jia, whom I mentored at
+Minnesota, gave an elegant simplification \cite{njia} of our
+proof~\cite{grobGeom} of duality between certain combinatorial objects
+associated to Schubert polynomials (my name is on \cite{njia} for a
+small contribution only because she insisted).  Following up on our
+proof of the Cohen--Macaulay condition for certain simplicial
+complexes in~\cite{grobGeom}, Knutson and I discovered a general
+topological way to view the exchange axiom in an arbitrary Coxeter
+group~\cite{subword}: given a fixed word, the set of subwords with a
+given product forms a ball or sphere.  These \emph{subword complexes}
+include, as special cases, certain simplicial complexes whose facets
+are the semistandard Young tableaux of a given shape and whose
+interior faces are the semistandard set-valued tableaux \cite{buchLR}.
+This suggested a different, purely combinatorial (poset-theoretic)
+construction of a family of nonisomorphic simplicial complexes with
+the same properties \cite{tabComplex}.
+
+
+%end{section}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Commutative and homological algebra}%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\label{s:commalg}
+
+
+Most of my ealiest work, starting in graduate school, concerned
+combinatorial methods in commutative and homological algebra.  Many
+themes along these lines persist in my research to this day.  To make
+the descriptions easier, I have (more or less arbitrarily) split the
+exposition into three subsections.
+
+
+\subsection{Multivariate hypergeometric systems}%%%%%%%%%%%%%%%%%%%%%%
+
+
+Hypergeometric mathematics, of the type arising in my research,
+combines algebraic geometry, lattice point combinatorics, binomial
+commutative algebra, homological and noncommutative algebra of
+differential operators, and complex analysis.
+
+Hypergeometric series are power series whose adjacent coefficients are
+related by rational functions.  In 1889, J.~Horn introduced bivariate
+versions of the classical univariate hypergeometric
+series~\cite{horn89}.  In the 1940s, Erd\'elyi discovered sporadic
+solutions to Horn's hypergeometric systems~\cite{erdelyi}.  In work
+with Alicia Dickenstein and Laura Matusevich~\cite{horn}, we explain
+these extra solutions as consequences of binomial primary
+decomposition, which we describe combinatorially in terms of lattice
+points.  The specific form of our primary decompositions, which refine
+those of Eisenbud and Sturmfels \cite{binomialIdeals}, allow us to
+reduce---by filtration methods---to the toric hypergeometric
+techniques developed by Gelfand, Graev, Kapranov, Zelevinsky, and
+others, particularly Adolphson, in the 1980's and 1990's
+\cite{GGZ87,GKZ89,Ado94}.
+
+Our work on Horn systems relied in an absolutely essential way on the
+homological \emph{Euler--Koszul}\/ technology introduced with
+Matusevich and Walther \cite{rankJumps}.  The main purpose
+of~\cite{rankJumps} was to prove a conjecture by Sturmfels on the
+equivalence of the Cohen--Macaulay condition with the lack of
+rank-jumping parameters.  We accomplished this using sheaf-theoretic
+techniques on the space of parameters.  We identified the rank-jump
+locus as an algebraic variety, defined via sheaf cohomology of the
+associated toric variety, whose non-emptiness witnesses the failure of
+the Cohen--Macaulay condition.  In the case where the toric variety is
+simplicial, Matusevich and I had proved this connection between local
+cohomology and rank jumps by a direct polyhedral
+argument~\cite{simpJumps}.
+
+Currently, I am guiding one of my graduate students, Robert Edman, in
+his chosen project to understand Kapranov's analogues of
+hypergeometric systems for reductive groups (instead of tori).  This
+research involves the same list as ordinary hypergeometric
+mathematics, except that lattice point combinatorics (a.k.a.\
+representation theory of a torus) is replaced with deeper topics in
+representation theory for reductive groups.
+
+
+\subsection{Homological combinatorics: free and injective resolutions}
+
+
+Much of the work in my dissertation \cite{emThesis} concerned
+combinatorial aspects of homological algebra in situations that are
+\emph{finely graded}: the ambient ring is graded in such a way that
+its components have vector space dimension~$1$.  Over polynomial
+rings, I made Alexander duality, an a~priori combinatorial topological
+operation, into a functor~\cite{alexDual} that interchanges free and
+injective resolutions.  I realized later~\cite{gm} that my functorial
+Alexander duality for resolutions, when considered in the derived
+category, is a special case of finely graded Greenlees--May
+duality~\cite{gm92}.
+
+Duality for resolutions allowed me to homologically interpret the
+Eagon--Reiner duality \cite{ER98} between the Cohen--Macaulay and
+linear resolution conditions for squarefree monomial ideals, and
+thereby to generalize it to affine semigroup rings~\cite{cmQuotients}.
+The appearance of injective resolutions---and their finely graded
+truncations, the \emph{irreducible resolutions}, which I
+introduced---indicated their utility in computations; hence David Helm
+and I produced an algorithm to calculate them~\cite{injAlg}.  Part of
+this algorithm relies on a bound from~\cite{bassNumbers}, obtained in
+an abstract homological setting, on how the finely graded shifts of
+the indecomposable summands in an injective resolution vary from prime
+to prime.  The purpose of~\cite{bassNumbers}, however, was to prove
+the finiteness of Bass numbers for local cohomology over simplicial
+semigroup rings, and the failure in the nonsimplicial case.  This
+provided a general toric framework for Hartshorne's counterexample
+\cite{HarCofinite} to Grothendieck's conjecture on this finiteness
+issue.
+
+My most recent research on resolutions is joint work
+\cite{multIdealSums} with a bright graduate student, Shin-Yao Jow, of
+Rob Lazarsfeld's at Michigan.  Shin-Yao's idea was to provide a
+geometric, sheaf-theoretic (as opposed to characteristic~$p$
+algebraic) proof of a formula for the multiplier ideals of a sum of
+ideal sheaves.  We reduced the problem to an analytically local one on
+a resolution of singularities, where it became a mixture of
+combinatorial commutative algebra, particularly cellular resolutions
+of monomial ideals, and simplicial topology, particularly
+homology-manifolds-with-boundary.
+
+
+\subsection{Monomial ideals and related combinatorics}%%%%%%%%%%%%%%%%
+
+
+Special classes of monomial ideals give rise to particularly beautiful
+and useful combinatorics.  This is the case, for example, with
+\emph{generic} monomial ideals (\cite{BPS98} and \cite{generic}),
+whose exponent vectors are, in effect, random.  These ideals are
+characterized in numerous ways~\cite{generic}, particularly by the
+invariance of their minimal free and injective resolutions (which are
+explicit convex-geometric simplicial complexes) under deformations of
+the exponents of the generators.  Similarly, three-dimensional
+monomial ideals give rise to pretty staircase pictures, in which the
+minimal resolutions can be drawn explicitly as planar
+graphs~\cite{planarGraphs,AAECC}.
+
+Generalizations of monomial ideals can also carry simplicial or
+polyhedral combinatorics.  This well-known phenomenon is illustrated
+by my joint work with Reiner~\cite{simplicialPoset,reciprocal}.  The
+first of those concerns ideals of simplicial posets, which are certain
+flexible weakenings of simplicial complexes; we simplify Masuda's
+proof \cite{masuda03} of Stanley's conjecture \cite{Sta91} concerning
+the $h$-vectors of these objects.  The second concerns certain radical
+monomial ideals in semigroup rings; we generalize and place in a
+(local co)homological framework one of Stanley's reciprocity theorems
+\cite{Sta74}.
+
+% \cite{multiplicities}
+
+I have recently begun working with Raman Sanyal, a graduate student
+under G\"unter Ziegler at Technische Universit\"at Berlin, on
+``combinatorial moduli spaces'' for resolutions of monomial ideals.
+The basic idea is to classify commutative polynomial ideals generated
+by $n$ monomials in $d$ variables according to their minimal free or
+injective resolutions.  In slightly more detail, such an ideal is
+determined by choosing a $d \times n$ matrix of nonnegative integers,
+the columns being the exponent vectors of the monomial generators.
+However, the homological properties of the ideal depend only on
+order-theoretic combinatorial data extracted from the integer matrix,
+such as the permutation of the columns required to make a given row
+weakly increasing.  The goal is to describe the subdivision of the
+space of matrices into the equivalence classes consisting of the
+monomial ideals with identical homological properties.  For example,
+the generic monomial ideals (\cite{BPS98} and \cite{generic})
+constitute the maximal regions in the subdivision.  The eventual goal
+would be to attack the (apparently much harder) analogue for lattice
+ideals; see \cite{PS98}, where the generic ideals are identified.  For
+the time being, we are starting with the case $d = 3$, where planar
+graphs help immensely~\cite{planarGraphs}.
+
+
+%end{section}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Interdisciplinary projects}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\label{s:inter}
+
+
+A good deal of my previous work has overt connections to computer
+science; see Section~\ref{cs}.  More recently, a triad of independent
+and nearly simultaneous circumstances have placed me in an ideal
+position to foster immediate collaborations with scientists in
+disparate areas of mathematics as well as theoretical and more
+traditional experimental sciences.  The triad of events consists of
+(i)~Minnesota's recent hire of Gilad Lerman, an applied mathematician,
+with whom I have been having tantalizing conversations; (ii)~my
+introduction to R.~Dennis Cook, an established statistician at
+Minnesota specializing in diagnostics (finding anomalies in data); and
+(iii)~the current year-long program on Mathematics of Molecular and
+Cellular Biology at the Institute for Mathematics and its Applications
+(IMA).  It is becoming increasingly clear to me that my work in
+geometry---polyhedral as well as algebraic---has great potential for
+these collaborations.
+
+The projects in this section are at varying developmental stages;
+because of the timing, many have not yet coalesced into concrete lines
+of investigation.
+
+\subsection{Computer science}\label{cs}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A number of times in the past, I have found myself working in areas
+directly influeced by explicit algorithms for various kinds of
+computations: in algebra (of resolutions~\cite{injAlgMEGA,AAECC} and
+of hypergeometric series \cite{hornMEGA}), in combinatorics (of planar
+graphs \cite{planarGraphs,AAECC}; see also the works of Felsner
+\cite{felsner01,felsner03}), and in geometry (of
+polyhedra~\cite{fold}).  In particular, my
+work~\cite{injAlg,injAlgMEGA} with Helm was the first algorithm for
+computing local cohomology over any class of singular rings, and my
+work with Pak was the first algorithm to unfold convex polyhedra in
+any dimension $d \geq 3$.  It is the latter where I see important
+advances in the near future.  Looking back at Section~\ref{s:metric},
+once the Alexandrov unfolding is defined for dimensions $d \geq 3$, it
+will be important to have an algorithm for producing it.  Indeed, it
+is natural to conjecture that the unfolding will be nonoverlapping, as
+it is for $d=2$ \cite{AO92}, and computers are the best way to produce
+copious evidence (or a counterexample).  This brings me back to the
+undergraduate research project I am conducting with Nate Born: if I
+understand things correctly, then it should be quite easy to rearrange
+pieces of the source foldout, which Nate is computing, to get the
+Alexandrov unfolding.  This will truly be a computational geometry
+experiment, and I am hoping to get people like O'Rourke and Joe
+Mitchell~\cite{MMP87} interested in it.
+
+\subsection{Statistics}\label{stat}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+At a meeting to discuss future programs for the IMA, I began
+conversations with R.~Dennis Cook, a statistician here at Minnesota,
+on fitting data with nonlinear geometric structures.  These structure
+could be real algebraic varieties, or polyhedral complexes, or
+something else---we'll have to see what's possible abstractly, what's
+desirable, and what's computationally feasible.  (But first, we'll
+have to teach each other our respective subjects!)  In contrast with
+the field that has come to be known as ``algebraic statistics'', in
+which algebra or algebraic geometry describes
+% for the parameter spaces that are
+statistical models (allowed sets of probabilities for a fixed set of
+random variables), Cook and I are talking about the completely
+different issue of methods to make geometric sense of data sets.
+
+\subsection{Geometric measure theory}\label{gilad}%%%%%%%%%%%%%%%%%%%%
+
+In conversations with Gilad Lerman and his student,
+J.\thinspace{}Tyler Whitehouse, we have reduced certain questions in
+geometric measure theory to various kinds of high-dimensional metric
+polyhedral geometry of the sort that I have been thinking about
+recently.  A~typical problem in this area is how to place a hyperplane
+so as to make it pass within $\varepsilon$ of a given set of points.
+Gilad and I have plans to pursue further conversations to mine each
+other's expertise.
+
+\subsection{Mathematical biology}\label{bio}%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+During high-school, I lived in the vicinity of Bethesda, MD, and I was
+lucky enough to spend four summers working at the National Institutes
+of Health [NIH] there, working in laboratories on questions in
+biochemistry and molecular biology.  My career goals turned later to
+mathematics, but I have retained and nurtured my interest in the
+biological sciences.  For some time, now, I have been looking for an
+opportunity to integrate these interests of mine, and this year's
+program at the IMA is it.  It is still early in the year, but already
+I am seeing connections to my work on metric geometry.  For example,
+flows on polyhedral spaces and differential inclusions are useful in
+modeling self-regulating network models;
+% involving chemical concentrations, sliding domains, ... etc.
+see \cite{CdG06} for an instance of this.
+
+
+%end{section}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{excise}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{...}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\label{s:...}
+
+...
+
+\subsection{...} \label{sub:}
+%
+...
+
+\subsection{...} \label{sub':}
+%
+...
+
+\paragraph{...}
+...
+
+\paragraph{...}
+...
+
+
+%end{section}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}\end{excise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\footnotesize
+\small
+%\pagebreak
+\section*{References}\label{s:refs}
+\vspace{1.25ex}
+%\bibliographystyle{amsalpha}\bibliography{biblio}\begin{excise}{
+\begin{thebibliography}{33}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibsec{\textbf{Publications and preprints by Ezra Miller}
+% (rougly in reverse chronological order)
+(numbered as in~CV)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibsubsec{\sf Books and expository articles}%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{24hours}\bibyear{2007}
+(book with Srikanth Iyengar, Graham Leuschke, Anton Leykin, Claudia
+	Miller, Anurag Singh, and Uli Walther) \emph{Twenty-four hours
+	of local cohomology}, Graduate Studies in Mathematics,
+	American Mathematical Society, Providence, RI.
+	(xvi+282~pages)
+
+\bibitem{pcmi2004}
+(book edited with Vic Reiner and Bernd Sturmfels) \emph{Geometric
+	Combinatorics}.  Lecture notes from the Graduate Summer
+	School of the Institute for Advanced Study/Park City
+	Mathematics Institute held in Park City, UT, July 11--31,
+	2004.  IAS/Park City Math.\ Series, American Math.\ Society,
+	Providence, RI; Institute for Advanced Study (IAS), Princeton,
+	NJ.  (xvi+691~pages)
+
+\bibitem{overview}
+(with Vic Reiner) \emph{What is geometric combinatorics?}  In Geometric
+	combinatorics (Park City, UT, 2004), IAS/Park City Math.\
+	Series, American Math.\ Society, Providence, RI, pp.~1--17.
+
+\bibitem{cca}\bibyear{2004}
+(book with Bernd Sturmfels) \emph{Combinatorial Commutative Algebra},
+	Graduate Texts in Mathematics Vol. 227, Springer--Verlag, New
+	York.  (xiv+417~pages)
+
+\bibitem{hilbAppendix}
+\emph{Hilbert schemes of points in the plane}, Appendix to
+	\emph{Commutative algebra of $N$ points in the plane}, by
+	Mark Haiman, in Luchezar Avramov
+%	, M.~Green, C.~Huneke, K.~Smith, and B.~Sturmfels
+	et al., (eds.), \emph{Trends in Commutative Algebra}, MSRI
+	Publications Vol.~51, Cambridge University Press, New York,
+	pp.~153--180.
+
+\bibitem{eightLect}\bibyear{2001}
+(with David Perkinson) \emph{Eight lectures on monomial ideals}, in
+	Queen's Papers in Pure and Applied Mathematics, no.~120,
+	3--105.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibsubsec{\sf Articles in progress}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{unfolding}
+\emph{Metric combinatorics of convex polyhedra, II: gradient flow and
+	Alexandrov unfolding}.
+
+\bibitem{complexity}
+\emph{Metric complexity of convex polyhedra}.
+
+\bibitem{binomialCRM}
+(with Huilan Li, Laura Matusevich, and Craig Sloss) \emph{Multivariate
+	hypergeometric functions and binomial ideals}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibsubsec{\sf Submitted journal articles}%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{horn}
+(with Alicia Dickenstein and Laura Matusevich) \emph{Binomial
+	$D$-modules}, 47 pages.  \textsf{arXiv:math.AG/ 0610353}
+
+\bibitem{njia}
+(with Ning Jia) \emph{Duality of antidiagonals and pipe dreams},
+	5~pages.  \textsf{arXiv:math.CO/0706.3031}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibsubsec{\sf Peer-reviewed journal articles}%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{multIdealSums}\bibyear{to appear}
+(with Shin-Yao Jow) \emph{Multiplier ideals of sums via cellular
+	resolutions}, Mathematical Research Letters, 15~pages.
+	\textsf{arXiv:math.AG/ 0703299}
+
+\bibitem{flagTab}
+(with Allen Knutson and Alex Yong) \emph{Gr\"obner geometry of vertex
+	decompositions and of flagged tableaux}, Journal f\"ur die
+	reine und angewandte Mathematik, 23 pages.
+	\textsf{arXiv:math.CO/0502144}
+
+\bibitem{torVanish}
+(with David Speyer) \emph{A Kleiman--Bertini theorem for sheaf tensor
+	products}, Journal of Algebraic Geometry, 5~pages.
+	\textsf{arXiv:math.AG/0601202}
+
+\bibitem{tabComplex}
+(with Allen Knutson and Alex Yong) \emph{Tableau complexes}, Israel
+	Journal of Math., 18~pages. \textsf{arXiv:math.CO/0510487}
+
+\bibitem{fold}\bibyear{2006}
+(with Igor Pak) \emph{Metric combinatorics of convex polyhedra: cut
+	loci and nonoverlapping unfoldings}, Discrete and
+	Computational Geometry (electronic), DOI:
+	10.1007/s00454-006-1249-0, pages OF1-OF50.
+	\textsf{arXiv:math.MG/0312253}
+
+\bibitem{quivers}
+(with Allen Knutson and Mark Shimozono) \emph{Four positive formulae
+	for type~$A$ quiver polynomials}, Inventiones Mathematicae
+	\textbf{166} no.~2, 229--325.  \textsf{arXiv:math.AG/0308142}
+
+\bibitem{simpJumps}
+(with Laura Matusevich) \emph{Combinatorics of rank jumps in
+	simplicial hypergeometric systems}, Proceedings of the
+	American Mathematical Society \textbf{134}, 1375--1381.
+	\textsf{arXiv:math.AC/0402071}
+
+\bibitem{simplicialPoset}
+(with Vic Reiner) \emph{Stanley's simplicial poset conjecture, after
+	M.\ Masuda}, Communications in Algebra \textbf{34} (2006),
+	no.~3, 1049--1053.
+     
+\bibitem{rankJumps}\bibyear{2005}
+(with Laura Matusevich and Uli Walther) \emph{Homological methods for
+	hypergeometric families}, Journal of the American Mathematical
+	Society \textbf{18}, no.~4, 919--941.  \textsf{arXiv:math.AG/0406383}
+
+\bibitem{kquiv}
+\emph{Alternating formulas for $K$-theoretic quiver polynomials},
+	Duke Mathematical Journal \textbf{128}, 1--17.
+	\textsf{arXiv:math.CO/0312250}
+
+\bibitem{grobGeom}
+(with Allen Knutson) \emph{Gr\"obner geometry of Schubert
+	polynomials}, Annals of Mathematics \textbf{161}, 1245--1318.
+	\textsf{arXiv:math.AG/0110058}
+
+\bibitem{injAlg}
+(with David Helm) \emph{Algorithms for graded injective resolutions
+	and local cohomology over semigroup rings}, Journal of
+	Symbolic Computation \textbf{39}, 373--395.
+	\textsf{arXiv:math.AC/0309256}
+
+\bibitem{deform}
+(with Mikhail Kogan) \emph{Toric degeneration of Schubert varieties
+	and Gelfand--Tsetlin polytopes}, Advances in Mathematics
+	\textbf{193}, no.~1, 1--17.  \textsf{arXiv:math.AG/0303208}
+
+\bibitem{reciprocal}
+(with Vic Reiner) \emph{Reciprocal domains and Cohen--Macaulay
+	$d$-complexes in ${\mathbb R}^d$}, The Electronic Journal of
+	Combinatorics \textbf{11(2)}, \#N1 (9~pages).
+	\textsf{arXiv:math.CO/0408169}
+
+\bibitem{subword}\bibyear{2004}
+(with Allen Knutson) \emph{Subword complexes in Coxeter groups},
+	Advances in Mathematics \textbf{184}, 161--176.
+	\textsf{arXiv:math.CO/0309259}
+
+\bibitem{bassNumbers}\bibyear{2003}
+(with David Helm) \emph{Bass numbers of semigroup-graded local
+	cohomology}, Pacific Journal of Mathematics~\textbf{209},
+	no.~1, 41--66.  \textsf{arXiv:math.AG/0010003}
+
+\bibitem{mitosis}
+\emph{Mitosis recursion for coefficients of Schubert polynomials},
+	Journal of Combinatorial Theory, Series~A~\textbf{103},
+	223--235.  \textsf{arXiv:math.CO/0212131}
+
+\bibitem{cmQuotients}\bibyear{2002}
+\emph{Cohen--Macaulay quotients of normal semigroup rings via
+	irreducible resolutions}, Mathematical Research
+	Letters~\textbf{9}, no.~1, 117--128.
+	\textsf{arXiv:math.AC/0110096}
+
+\bibitem{planarGraphs}
+\emph{Planar graphs as minimal resolutions of trivariate monomial
+	ideals}, Documenta Mathematica~\textbf{7}, 43--90.
+	(electronically published:
+	\textsf{http:/$\!$/www.math.uiuc.edu/documenta/vol-07/03.html})
+  
+% \bibitem{gmDuality}
+% \emph{Graded Greenlees--May duality and the \v Cech hull}, Local
+% 	cohomology and its applications (Guanajuato, 1999), 233--253,
+% 	Lect. Notes in Pure and Appl. Math., vol. 226, Dekker, New
+% 	York.
+
+\bibitem{emThesis}\bibyear{2000}
+\emph{Resolutions and duality for monomial ideals}, Ph.D. thesis,
+	University of California at Berkeley.
+
+\bibitem{alexDual}
+\emph{The Alexander duality functors and local duality with monomial
+	support}, Journal of Algebra \textbf{231}, 180--234.
+
+\bibitem{generic}
+(with Bernd Sturmfels and Kohji Yanagawa) \emph{Generic and cogeneric
+	monomial ideals}, Journal of Symbolic Computation~\textbf{29},
+	691--708.
+
+\bibitem{icos}
+\emph{Icosahedra constructed from congruent triangles}, Discrete
+	and Computational Geometry~\textbf{24}, no.~2--3, 437--451.
+  
+% \bibitem{monIdealPlanGraph}\bibyear{1999}
+% (with Bernd Sturmfels) \emph{Monomial ideals and planar graphs}, in
+% 	Applied Algebra, Algebraic Algorithms and Error-Correcting
+% 	Codes,
+% %	[M.~Fossorier, H.~Imai, S.~Lin and A.~Poli, eds.], Proceedings
+% %	of AAECC-13 (Honolulu, Nov.  1999),
+% 	\textsl{Springer Lect. Notes in Comp. Sci.} \textbf{1719}
+% 	(1999), 19--28.
+
+% \bibitem{oldAlexDual}\bibyear{1998}
+% \emph{Alexander duality for monomial ideals and their resolutions}.
+% 	\textsf{arXiv:math.AC/9812095}
+
+\bibitem{multiplicities}\bibyear{1998}
+\emph{Multiplicities of ideals in noetherian rings}.  Beitr\"age zur
+	Algebra und Geometrie~\textbf{39}(1) 47--51.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibsubsec{\sf Conference publications (peer-reviewed and/or invited)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{hornMEGA}\bibyear{2007}
+(with Alicia Dickenstein and Laura Matusevich) \emph{Extended
+	abstract: Binomial $D$-modules}, Proceedings MEGA (Effective
+	Methods in Algebraic Geometry), Strobl, Austria, 2007,
+	13~pages.
+%	24th - 30th June 2007
+%	http://www.ricam.oeaw.ac.at/mega2007/
+
+\bibitem{multIdealSumsMFO}
+(with Shin-Yao Jow) \emph{Extended abstract: Cellular resolutions of
+	multiplier ideals of sums}, in \emph{Top\-ological and geometric
+	combinatorics}, abstracts from the workshop held
+	January~28--February~3, 2007, organized by Anders Bj\"orner,
+	Gil Kalai, and G\"unter Ziegler, Oberwolfach reports, 3~pages.
+
+\bibitem{rankJumpsMFO}\bibyear{2006}
+(with Laura Matusevich and Uli Walther) \emph{Extended abstract:
+	Homological methods for hypergeometric families}, in
+	\emph{Convex and algebraic geometry}, abstracts from the
+	workshop held January~29--February~4, 2006, organized by
+	Klaus Altmann, Victor Batyrev, and Bernard Teissier,
+	Oberwolfach reports, 3 pages.
+
+\bibitem{injAlgMEGA}\bibyear{2003}
+(with David Helm) \emph{Extended abstract: Algorithms for graded
+	injective resolutions and local cohomology over semigroup
+	rings}, Proceedings MEGA (Effective Methods in Algebraic
+	Geometry), Kaiserslautern, Germany, 2003, 5~pages.
+%	10th - 14th June 2003
+%	http://www.mathematik.uni-kl.de/~wwwagag/workshops/mega-03/
+
+\bibitem{gm}\bibyear{2002}
+\emph{Graded Greenlees--May duality and the \v Cech hull}, Local
+	cohomology and its applications (Guanajuato, 1999), Lecture
+	Notes in Pure and Appl. Math., vol. 226, Dekker, New York,
+	233--253.
+
+\bibitem{grobGeomFPSAC}
+(with Allen Knutson) \emph{Extended abstract: Gr\"obner geometry of
+	Schubert polynomials}, Proceedings FPSAC (Formal Power Series
+	and Algebraic Combinatorics), Melbourne 2002, 10 pages.
+
+\bibitem{AAECC}\bibyear{1999}
+(with Bernd Sturmfels) \emph{Monomial ideals and planar graphs}, in
+	Applied Algebra, Algebraic Algorithms and Error-Correcting
+	Codes, [M.~Fossorier, H.~Imai, S.~Lin and A.~Poli, eds.],
+	Proceedings of AAECC-13 (Honolulu, Nov.  1999), {\sl Springer
+	Lecture Notes in Computer Science} \textbf{1719}, 19--28.
+
+\end{thebibliography}
+%\bibliographystyle{amsalpha}
+%\bibliography{biblio}
+\renewcommand\refname{}
+\begin{thebibliography}{Mat01b}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibsec{\textbf{Cited publications by other authors}}%%%%%%%%%%%%%%%%%
+
+\bibitem[Ado94]{Ado94}
+Alan Adolphson, \emph{Hypergeometric functions and rings generated by
+  monomials}, Duke Math. J. \textbf{73} (1994), no.~2, 269--290.
+
+\bibitem[Ale48]{Ale48}
+A.~D. Alexandrov, \emph{Vnutrennyaya geometriya vypuklykh
+  poverkhnostey {\rm (in Russian)}}, {\mbox{M.--L.}: Gostekhizdat},
+  1948; English translation: \emph{Selected works. Intrinsic geometry
+  of convex surfaces}, Vol.~2, Chapman \& Hall/CRC, Boca Raton, FL, 2005.
+
+\bibitem[Ale50]{Ale50}
+A. D. Alexandrov, \emph{Convex polyhedra}, Springer Monographs in
+  Mathematics.  Springer--Verlag, Berlin, 2005.  Translated from the
+  1950 Russian edition by N.~S.~Dairbekov, S.~S.~Kutateladze and
+  A.~B.~Sossinsky, with comments and bibliography by V.~A.~Zalgaller
+  and appendices by L.~A.~Shor and Yu.~A.~Volkov.
+
+\bibitem[AO92]{AO92}
+Boris Aronov and Joseph O'Rourke, \emph{Nonoverlap of the star
+  unfolding}, Discrete Comput. Geom. \textbf{8} (1992), no.~3,
+  219--250.
+
+\bibitem[BPS98]{BPS98}
+Dave Bayer, Irena Peeva, and Bernd Sturmfels, \emph{Monomial
+  resolutions}, Math. Res. Lett. \textbf{5} (1998), no.~1-2, 31--46.
+
+\bibitem[BI06]{BI06}
+Alexander I. Bobenko and Ivan Izmestiev, \emph{Alexandrov's theorem,
+  weighted Delaunay triangulations, and mixed volumes}, preprint.
+  \textsf{arXiv:math.DG/0609447}
+
+\bibitem[Bri02]{brion02}
+M. Brion, \emph{Positivity in the Grothendieck group of complex flag
+  varieties}, Journal of Algebra \textbf{258} (2002), no. 1,
+  137--159.
+
+\bibitem[Buc02]{buchLR}
+A.~S.~Buch, \emph{A Littlewood-Richardson rule for the \K-theory ring
+  of Grassmannians,} Acta Math., {\bf 189} (2002), no.~1, 137--159.
+  \texttt{math.AG/0004137}
+
+\bibitem[Buc02a]{buch02}
+Anders~S. Buch, \emph{Grothendieck classes of quiver varieties},
+  Duke Math. J. \textbf{115} (2002), no.~1, 75--103.
+
+\bibitem[Buc03]{buchAlt}
+Anders~S. Buch, \emph{Alternating signs of quiver coefficients},
+  J. Amer. Math. Soc. \textbf{18} (2005), no. 1, 217--237 (electronic). 
+
+\bibitem[BF99]{BF99}
+Anders~Skovsted Buch and William Fulton, \emph{Chern class formulas
+  for quiver varieties}, In- vent. Math. \textbf{135} (1999), no.~3,
+  665--687.
+
+\bibitem[CdG06]{CdG06}
+Richard Casey, Hidde de Jong, and Jean-Luc Gouz\'e,
+\emph{Piecewise-linear models of genetic regulatory networks:
+  equilibria and their stability}, J. Math. Biol. \textbf{52} (2006),
+  no.~1, 27--56.
+
+\bibitem[CL03]{CL03}
+B. Chow and F. Luo, \emph{Combinatorial Ricci flows on surfaces},
+  J. Differential Geom. \textbf{63} (2003), 97--129.
+
+\bibitem[ER98]{ER98}
+John~A. Eagon and Victor Reiner, \emph{Resolutions of
+  {S}tanley--Reisner rings and {A}lexander duality}, J. Pure
+  Appl. Algebra \textbf{130} (1998), no.~3, 265--275.
+
+\bibitem[ES96]{binomialIdeals}
+David Eisenbud and Bernd Sturmfels, \emph{Binomial ideals}, Duke
+   Math. J. \textbf{84} (1996), no.~1, 1--45.
+
+\bibitem[Erd50]{erdelyi}
+Arthur Erd\'elyi, \emph{Hypergeometric functions of two variables},
+  Acta Math. \textbf{83} (1950), 131--164.
+
+\bibitem[Fel01]{felsner01}
+Stefan Felsner, \emph{Convex drawings of planar graphs and the order
+  dimension of 3-polytopes}, Order \textbf{18} (2001), no.~1, 19--37.
+
+\bibitem[Fel03]{felsner03}
+Stefan Felsner, \emph{Geodesic embeddings and planar graphs}, Order
+  \textbf{20} (2003), no.~2, 135--150.
+
+\bibitem[GGZ87]{GGZ87}
+I.~M. Gel{$'$}fand, M.~I. Graev, and A.~V. Zelevinski\u{\i},
+  \emph{Holonomic systems of equations and series of hypergeometric
+  type}, Dokl. Akad. Nauk SSSR \textbf{295} (1987), no.~1, 14--19.
+
+\bibitem[GKZ89]{GKZ89}
+I.~M. Gel{$'$}fand, A.~V. Zelevinski\u{\i}, and M.~M. Kapranov,
+  \emph{Hypergeometric functions and toric varieties},
+  Funktional. Anal. i Prilozhen. \textbf{23} (1989), no.~2, 12--26.
+  Correction in ibid, \textbf{27} (1993), no.~4,~91.
+
+\bibitem[Gli05]{glick05}
+David Glickenstein, \emph{A combinatorial Yamabe flow in three
+  dimensions}, Topology \textbf{44} (2005), no.~4, 791--808.
+
+\bibitem[GL96]{GL96}
+N.~Gonciulea and V.~Lakshmibai, \emph{Degenerations of flag and
+  {S}chubert varieties to toric varieties}, Transform. Groups \textbf{1}
+  (1996), no.~3, 215--248.
+
+\bibitem[Gra01]{grahamPos}
+William Graham, \emph{Positivity in equivariant Schubert calculus},
+  Duke Math. J. \textbf{109} (2001), no.~3, 599--614.
+
+\bibitem[GM92]{gm92}
+John P.~C. Greenlees and J.~Peter May, \emph{Derived functors of
+  \mbox{${I}$-adic} completion and local homology}, J. Algebra \textbf{149}
+  (1992), no.~2, \mbox{438--453}.
+% \MR{93h:13009}
+
+\bibitem[Har70]{HarCofinite}
+Robin Hartshorne, \emph{Affine duality and cofiniteness},
+  Invent. Math. \textbf{9} (1969/1970), 145--164.
+
+\bibitem[Hor1889]{horn89}
+J.~Horn, \emph{ {\"Uber die konvergenz der hypergeometrischen {R}eihen
+  zweier und dreier Ver\"ander\-lichen}}, Math. Ann. \textbf{34} (1889),
+  544--600.
+
+\bibitem[LS82]{LSpolySchub}
+Alain Lascoux and Marcel-Paul Sch{\"u}tzenberger, \emph{Polyn\^omes de
+  {S}chubert}, C. R. Acad. Sci. Paris S\'er. I Math. \textbf{294}
+  (1982), no.~13, 447--450.
+
+\bibitem[Man79]{manning79}
+Anthony Manning, \emph{Topological entropy for geodesic flows},
+  Ann. of Math. (2) \textbf{110} (1979), no.~3, 567--573.
+
+\bibitem[Mas03]{masuda03}
+Mikiya Masuda, \emph{$h$-vectors of Gorenstein$\!$* simplicial
+  posets}, 2003.  \textsf{arXiv:math.CO/0305203}
+
+\bibitem[MMP87]{MMP87}
+J.~S.~B. Mitchell, D.~M. Mount, and C.~H. Papadimitriou,  The
+  discrete geodesic problem, \emph{SIAM J.  Comp.} \textbf{16}
+  (1987), no.~4, 647--668.
+
+\bibitem[PS98]{PS98}
+Irena Peeva and Bernd Sturmfels, \emph{Generic lattice ideals},
+  J. Amer. Math. Soc. \textbf{11} (1998), no.~2, 363--373.
+
+\bibitem[SS86]{SS}
+M. Sharir and A. Schorr, On shortest paths in polyhedral spaces,
+  \emph{SIAM J. Comp.} \textbf{15} (1986), no.~1, 193--215.
+
+\bibitem[Sta74]{Sta74}
+R.~P. Stanley, \emph{Combinatorial reciprocity theorems}, Advances in
+  Math. \textbf{14} (1974), 194--253.
+
+\bibitem[Sta91]{Sta91}
+Richard~P. Stanley, \emph{{$f$}-vectors and {$h$}-vectors of
+  simplicial posets}, J. Pure Appl. Algebra \textbf{71} (1991),
+  no.~2-3, 319--331.
+
+\bibitem[Vol68]{Vol68}
+Y. A. Volkov, \emph{An estimate for the deformation of a convex
+  surface in dependence on the variation of its intrinsic
+  metric}, Ukrain. Geometr. Sb. \textbf{5-6} (1968), 44--69.
+
+\bibitem[VP71]{VP71}
+Ju.~A. Volkov and E.~G. Podgornova, The cut locus of a polyhedral
+  surface of positive curvature (in Russian), \emph{Ukrainian
+  Geometric Sbornik} \textbf{11} (1971), 15--25.
+
+\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

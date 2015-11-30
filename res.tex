@@ -1,0 +1,544 @@
+%\documentstyle[11pt,a4]{article}
+%\documentclass[a4paper]{article}
+\documentclass[a4paper, 10pt]{article}
+% Seems like it does not support 9pt and less. Anyways I should stick to 10pt.
+%\documentclass[a4paper, 9pt]{article}
+\topmargin-2.0cm
+
+\usepackage{fancyhdr}
+\usepackage{pagecounting}
+\usepackage[dvips]{color}
+
+% Color Information from - http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/latex_advanced/node13.html
+
+% NEW COMMAND
+% marginsize{left}{right}{top}{bottom}:
+%\marginsize{3cm}{2cm}{1cm}{1cm}
+%\marginsize{0.85in}{0.85in}{0.625in}{0.625in}
+
+\advance\oddsidemargin-0.65in
+%\advance\evensidemargin-1.5cm
+\textheight9.2in
+\textwidth6.75in
+\newcommand\bb[1]{\mbox{\em #1}}
+\def\baselinestretch{1.05}
+%\pagestyle{empty}
+
+\newcommand{\hsp}{\hspace*{\parindent}}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+%\definecolor{gray}{rgb}{1.0,1.0,1.0}
+
+
+\begin{document}
+\thispagestyle{fancy}
+%\pagenumbering{gobble}
+%\fancyhead[location]{text} 
+% Leave Left and Right Header empty.
+\lhead{}
+\rhead{}
+%\rhead{\thepage}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+\fancyfoot[C]{\footnotesize \textcolor{gray}{http://www.stanford.edu/$\sim$sundaes/application}} 
+
+%\pagestyle{myheadings}
+%\markboth{Sundar Iyer}{Sundar Iyer}
+
+\pagestyle{fancy}
+\lhead{\textcolor{gray}{\it Sundar Iyer}}
+\rhead{\textcolor{gray}{\thepage/\totalpages{}}}
+%\rhead{\thepage}
+%\renewcommand{\headrulewidth}{0pt} 
+%\renewcommand{\footrulewidth}{0pt} 
+%\fancyfoot[C]{\footnotesize http://www.stanford.edu/$\sim$sundaes/application} 
+%\ref{TotPages}
+
+% This kind of makes 10pt to 9 pt.
+\begin{small}
+
+%\vspace*{0.1cm}
+\begin{center}
+{\LARGE \bf RESEARCH STATEMENT}\\
+\vspace*{0.1cm}
+{\normalsize Sundar Iyer (sundaes@cs.stanford.edu)}
+\end{center}
+%\vspace*{0.2cm}
+
+%\begin{document}
+%\centerline {\Large \bf Research Statement for Sundar Iyer}
+%\vspace{0.5cm}
+
+% Write about research interests...
+%\footnotemark
+%\footnotetext{Check This}
+
+My research interests span the areas of network algorithms, system
+architecture and component design. A common thread in my research is in understanding the
+theory and design of scalable architectures and parallel systems.
+I have resorted to mathematical methods 
+of proof which are borrowed from the areas of Algorithms, 
+Architecture, Combinatorics, Probability, {\it \&} Queueing Theory.
+Broadly speaking, my research belongs to
+the area of {\it Network Architecture} (which deals with the fundamental 
+principles of network design), 
+an upcoming field which is still in its infancy and whose theoretical foundations are just being laid.
+
+% Say that research work has been both theoritical and practical.
+
+\subsubsection*{Background and Current Work}
+
+%i.e. a way to manage and allocate tasks amongst the individual parallel components.
+
+It is natural that most large and complex systems are created from a set 
+of smaller components, each of which is simpler than the system as a whole. 
+The functioning of a complex system depends on the interaction between its 
+constituent components. Parallelism is a standard technique used to scale the
+performance of a system. In a parallel system each individual component is 
+identical in nature and can perform all the tasks of the larger system, 
+albeit usually at a slower rate. Of course it is naive to expect that
+we could simply bunch together a number of parallel components and get high performance.
+In particular, the performance of any parallel system is governed by --- 1) The
+architecture used to connect the many components and 2) the 
+resource management (load balancing) algorithm used to 
+allocate tasks amongst the parallel components. 
+
+%A primary goal of load balancing, is to design a system
+%which functions at a higher speed than its individual components. A secondary,
+%albeit equally important goal is the design of a more reliable and
+%fault tolerant system.
+%We believe that load balancing techniques can greatly aid in the
+%design of the Internet. We intend to answer certain fundamental questions,
+%such as:
+
+%There are two reasons for this. 
+%First, many high performance networking systems in the past (fueled by rapid advances in ASIC design)
+%were architected using brute force solutions 
+%using only a single component, thus obviating the need for parallelism. 
+
+There exists a rich body of previous work in the field of Computer Architecture, 
+Distributed Systems {\it \&}  Theoretical Computer Science, which answer a number of 
+fundamental questions regarding the performance of load balancing algorithms and 
+the design of parallel architectures.
+However this has not happened in the field of networking. 
+Academia and Industry in particular (rushed by the exponential growth in networking) 
+have compromised by using ad hoc parallel solutions. This has resulted in systems
+which provide little or no performance guarantees.
+For example --- most Internet core routers in use today do not give any 
+guarantees on bounding packet delay.
+It is easy to see how this unhappy state of affairs can adversely affect 
+future advances in the Internet.
+
+We need to understand the general principles of designing large systems,
+which give performance guarantees. These guarantees could be statistical, say, guaranteeing less
+than 0.001\% packet loss on a network, or deterministic, say, never more than 1 $\mu$s of packet
+delay across a network. Only recently has there been growing interest in the 
+theory and design of scalable networking systems.
+In my Ph.D thesis, I attempt to lay a theoretical framework for this field.
+Most of my work has greatly benefited from interaction with a number of colleagues and my advisor.
+I describe my work below.
+
+% Need stuff to say that this is not theory. We are interested in building 
+% fundamental systems..
+
+%Thus networking is in need of suitable% 
+%I believe that there is a rich and evolving theory of 
+% We even do not have methods to analyze these systems.
+% parallel network algorithms and architecture. 
+% I describe this work here.
+% Work benefited from colleagues.
+% Insight and ideas are along with my advisor Nick McKeown.
+
+%\subsection*{Load Balancing and Parallelism for the Internet}
+
+\subsubsection*{\small An Analytical Framework to Analyze Router Architectures}
+
+% HOW DOES THE ABOVE HEADING RELATE TO LOAD BALANCING??
+
+% I begin by first describing my work on analyzing router architecture. 
+%Router architecture, has been studied for many years since Charles Clos' seminal paper in 1953. 
+
+In the past decade, router design has enjoyed both widespread academic interest and
+commercial success. I ask the following question --- {\em Is there a common
+technique, which allows us to analyze router architectures that give deterministic 
+guarantees?}
+I observed the existence of such a technique called constraint sets, in the course of solving 
+two open problems about scaling router capacity ---
+
+\begin{enumerate}
+
+\item {\em Is it possible to emulate a fast ideal router, using only slower speed routers?}
+
+\item {\em Is it possible to emulate an ideal centralized shared memory router using only distributed memories?}
+
+\end{enumerate}
+
+% SAY SOMETHING ABOUT OUR TECHNIQUE COMPARES TO AN IDEAL ROUTER.
+% PSM, DSM, CIOQ, PPS etc.
+%Also the method of comparative analysis I used 
+%implies that such routers will conform to the behaviour of a ideal router.
+
+Constraint sets are a generalization of the Pigeon-hole principle applied to
+routers. I showed that router design can be considered as a game where arriving
+pigeons (packets) are load balanced amongst pigeon-holes (memories). 
+It is surprising that the above problems can be solved \cite{pps, ppsmcast, dsm} in a simple
+manner using the Pigeon-hole principle because they refute many commonly 
+accepted myths about router design. 
+Also the method of analysis is eye-opening because it captures the structural 
+requirements of any router. 
+I came up with a generic model for a class of routers called Single Buffered Routers. 
+I showed how the Pigeon-hole principle can be applied in the analysis of Single Buffered
+Routers that give deterministic guarantees.  Later, I extended the analysis to 
+routers with two stages of buffering \cite{csets}. 
+Thus our model and analysis technique
+presently incorporates almost all the router architectures in use in the
+core of the Internet today and shows how router capacity can be scaled in
+an efficient manner.
+
+%\end{enumerate}
+
+\subsubsection*{\small Deterministic Architectures for Packet Processing}
+
+All network equipment perform packet processing. However 
+it is still not well understood, primarily due to the variety of
+different processing tasks.
+%For example --- routers need to perform address lookups and buffer packets,
+%network management and tracing equipment need to maintain statistics, a security firewall and 
+%server load balancing equipment require packet classification while a network address translation
+%device need to maintain connection state.
+These tasks place a heavy demand on instruction and memory bandwidth, which 
+prevents them from being implemented on general-purpose network processors.
+While specific solutions exist, in most cases it is not known whether they
+are optimal, whether they are complete i.e. support all necessary packet processing features and whether they
+give any performance guarantees. I look at three different aspects of this problem ---
+%I attempt to build a theoritical framework for this probem.
+
+%The use of general purpose network processors to solve each of these tasks
+%A router needs to process packets at very high rates and perform a number of tasks on them.  These
+%tasks include amongst others classifying the packet, performing a route lookup, maintaining 
+%state and statistics information and finally buffering the arriving packet. Most of these tasks take a
+%heavy toll on either CPU processing cycles or memory bandwidth or in many cases both. Due to the high
+%speeds involved many of these processing tasks require specialized architectures and algorithms to
+%enable them to scale. I have looked at three aspects of this problem --
+ 
+% In Comp. Architeture about - Processor design, FPU design etc..
+
+%\begin{enumerate}
+% Lyapunov functions, difference equations, potential functions etc.
+% Buffer, State, Statistics.
+
+\begin{enumerate}
+
+% ClassiPI, String Searching, Route Lookups, NAT ?
+% IMPLEMENTED IN CISCO's CONTENT SERVICE SWITCH
+
+\item {\em Optimal and flexible packet buffers, which eliminate cache misses}
+
+% Say that you can ask for any latency that you want.. i.e. it is flexible.
+%Packet buffers have two requirements, i.e.
+%they need to be large in size and have to support high memory access rates. 
+%However none of the commodity memories such as DRAMs (which allow large storage 
+%but have slow access speeds) or SRAMs (which allow fast access but are inefficient in storage)
+%are suitable for use in designing packet buffers.
+%Hence most Industry designs use a combination of SRAM and DRAM, much like cache memory hierarchies
+%seen in computer architecture. As is well known, cache architectures can only give 
+%statistical guarantees on packet access time, resulting in unpredictable buffer performance.
+
+Packet buffers are built using cache hierarchies. As is well known, caching
+can only give statistical guarantees on packet access time, resulting in unpredictable packet
+latency.
+In contrast, I proposed deterministic algorithms, which exploit the characteristics 
+of memory requirements for networking to design a memory hierarchy, which eliminates cache misses. 
+I showed how the optimal buffer caching algorithm can be modeled using difference equations and
+used adversarial traffic patterns to show that it is optimal \cite{buffer}.
+This resulting memory architecture supports the high access speeds of the cache while
+having the large storage capacity of main memory, obviating the need for any special purpose memory
+for networking.
+Later, I showed how the cache hierarchy could be designed to allow 
+flexibility in choosing any buffer access latency.
+A number of router companies such as Cisco, Juniper as well as main memory manufacturers 
+like Infineon, Rambus and Micron have shown interest in this technique.
+
+%SRAM and has the storage capacity of DRAM. 
+%This shows how ideal memory architectures can be built for networking
+%from commodity components, obviating the need for specialized networking memories. 
+
+\item {\em Optimal and deterministic architectures for statistics and state maintenance}
+
+I (along with a colleague) showed using potential functions how there is 
+a direct relation between the optimal architectures for buffering
+and maintaining statistics counters \cite{stats}. 
+Similarly I showed analytically how an algorithm, which gives deterministic 
+delay bounds could be designed for maintaining connection state. 
+
+\item {\em A complete and flexible architecture for packet classification}
+
+% CHANGE THIS
+% MENTION THAT WE TACKLED FLEXIBILITY can do different classification tasks.
+
+% Write about how there are different types of packet classification.
+
+%A number of algorithms have been proposed for packet classification, 
+%a key requirement in almost all network equipment.
+Packet classification requirements vary widely.
+For example, firewalls need classification on packet headers, while an
+intrusion detection device requires classification of the packet content. 
+Previous research has focused on being able to classify at very
+high rates. In contrast, I (along with a number of colleagues) 
+focused on developing a classifier, which is flexible and complete i.e. it could be programmed to
+perform a number of classification tasks and give deterministic performance guarantees.
+As a first step, we identified the elementary building blocks for packet
+classification in terms of an abstract language. We then designed a parallel hardware architecture
+to implement this 
+language. This resulted in a commercial implementation of a chip set
+(presently marketed by PMC-Sierra) called ClassiPI \cite{classipi}.
+Among others, the ClassiPI chip set is currently in use in Cisco's
+Content Services Switches.
+
+
+\end{enumerate}
+
+\subsubsection*{\small Distributed and Greedy Algorithms for Packet Switching}
+
+% IMPORTANT - Say that MSM is  greedy, CIOXQ is myopic.
+% Similarly - In a buffered crossbar - the idea is myopic scheduling, each input and
+% output works on its own.
+
+Switching theory is replete with the analysis of optimal algorithms, which can give 
+ideal performance, but have large complexity. What are of interest are practical algorithms that can 
+be easily implemented. I answer the following open questions, which throw light on two classes of 
+practical algorithms.
+%studied two classes --- 1) oblivious distributed algorithms and 2) 
+%greedy algorithms, which are of practical interest due to their lower implementation complexity. 
+%A fundamental question in packet switching is ---
+
+\begin{enumerate}
+\item {\em Is there a distributed switching algorithm, which gives performance guarantees?}
+
+%Lightweight distributed algorithms maintain only limited state and like any distributed algorithm
+%can be implemented in parallel. 
+
+The crossbar is the most common switching fabric in the core of the Internet. However,
+the known switching algorithms required to give deterministic performance 
+guarantees are centralized and hence have a high communication overhead.
+I (along with a colleague) analyzed the feasibility of distributed algorithms for a
+modification of the crossbar fabric called the buffered crossbar.
+We derive analytically using combinatorial arguments and counting techniques the
+conditions under which a suite of distributed algorithms can give 
+both statistical and deterministic
+guarantees respectively. 
+Since our algorithms need only local state, do not require communication with each other, 
+and can operate independently on each input and output port, they are readily implementable.
+Our results show that Internet routers built using crossbars, such as Cisco routers, can 
+be upgraded in a practical manner using our distributed 
+algorithms on buffered crossbars and give ideal performance \cite{buffxbar}.
+
+%The crossbar is the most common switching fabric in the core of the Internet today. 
+%However the algorithms which can give performance guarantees on crossbars are centralized and have
+%high complexity.  Thus in practice most routers do not use these algorithms and hence do not give any 
+%guaranteed performance.
+%What will be of great benefit to routers is a suite of myopic parallel algorithms. These are algorithms which
+%operate independently on each input and output without knowledge of the global state of the switch.
+
+\item {\em When can greedy algorithms give optimal switching performance?}
+
+% VIMP - MAKE THIS SECTION BETTER>
+
+Contrary to intuition, it is known in queueing theory that a greedy
+switching algorithm such as the maximum size matching which
+maximizes the instantaneous throughput of the switch may not
+maximize the long-term switch throughput. Hence, greedy algorithms
+are not in use in practice.
+However greedy algorithms are of practical interest due to their low implementation complexity.
+I show using Lyapunov functions the conditions under which
+such algorithms give 100\% throughput \cite{msm}.
+
+\end{enumerate}
+
+% VIMP - SHould we say somthing about fault tolerance in the
+% previous sections?
+% VIMP - Need to tie in previous research work with the present stuff.
+
+\subsection*{Network Architecture ---  A Research Agenda}
+
+   In the course of my research, I have noticed that the overhead (in terms
+of size, power and cost) of designing networking components, which give 
+performance guarantees is small. 
+This is mainly due to two reasons. First, the inherent nature of 
+networking makes many of these problems tractable. Second, a number of
+hardware advances in Architecture, insights in Algorithms {\it \&} Combinatorics, 
+as well as analysis techniques from Probability, {\it \&} Queueing Theory 
+aid in the design of elegant and simple solutions.
+I envisage the field of {\it Network Architecture} created from the 
+ground up, building upon the foundations of a number of fields
+including those mentioned above.
+
+%% IMP - Better examples rather than the old NAT, firewall are needed.
+% Also need more newer examples.
+
+In the near future, I am interested in the 
+principles involved in the design of basic networking 
+components. These include
+hardware components (e.g. scalable memories, 
+network processor and co-processor architectures) and 
+software techniques (e.g. network algorithms, packet processing 
+techniques). 
+  Simultaneously, I intend to understand how large components, which use
+the above building blocks can be architected.
+My research will focus on how these basic and large
+components can be built in a scalable manner while maintaining 
+performance guarantees. 
+In particular, examples of large components that I have a keen
+interest in are switches 
+(e.g. packet and circuit switches, multi-service routers etc.), 
+security devices (e.g. firewalls and intrusion detection 
+systems), network maintenance devices (e.g. measurement,
+management infrastructure) and application aware devices
+(e.g. web server load balancers, proxies) etc. 
+
+% VIMP - Need to say why systems with performance guarantees can help in solving bigger problems.
+% VIMP - How can we get "real" QOS? Solve "DOS" attacks?" etc.
+
+ In the future, though performance and scalability will remain key,
+I also intend to look at issues such as {\it fault tolerance, graceful degradation,
+reliability and uptime} of networking systems, which will become more relevant. 
+I also believe that as systems become increasingly large and 
+inter-dependent, {\it simplicity in design and component 
+re-use} will be major factors.
+Parallelism can play a key role here.
+%in aiding and abetting all of the above features. 
+Indeed, many of our proposed solutions, involve component re-use and 
+parallelism, which can aid and abet the above.
+
+% Say something here about network wide phenomena, can we finally
+% get multimedia streaming because of guarantees.
+
+ My research will involve a good mix of futuristic and present 
+day research. 
+One part of my work will focus on fundamentally different proposals and
+radical solutions. As an example
+--- can we finally achieve real-time streaming over the Internet,
+assuming that the various network components give performance guarantees?
+In contrast, I intend to devote the other part of my work 
+on practical systems, which have immediate relevance and impact in Industry.
+I intend to work closely with a number of
+researchers in related fields. Similarly, I intend to
+collaborate with Industry in understanding and developing solutions
+for practical problems. I believe my past experience of research
+work done jointly with a number of colleagues as well as my prior record
+of participation with Industry will help me achieve this. 
+I am excited at the
+prospect of learning, contributing, giving shape and making an
+impact in this upcoming and challenging field.  
+
+
+% IMP IMP - Staying ahead of Industry?? - MIT works like that...
+% IMP IMP - Say something about research has a 2 pronged idea - Practical Significance and Staying ahead of
+% the curve.
+% aid and abet
+% Say that simplicity is necessary to get reliability, availability...
+% simpicity is helped by re-using components.
+% Far Future.
+%In the far future, I believe that our understanding of 
+% Organization
+% In the future the drive for parallelism will be governed by the design of fault tolerant systems.
+% Scalability, Availability.
+% I would like to work with Internet Researchers, 
+% Collaborate in 
+% Parallelism is meant also for fault tolerance.
+% Most things in networking are evolutionary- happen and deployed slowly.
+% Talk about how you are interested in industry influence also.
+% Talk about Deflection Routing etc., other research.
+% Growth of the field of network architecture.
+% Parts of this field are seeing fruition.
+% Nice to be in this field.
+% Areas of queueing theory, probaility theory, algorithms, computer architecture
+% Combinatorics are coming together.
+% Far in the future.
+% Interested in Industry impact and applications.
+
+\vspace{0.5cm}
+%\begin{flushright}
+%Sundar Iyer
+%\end{flushright}
+
+\end{small}
+%\newpage
+
+%\begin{thebibliography}{deSolaPITH}
+% Change font size?
+% \tiny, \footnotesize, \small,\normalsize, \large, \Large, \LARGE, and \huge 
+%\begin{small}
+\begin{footnotesize}
+
+\begin{thebibliography}{}
+\bibliographystyle{}
+
+\bibitem[1]{pps}
+S. Iyer, N. McKeown, ``Analysis of the Parallel Packet Switch Architecture", {\it IEEE/ACM Transactions on Networking}, Apr. 2003.
+
+\bibitem[2]{ppsmcast}
+S. Iyer, N. McKeown, ``On the Speedup Required for a Multicast Parallel Packet Switch",
+{\it IEEE Communication Letters}, June 2001, vol. 5, no. 6, pp. 269-271.
+
+\bibitem[3]{dsm}
+S. Iyer, R. Zhang, N. McKeown,
+``Routers with a Single Stage of Buffering",
+{\it Proceedings of ACM SIGCOMM}, Pittsburgh, Pennsylvania, Sep 2002. Also in
+{\it Computer Communication Review}, vol. 32, no. 4, Oct 2002.
+
+\bibitem[4]{csets}
+S. Iyer, N. McKeown, ``Using Constraint Sets to Achieve Delay Bounds in CIOQ Switches",
+to appear in {\it IEEE Communication Letters}, 2003.
+
+%\bibitem[7]{state}
+%S. Iyer, N. McKeown,
+%``Maintaining State in Router Line Cards". In preparation for {\it IEEE Communication Letters}.
+
+% VIMP - Change to TR report.
+
+\bibitem[5]{buffer}
+S. Iyer, R. R. Kompella, N. McKeown, ``Designing Packet Buffers for
+Router Line Cards". Submitted to {\it IEEE/ACM Transactions on
+Networking}. Also available as  {\it HPNG Technical Report -
+TR02-HPNG-031001}, Stanford University, Mar. 2002.
+
+%S. Iyer, R. R. Kompella, N. McKeown, ``Analysis of a Memory Architecture for Fast Packet
+%Buffers". Preliminary version in {\it IEEE - High Performance Switching and Routing}, Dallas,
+%May 2001, pp. 368-373. Final version submitted for publication to {\it IEEE/ACM Transactions on
+%Networking}, and is available at 
+%http://yuba.stanford.edu/$\sim$sundaes/Papers/buffersubmit.pdf
+
+\bibitem[6]{stats}
+D. Shah, S. Iyer, B. Prabhakar, N. McKeown,
+``Maintaining Statistics Counters in Router Line Cards", {\it IEEE Micro,} Jan-Feb, 2002, pp.
+76-81. Also appeared as ``Analysis of a Statistics Counter Architecture"  in {\it IEEE Hot Interconnects}, Stanford University, Aug. 2001.
+
+\bibitem[7]{classipi}
+S. Iyer, R. R. Kompella, A. Shelat, ``ClassiPI: An Architecture for Fast and Flexible Packet Classification", {\it IEEE NETWORK, Special Issue on Fast IP Packet Forwarding and Classification
+for Next Generation Internet Services}, Mar-Apr. 2001.
+
+\bibitem[8]{buffxbar}
+``Attaining Statistical and Deterministic Switching Guarantees using Buffered
+Crossbars", with S. Chuang, N. McKeown. In preparation for {\it IEEE/ACM Transactions
+on Networking}.
+
+\bibitem[9]{msm}
+S. Iyer, N. McKeown, ``Maximum Size Matchings and Input Queued Switches",
+{\it Proceedings of the 40th Annual Allerton Conference on Communication, Control, and
+Computing}, Monticello, Illinois, Oct 2002.
+
+%\bibitem[CoffmanO]{CoffmanO}
+%K. G. Coffman and A. M. Odlyzko, The size and growth rate of the Internet.
+%{\em First Monday,} Oct. 1998, $\langle$http://firstmonday.org/$\rangle$.
+%Also available at $\langle$http://www.research.att.com/$\sim$amo$\rangle$.
+%\bibitem[Dunn]{Dunn}
+%L. Dunn, The Internet2 project, {The Internet Protocol Journal,} vol. 2,
+%no. 4 (Dec. 1999).  Available at
+%$\langle$http://www.cisco.com/warp/public/759/ipj\_issues.html$\rangle$.
+
+
+\end{thebibliography}
+\end{footnotesize}
+
+\end{document}
+
