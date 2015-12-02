@@ -72,7 +72,7 @@ We study the root causes of performance bugs,
 how they are introduced, how to expose them, and how to fix them. 
 The main findings of our study include that 
 (1) performance bugs have dominating root causes and fix strategies, which are highly correlated with each other; 
-(2) workload mismatch and misunderstanding of APIs’ performance features are two major reasons why performance bugs are introduced; 
+(2) workload mismatch and misunderstanding of APIs' performance features are two major reasons why performance bugs are introduced; 
 and (3) around half of the studied performance bugs require inputs with both special features and large scales to manifest. 
 
 Our empirical study can guide future research on performance bugs, 
@@ -87,7 +87,6 @@ and violations also widely exist.
 To test our hypothesis, we manually inspect final patches of fixed performance bugs from Apache, Mozilla, and MySQL in our studied performance-bug set, 
 extract efficiency rules from 25 bug patches, 
 and implement static checkers to detect rules' violations~\cite{jin12perfbug}. 
-
 In total, our static checkers find 332 previously unknown performance bugs from the latest versions of Apache, Mozilla, and MySQL. 
 Among them, 101 were inherited from the original buggy versions where final patches are applied. 
 Tools are needed to help developers automatically and systematically find all similar bugs. 
@@ -169,21 +168,19 @@ My future projects can be conducted along two lines.
 One direction is to combat studied performance bugs in different aspects from what I have already done, 
 like on-line workload monitoring and performance test input generation. 
 The other direction is to explore performance problems in other areas. 
-Although the performance bugs in my study provide a good coverage of real-world performance problems, 
+Although the performance bugs in our study provide a good coverage of real-world performance problems, 
 there are still uncovered categories, 
 like performance problems in scientific computation, distributed systems, mobile and web applications. 
 The following are some immediate research opportunities: 
 
 \paragraph{On-line Algorithmic Profiling.}
-Many performance bugs in my study are caused by conducting computation in superlinear complexity. 
+Many performance bugs in our study are caused by conducting computation in superlinear complexity. 
 There are two possible reasons why these performance bugs are introduced. 
-In one case, developers know the algorithm is superlinear, but they assume the workload is small. 
-In the other case, developers do not notice the algorithm is superlinear, 
-and due to the small size of test inputs, 
-the performance bug escapes from the testing process. 
+In one case, under the assumption that the workload is small, developers choose superlinear algorithm. In the other case, 
+In the other case, unnoticed superlinear codes escape from the testing process, due to the small size of test inputs. 
 On-line algorithmic monitoring can detect performance bugs in both of these two situations. 
-Previous work on algorithmic profiling or monitoring will bring 10X run-time overhead, 
-and this cannot be tolerated in production-run. 
+Previous work on algorithmic profiling or monitoring will bring more than 10X runtime overhead, 
+which cannot be tolerated in production-run. 
 How to build a tool which can collect runtime information in a reasonable overhead from deployed software 
 and infer approximate complexity remains an open question. 
 
@@ -203,19 +200,19 @@ Insufficient accuracy may accumulate during computation,
 and make programs instable or generate final results with intolerable large relative errors. 
 However, float numbers can be processed much faster than double numbers, 
 because float numbers bring less memory traffic, 
-and after accelerated by vectorization, one SIMD instruction can process one time more float numbers than double numbers. 
+and after optimized by vectorization, one SIMD instruction can process one time more float numbers than double numbers. 
 Choosing between float numbers and double numbers should balance precision and performance. 
 I would like to provide tool support to help developers optimize floating-point arithmetic programs under given precision bounds. 
 
 \paragraph{Empirical Study on  Performance Problems in Real-world Web Applications.}
-Web applications are highly interactive, 
-and latency for event handlers in web applications is more important than the whole execution time. 
+Web applications are highly interactive. 
+Latency of event handlers in web applications is more important than the whole execution time. 
 This feature makes performance problems in web applications different from performance bugs I have studied. 
 Web applications are popular. 
 Optimizing web applications and combating performance bugs in web applications are important. 
-I would like to study performance problems in open-source web applications from github, 
+I would like to study performance problems in open-source web applications, 
 and provide better understanding for the root causes, 
-exposing conditions, and fix strategies of performance problems in web applications, 
+exposing conditions, and fix strategies of these performance problems, 
 leveraging my previous experience of bug study. 
 
 
