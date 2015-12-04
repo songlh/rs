@@ -45,10 +45,10 @@ I build a static performance bug detection tool suite, based on extracted effici
 and help build a dynamic performance bug detection tool for inefficient nested loops~\cite{Nistor13ICSE}. 
 These two techniques find hundreds of previously unknown performance bugs, many of which have already been confirmed and fixed by developers. 
 I design three source-to-source compiler optimizations to transparently eliminate performance bugs in 
-parallel applications offloading computation to Intel Xeon Phi manycore coprocessor~\cite{Song14MICRO}, 
+parallel applications, which offload computation to Intel Xeon Phi manycore coprocessor~\cite{Song14MICRO}, 
 and this work won MICRO'14 best paper runner up. 
 I explore how to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}, 
-and design a series of static-dynamic hybrid analysis to provide more detailed diagnosis information for inefficient loops~\cite{Song16PLDI}.   
+and design a series of static-dynamic hybrid analysis routines to provide more detailed diagnosis information for inefficient loops~\cite{Song16PLDI}.    
 
 Besides combating performance bugs, 
 I also work on a concurrency bug fixing system~\cite{jin11afix}, 
@@ -62,7 +62,7 @@ to provide better understanding of synchronization challenges faced by real-worl
 
 \paragraph{Real-world Performance Bug Understanding.}
 Like functional bugs, research on performance bugs should also be guided by empirical studies. 
-Poor understanding of performance bugs is part of the causes of today's performance-bug problem. 
+Poor understanding of performance bugs is part of the causes of today's performance bug problem. 
 In order to improve the understanding of real-world performance bugs, 
 I co-lead the first, to the best of our knowledge, 
 empirical study on 110 real-world performance bugs randomly sampled from five open-source software suites~\cite{jin12perfbug}. 
@@ -78,13 +78,14 @@ and (3) around half of the studied performance bugs require inputs with both spe
 Our empirical study can guide future research on performance bugs, 
 and it has already motivated our own bug detection and diagnosis projects.
 
+
 \paragraph{Static/Dynamic Performance Bug Detection.}
 
 Inspired by our empirical study, we hypothesize that 
 efficiency rules widely exist in software, 
 rule violations can be statically checked, 
 and violations also widely exist. 
-To test our hypothesis, we manually inspect final patches of fixed performance bugs from Apache, Mozilla, and MySQL in our studied performance-bug set, 
+To test our hypothesis, we manually inspect final patches of fixed performance bugs from Apache, Mozilla, and MySQL in our studied performance bug set, 
 extract efficiency rules from 25 bug patches, 
 and implement static checkers to detect rules' violations~\cite{jin12perfbug}. 
 In total, our static checkers find 332 previously unknown performance bugs from the latest versions of Apache, Mozilla, and MySQL. 
@@ -95,7 +96,7 @@ Tools are needed to help developers avoid making the same mistakes repeatedly.
 219 new bugs are found by cross-application checking. There are generic rules among different software. 
 We report some of identified bugs to developers. 
 77 reported bugs have already been confirmed by developers, including 15 reported bugs already fixed by developers. 
-Overall, all our hypothesis are verified by our experimental results. Rule-based performance-bug detection is a promising direction.
+Overall, all our hypotheses are verified by our experimental results. Rule-based performance-bug detection is a promising direction.
 
 Our empirical study also finds that 90\% performance bugs involve loops, 
 and 50\% performance bugs involve at least two-level of loops. 
@@ -139,7 +140,7 @@ Diagnosing user-reported performance failure is another key aspect of fighting p
 We investigate the feasibility and design space to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}.
 After studying 65 user-reported performance bugs in our bug set, 
 we find that majority of performance bugs are observed through comparison, 
-and many user-file performance-bug reports contain not only bad inputs, but also similar and good inputs.
+and many user-filed performance bug reports contain not only bad inputs, but also similar and good inputs.
 Statistical debugging is a natural fix for user-reported performance bugs. 
 We evaluate three types of widely used predicates and two representative statistical models. 
 Our evaluation results show that branch predicate plus two statistical models can effectively diagnose user-reported performance failure. 
@@ -154,11 +155,12 @@ Our taxonomy contains two major categories: resultless and redundancy, and sever
 Guided by our taxonomy, we then design a series of analysis for inefficient loops. 
 Our analysis 
 focuses its checking on suspicious loops pointed out by statistical debugging, 
-hybridize static and dynamic analysis to balance accuracy and performance, 
+hybridizes static and dynamic analysis to balance accuracy and performance, 
 and relies on sampling and other designed optimization to further lower runtime overhead. 
 We evaluate LDoctor by using 18 real-world inefficient loops. 
-Evaluation results show that LDoctor can cover most root-cause subcategories, 
+Evaluation results show that LDoctor can cover most root cause subcategories, 
 report few false positives, and bring a low runtime overhead. 
+
 
 
 \section{Future Research}
@@ -176,20 +178,20 @@ The following are some immediate research opportunities:
 \paragraph{On-line Algorithmic Profiling.}
 Many performance bugs in our study are caused by conducting computation in superlinear complexity. 
 There are two possible reasons why these performance bugs are introduced. 
-In one case, under the assumption that the workload is small, developers choose superlinear algorithm. In the other case, 
+In one case, under the assumption that workload would be small, developers choose to use superlinear algorithms. 
 In the other case, unnoticed superlinear codes escape from the testing process, due to the small size of test inputs. 
 On-line algorithmic monitoring can detect performance bugs in both of these two situations. 
 Previous work on algorithmic profiling or monitoring will bring more than 10X runtime overhead, 
-which cannot be tolerated in production-run. 
+which cannot be tolerated in production run. 
 How to build a tool which can collect runtime information in a reasonable overhead from deployed software 
 and infer approximate complexity remains an open question. 
 
 \paragraph{Test Input Generation for Performance Bugs.}
 Our empirical study shows that almost half of studied performance bugs need inputs with both special features and large scales to manifest. 
 Existing techniques are designed to generate inputs with good code coverage and focus only on special features.
-How to extend existing input-generation techniques with emphasis on large scales remains an open issue. 
+How to extend existing input generation techniques with emphasis on large scales remains an open issue. 
 Another important problem during performance testing is to automatically judge whether a problem bug has occurred. 
-How to leverage existing dynamic performance-bug detection techniques to build test oracles for performance bugs also remains an open issue.
+How to leverage existing dynamic performance bug detection techniques to build test oracles for performance bugs also remains an open issue.
 
 \paragraph{Tool Support for Tuning Floating-point Applications.}
 Floating-point arithmetic is used in a wide variety of applications, 
@@ -200,8 +202,8 @@ Insufficient accuracy may accumulate during computation,
 and make programs instable or generate final results with intolerable large relative errors. 
 However, float numbers can be processed much faster than double numbers, 
 because float numbers bring less memory traffic, 
-and after optimized by vectorization, one SIMD instruction can process one time more float numbers than double numbers. 
-Choosing between float numbers and double numbers should balance precision and performance. 
+and after vectorization optimization, one SIMD instruction can process one time more float numbers than double numbers. 
+Choosing between float numbers and double numbers must balance precision and performance. 
 I would like to provide tool support to help developers optimize floating-point arithmetic programs under given precision bounds. 
 
 \paragraph{Empirical Study on  Performance Problems in Real-world Web Applications.}
