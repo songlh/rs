@@ -20,9 +20,11 @@
 \begin{document}
 \maketitle\vspace{-.2in}
 
-My main research interests are software systems, program analysis, and software engineering. 
-The goal of my research is to help programmers build more efficient and reliable software systems.
+My main research interests are software systems, 
+program analysis, and software engineering. 
+The goal of my research is to help programmers build more efficient, reliable, and secure software systems.
 
+My dissertation research has mainly focused on software performance. 
 Everyone wants software to run fast. 
 Slow and inefficient software can easily frustrate end users and cause economic loss. 
 The software-inefficiency problem has already caused several highly publicized failures. 
@@ -36,8 +38,7 @@ the meager increases of single-core hardware performance,
 and pressing energy concerns. 
 It is urgent to combat performance bugs.
 
-My previous research has mainly focused on performance bugs.
-My methodology is to investigate existing approaches originally
+To fight performance bugs, my methodology is investigate existing approaches originally
 designed for functional bugs and try to apply, adapt, and extend them
 for performance bugs.
 My experience spans different
@@ -45,7 +46,7 @@ stages of combating performance bugs: real-world bug understanding, bug detectio
 failure diagnosis, and automated bug fixing.
 In particular, I conduct the first characteristics study on performance bugs, based on 110 bugs 
 randomly collected from 5 representative open-source software suites~\cite{jin12perfbug}.
-I build a static performance bug detection tool suite, based on extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug}, 
+I build a static performance bug detection tool suite by using extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug}, 
 and help build a dynamic performance bug detection tool for inefficient nested loops~\cite{Nistor13ICSE}. 
 I explore how to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}, 
 and design a series of static-dynamic hybrid analysis routines to provide more detailed diagnosis information for inefficient loops~\cite{Song16PLDI}.
@@ -53,7 +54,14 @@ I design three source-to-source code transformations to automatically fix perfor
 parallel applications, which offload computation to Intel Xeon Phi manycore coprocessor~\cite{Song14MICRO}. 
 
 Besides software efficiency, I also work on two software reliability projects. 
-I help build a concurrency bug fixing system~\cite{jin11afix}, which can automatically eliminate atomicity-violation bugs. 
+It is challenging to fix concurrency bugs. 
+Long repair times and wrong patches
+are common for concurrency bugs.
+I help build a concurrency bug fixing system~\cite{jin11afix}, 
+which can automatically eliminate one common type of concurrency bug: single-variable atomicity-violation.
+Multi-threaded programs are difficult to write.
+Missing proper synchronization would lead to correctness bugs 
+and over synchronization would lead to performance problems. 
 I help study change histories of critical sections in open-source software~\cite{Gu15FSE} 
 to provide better understanding of synchronization challenges faced by real-world developers.
 
