@@ -20,9 +20,8 @@
 \begin{document}
 \maketitle\vspace{-.2in}
 
-My main research interests are software systems, 
-program analysis, and software engineering. 
-The goal of my research is to help programmers build more efficient, reliable, and secure software systems.
+My research interests span in areas of systems, security, and software engineering.
+The goal of my research is to help developers build more efficient, reliable, and secure software systems.
 
 My dissertation research has mainly focused on software performance. 
 Everyone wants software to run fast. 
@@ -38,7 +37,7 @@ the meager increases of single-core hardware performance,
 and pressing energy concerns. 
 It is urgent to combat performance bugs.
 
-To fight performance bugs, my methodology is investigate existing approaches originally
+To fight performance bugs, my methodology is to investigate existing approaches originally
 designed for functional bugs and try to apply, adapt, and extend them
 for performance bugs.
 My experience spans different
@@ -49,28 +48,32 @@ randomly collected from 5 representative open-source software suites~\cite{jin12
 I build a static performance bug detection tool suite by using extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug}, 
 and help build a dynamic performance bug detection tool for inefficient nested loops~\cite{Nistor13ICSE}. 
 I explore how to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}, 
-and design a series of static-dynamic hybrid analysis routines to provide more detailed diagnosis information for inefficient loops~\cite{Song16PLDI}.
+and design a series of static-dynamic hybrid analysis routines to provide more detailed diagnosis information for inefficient loops~\cite{Song17ICSE}.
 I design three source-to-source code transformations to automatically fix performance bugs in 
 parallel applications, which offload computation to Intel Xeon Phi manycore coprocessor~\cite{Song14MICRO}. 
 
-Besides software efficiency, I also work on two software reliability projects. 
-It is challenging to fix concurrency bugs. 
-Long repair times and wrong patches
-are common for concurrency bugs.
+Besides software efficiency, I also work on two software reliability projects in my Ph.D. 
 I help build a concurrency bug fixing system~\cite{jin11afix}, 
-which can automatically eliminate one common type of concurrency bug: single-variable atomicity-violation.
-Multi-threaded programs are difficult to write.
-Missing proper synchronization would lead to correctness bugs 
-and over synchronization would lead to performance problems. 
+which can automatically eliminate atomicity-violation bugs.
 I help study change histories of critical sections in open-source software~\cite{Gu15FSE} 
-to provide better understanding of synchronization challenges faced by real-world developers.
+to provide better understanding of synchronization challenges faced by real-world developers. 
+
+After graduation, I start to work on security, 
+with a focus on applying big data techniques to analyze and predict security incidents. 
+One leveraged data repository is VirusTotal, 
+which contains billions of real-world malwares labeled by state-of-the-art anti-virus engines. 
+I study characteristics of real-world malwares, 
+model how influence propagates across different anti-virus vendors, 
+and explore the feasibility to build machine learning malware detectors based only on hash values of files~\cite{Song16ApSys,Song17EuroSys}. 
+The studying results can shed light on future research directions 
+and assist both anti-virus vendors and normal users in their fight against malwares.
 
 My research work has already led to real-world impact. 
 My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} find hundreds of previously unknown performance bugs in mature open-source software, 
 and many of them have already been confirmed and fixed by developers. 
-My performance bug fixing project~\cite{Song14MICRO} won MICRO'14 best paper runner up, 
-and my concurrency bug fixing system~\cite{jin11afix} won ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
-According to Google Scholar, all my papers have 294 citations. 
+My performance bug fixing project~\cite{Song14MICRO} won MICRO'14 best paper runner up, and also leads to an issued patent~\cite{comppatent}.
+My concurrency bug fixing system~\cite{jin11afix} won ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
+According to Google Scholar, all my papers have 415 citations. 
 
 
 \section{Dissertation Research}
@@ -92,40 +95,27 @@ The main findings of our study include that
 (1) performance bugs have dominating root causes and fix strategies, which are highly correlated with each other; 
 (2) workload mismatch and misunderstanding of APIs' performance features are two major reasons why performance bugs are introduced; 
 and (3) around half of the studied performance bugs require inputs with both special features and large scales to manifest. 
-
-Our empirical study can guide future research on performance bugs. According to Google Scholar, our paper has already been cited for 87 times since 2012. 
+Our empirical study can guide future research on performance bugs. According to Google Scholar, our paper has already been cited for 125 times since 2012. 
 Our empirical study has already motivated our own bug detection and diagnosis projects.
 
-
 \paragraph{Static/Dynamic Performance Bug Detection.}
-
-Inspired by our empirical study, we hypothesize that 
-efficiency rules widely exist in software, 
-rule violations can be statically checked, 
-and violations also widely exist. 
-To test our hypothesis, we manually inspect final patches of fixed performance bugs from Apache, Mozilla, and MySQL in our studied performance bug set, 
+Our empirical study shows that statically checkable efficiency rules widely exist in software, 
+and rules' violations also widely exist. 
+Inspired by this finding,
+we manually inspect final patches of fixed performance bugs in our studied performance bug set, 
 extract efficiency rules from 25 bug patches, 
 and implement static checkers to detect rules' violations~\cite{jin12perfbug}. 
 In total, our static checkers find 332 previously unknown performance bugs from the latest versions of Apache, Mozilla, and MySQL. 
-Among them, 101 were inherited from the original buggy versions where final patches are applied. 
-Tools are needed to help developers automatically and systematically find all similar bugs. 
-12 new bugs were introduced later. 
-Tools are needed to help developers avoid making the same mistakes repeatedly. 
-219 new bugs are found by cross-application checking. There are generic rules among different software. 
 We report some of identified bugs to developers. 
 77 reported bugs have already been confirmed by developers, including 15 reported bugs already fixed by developers. 
-Overall, all our hypotheses are verified by our experimental results. Rule-based performance-bug detection is a promising direction.
-
 Our empirical study also finds that 90\% performance bugs involve loops, 
 and 50\% performance bugs involve at least two-level of loops. 
 Motivated by this finding, I help a fellow graduate student build a novel automated test oracle named Toddler~\cite{Nistor13ICSE}, 
 which enables testings for performance bugs to use the well established and automated process of testing for functional bugs. 
-Using Toddler, we find 42 new bugs in six Java projects: 
-Ant, Google Core Libraries, JUnit, Apache Collections, JDK, and JFreeChart. 
+Using Toddler, we find 42 new bugs in six Java projects.
 Based on our bug reports, developers so far fixed 10 bugs and confirmed 6 more as real bugs.
 
 \paragraph{Performance Failure Diagnosis.}
-
 Due to the preliminary tool support, many performance bugs escape from in-house performance testing and manifest in front of end users. 
 After users report performance bugs, developers need to diagnose them and fix them.
 Diagnosing user-reported performance failure is another key aspect of fighting performance bugs. 
@@ -141,12 +131,12 @@ and many user-filed performance bug reports contain not only bad inputs, but als
 Statistical debugging is a natural fix for user-reported performance bugs. 
 We evaluate three types of widely used predicates and two representative statistical models. 
 Our evaluation results show that branch predicate plus two statistical models can effectively diagnose user-reported performance failure. 
-Basic model can help diagnose performance failure caused by wrong branch decision, and $\Delta $LDA model can identify inefficient loops.  
+Basic model can help diagnose performance failure caused by wrong branch decision, and $\Delta$LDA model can identify inefficient loops.  
 We apply sampling to performance failure diagnosis. Our experimental results show that
 special nature of loop-related performance bugs allows sampling to lower runtime overhead without sacrificing diagnosis latency, 
 and this is very different from functional failure diagnosis.
 
-We then build LDoctor~\cite{Song16PLDI} to further provide fine-grained diagnosis information for inefficient loops through two steps. 
+We then build LDoctor~\cite{Song17ICSE} to further provide fine-grained diagnosis information for inefficient loops through two steps. 
 We first figure out a root-cause taxonomy for common inefficient loops through a comprehensive study on 45 inefficient loops. 
 Our taxonomy contains two major categories: resultless and redundancy, and several subcategories. 
 Guided by our taxonomy, we then design a series of analysis for inefficient loops. 
@@ -158,28 +148,21 @@ We evaluate LDoctor by using 18 real-world inefficient loops.
 Evaluation results show that LDoctor can cover most root cause subcategories, 
 report few false positives, and bring a low runtime overhead. 
 
-
 \paragraph{Performance Bug Fixing.}
 Xeon Phi coprocessors are introduced by Intel recently as new members of the manycore family. 
-Compared with GPU, Xeon Phi coprocessors are easier to program, 
-since they provide x86 compatibility and support many different programming models. 
-In order to offload existing parallel loops, developers just need to add simple pragmas. 
+Compared with GPU, Xeon Phi coprocessors are easier to program.
+To offload existing parallel loops, developers just need to add simple pragmas. 
 However, our recent experience shows that simply adding pragmas does not give performance, 
 and too many performance bugs contained in offloaded parallel loops. 
 
 After careful investigation, we design three source-to-source code transformations to 
 automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
-The first transformation, data streaming, is designed to reduce the overhead of transferring data between CPUs and coprocessors. 
-The transformation automatically changes offloaded codes to stream data to and from coprocessors, which overlaps data transfers 
-with computation to hide data transfer overhead and reuse memory on coprocessors. 
-The second transformation, regularization, is design to handle loops with irregular memory accesses. 
-This transformation identifies irregular memory access patterns inside a offloaded loop and re-arranges the order of computations to regularize memory accesses. 
-It enables data streaming and vectorization for manycore processors in the presence of irregular memory accesses. 
+The first transformation, data streaming, is designed to overlap data transfers to coprocessors
+with computation on coprocessors to hide data transfer overhead and reuse memory on coprocessors. 
+The second transformation, regularization, is designed to re-arrange the order of computation and regularize loops with irregular memory accesses. 
 The last transformation is designed to support the efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
-An augmented design of pointers is introduced for fast translating pointers between their CPU and coprocessor memory addresses. 
 The designed transformations can benefit 9 out of 12 benchmarks in the experiments, and improve the performance by 1.16x - 52.21x. 
 This work won MICRO'14 best paper runner up. 
-
 
 
 \section{Future Research}
