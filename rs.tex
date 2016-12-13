@@ -23,7 +23,7 @@
 My research interests span in areas of systems, security, and software engineering.
 The goal of my research is to help developers build more efficient, reliable, and secure software systems.
 
-My dissertation research has mainly focused on software performance. 
+My dissertation research centers around software performance. 
 Everyone wants software to run fast. 
 Slow and inefficient software can easily frustrate end users and cause economic loss. 
 The software-inefficiency problem has already caused several highly publicized failures. 
@@ -75,12 +75,13 @@ My performance bug fixing project~\cite{Song14MICRO} won MICRO'14 best paper run
 My concurrency bug fixing system~\cite{jin11afix} won ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
 According to Google Scholar, all my papers have 415 citations. 
 
-
+\vspace{-.1in}
 \section{Dissertation Research}
 
 To address software-inefficiency problem, my research efforts cover the whole stack of software systems, from hardware to software, 
 and cover all aspects of combating software bugs, from understanding, to detecting, diagnosing, and fixing. 
 
+\vspace{-.1in}
 \paragraph{Real-world Performance Bug Understanding.}
 Like functional bugs, research on performance bugs should also be guided by empirical studies. 
 Poor understanding of performance bugs is part of the causes of today's performance bug problem. 
@@ -98,9 +99,9 @@ and (3) around half of the studied performance bugs require inputs with both spe
 Our empirical study can guide future research on performance bugs. According to Google Scholar, our paper has already been cited for 125 times since 2012. 
 Our empirical study has already motivated our own bug detection and diagnosis projects.
 
+\vspace{-.1in}
 \paragraph{Static/Dynamic Performance Bug Detection.}
-Our empirical study shows that statically checkable efficiency rules widely exist in software, 
-and rules' violations also widely exist. 
+Our empirical study shows that both statically checkable efficiency rules and these rules' violations widely exist in software. 
 Inspired by this finding,
 we manually inspect final patches of fixed performance bugs in our studied performance bug set, 
 extract efficiency rules from 25 bug patches, 
@@ -110,11 +111,14 @@ We report some of identified bugs to developers.
 77 reported bugs have already been confirmed by developers, including 15 reported bugs already fixed by developers. 
 Our empirical study also finds that 90\% performance bugs involve loops, 
 and 50\% performance bugs involve at least two-level of loops. 
-Motivated by this finding, I help a fellow graduate student build a novel automated test oracle named Toddler~\cite{Nistor13ICSE}, 
-which enables testings for performance bugs to use the well established and automated process of testing for functional bugs. 
+Motivated by this finding, I help a fellow graduate student build a novel automated test oracle named Toddler~\cite{Nistor13ICSE},
+which enables testings for performance bugs caused by inefficient nested loops to use the well established and automated process of testing for functional bugs. 
 Using Toddler, we find 42 new bugs in six Java projects.
-Based on our bug reports, developers so far fixed 10 bugs and confirmed 6 more as real bugs.
+Based on our bug reports, developers so far fixed 21 bugs and confirmed 6 more as real bugs.
 
+
+
+\vspace{-.1in}
 \paragraph{Performance Failure Diagnosis.}
 Due to the preliminary tool support, many performance bugs escape from in-house performance testing and manifest in front of end users. 
 After users report performance bugs, developers need to diagnose them and fix them.
@@ -144,81 +148,74 @@ Our analysis
 focuses its checking on suspicious loops pointed out by statistical debugging, 
 hybridizes static and dynamic analysis to balance accuracy and performance, 
 and relies on sampling and other designed optimization to further lower runtime overhead. 
-We evaluate LDoctor by using 18 real-world inefficient loops. 
-Evaluation results show that LDoctor can cover most root cause subcategories, 
+%We evaluate LDoctor by using 18 real-world inefficient loops. 
+Evaluation results on real-world inefficient loops show that LDoctor can cover most root cause subcategories, 
 report few false positives, and bring a low runtime overhead. 
 
+\vspace{-.1in}
 \paragraph{Performance Bug Fixing.}
-Xeon Phi coprocessors are introduced by Intel recently as new members of the manycore family. 
-Compared with GPU, Xeon Phi coprocessors are easier to program.
+Intel Xeon Phi coprocessors are introduced recently as new members of the manycore family. 
+Compared with GPU, Xeon Phi coprocessors are easier to program,
+since they provide x86 compatibility and support many different programming models.
 To offload existing parallel loops, developers just need to add simple pragmas. 
 However, our recent experience shows that simply adding pragmas does not give performance, 
 and too many performance bugs contained in offloaded parallel loops. 
 
+%After careful investigation, we design three source-to-source code transformations to 
+%automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
+%The first transformation, data streaming, is designed to overlap data transfers between CPUs and coprocessors
+%with computation on coprocessors to hide data transfer overhead and reuse memory on coprocessors. 
+%The second transformation, regularization, is designed to re-arrange the order of computation and regularize loops with irregular memory accesses. 
+%The last transformation is designed to support the efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
+%The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve the performance by 1.16x - 52.21x. 
+%This work won MICRO'14 best paper runner up. 
+
 After careful investigation, we design three source-to-source code transformations to 
 automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
-The first transformation, data streaming, is designed to overlap data transfers to coprocessors
-with computation on coprocessors to hide data transfer overhead and reuse memory on coprocessors. 
-The second transformation, regularization, is designed to re-arrange the order of computation and regularize loops with irregular memory accesses. 
-The last transformation is designed to support the efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
-The designed transformations can benefit 9 out of 12 benchmarks in the experiments, and improve the performance by 1.16x - 52.21x. 
-This work won MICRO'14 best paper runner up. 
+The first transformation, data streaming, is designed to reduce data transfer overhead between CPUs and coprocessors. 
+The transformation automatically changes offloaded codes to stream data to and from coprocessors, 
+which overlap data transfers with computation and reuse memory on coprocessors.
+The second transformation, regularization, is designed to re-arrange the order of computation to 
+enable data streaming and vectorization in the presence of irregular memory accesses. 
+The last transformation is designed to support efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
+%An augmented design of pointers is introduced for fast translating pointers between their CPU and coprocessor memory addresses. 
+The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve the performance by 1.16x - 52.21x. 
+This work won MICRO'14 best paper runner up.  
 
-
+\vspace{-.1in}
 \section{Future Research}
 
-The goal of my research is to improve performance and reliability of various types of software systems. 
-My future projects can be conducted along two lines. 
-One direction is to combat studied performance bugs in different aspects from what I have already done, 
-like on-line workload monitoring and performance test input generation. 
-The other direction is to explore performance and reliability problems in other areas. 
-Although the software systems I studied provide a good coverage of real-world systems, 
-there are still uncovered categories, 
-like scientific computation, distributed systems, mobile and web applications. 
-The following are some immediate research opportunities: 
+Going forward, I hope to leverage my area of expertise to improve the performance, 
+reliability, and security of various types of computer systems.
 
-\paragraph{On-line Algorithmic Profiling.}
+
+\vspace{-.1in}
+\paragraph{Performance.} My intermediate research goal is to combat performance bugs 
+in different aspects from what I have already done, 
+like on-line workload monitoring, performance test input generation, 
+and building performance-aware annotation systems. 
+
+
 Many performance bugs in our study are caused by conducting computation in superlinear complexity. 
 There are two possible reasons why these performance bugs are introduced. 
-In one case, under the assumption that workload would be small, developers choose to use superlinear algorithms. 
+In one case, developers mistakenly assume that workload is small and choose to use superlinear algorithms. 
 In the other case, unnoticed superlinear codes escape from the testing process, due to the small size of test inputs. 
-On-line algorithmic monitoring can detect performance bugs in both of these two situations. 
-Previous work on algorithmic profiling or monitoring will bring more than 10X runtime overhead, 
-which cannot be tolerated in production run. 
-How to build a tool which can collect runtime information in a reasonable overhead from deployed software 
-and infer approximate complexity remains an open question. 
+On-line algorithmic monitoring can detect performance bugs in these two situations. 
+Previous work on algorithmic profiling or monitoring will bring more than 10X runtime overhead, and this cannot be tolerated in production run. 
+How to build a tool which can collect runtime information in a reasonable overhead from deployed software and infer approximate complexity remains an open question. 
 
-\paragraph{Test Input Generation for Performance Bugs.}
 Our empirical study shows that almost half of studied performance bugs need inputs with both special features and large scales to manifest. 
 Existing techniques are designed to generate inputs with good code coverage and focus only on special features.
 How to extend existing input generation techniques with emphasis on large scales remains an open issue. 
 Another important problem during performance testing is to automatically judge whether a performance bug has occurred. 
 How to leverage existing dynamic performance bug detection techniques to build test oracles for performance bugs also remains an open issue.
 
-\paragraph{Tool Support for Tuning Floating-point Applications.}
-Floating-point arithmetic is used in a wide variety of applications, 
-including high-performance computing, graphics and finance. 
-Many programming language provides two types of floating-point numbers: double and float. 
-Double numbers are represented by using more digits, and they are more accurate than float numbers. 
-Insufficient accuracy may accumulate during computation, 
-and make programs instable or generate final results with intolerable large relative errors. 
-However, float numbers can be processed much faster than double numbers, 
-because float numbers bring less memory traffic, 
-and after vectorization optimization, one SIMD instruction can process one time more float numbers than double numbers. 
-Choosing between float numbers and double numbers must balance precision and performance. 
-I would like to provide tool support to help developers optimize floating-point arithmetic programs under given precision bounds. 
-
-\paragraph{Empirical Study on Real-world Web Applications.}
-Web applications are highly interactive. 
-This feature makes performance and reliability problems in web applications different from software systems I have studied. 
-Web applications are popular. 
-Optimizing web applications and improving reliability in web applications are important. 
-I would like to study performance problems and reliability issues in open-source web applications, 
-and provide better understanding for the root causes, 
-exposing conditions, and fix strategies of these problems, 
-leveraging my previous experience of bug study. 
-
-
+Our empirical study also shows that many performance bugs are caused by developers' misunderstanding of API's performance features. 
+Performance-aware annotations, which can help developers maintain and communicate APIs’ performance features, 
+can greatly help avoid performance bugs. 
+How to automatically identify performance features, like existence of locks or IO, 
+through program analysis or document mining on existing software, 
+and how to generate performance annotations through document synthesis remain an open issue. 
 
 
 
