@@ -188,39 +188,52 @@ This work won MICRO'14 best paper runner up.
 Going forward, I hope to leverage my area of expertise to improve the performance, 
 reliability, and security of various types of computer systems. 
 
-
 \vspace{-.1in}
 \paragraph{Performance.} My intermediate research goal is to combat performance bugs 
 in different aspects from what I have already done, 
 like on-line workload monitoring, performance test input generation, 
 and building performance-aware annotation systems. 
 
+
 Many performance bugs in our study are caused by conducting computation in superlinear complexity. 
 There are two possible reasons why these performance bugs are introduced. 
 In one case, developers mistakenly assume that workload is small and choose to use superlinear algorithms. 
 In the other case, unnoticed superlinear codes escape from the testing process, due to the small size of test inputs. 
 On-line algorithmic monitoring can detect performance bugs in these two situations. 
-Previous work on algorithmic profiling or monitoring will bring more than 10X runtime overhead, which cannot be tolerated in production run.
-I would like to build a tool which can collect runtime information in a reasonable overhead and infer approximate complexity from deployed software. 
-
+Previous work on algorithmic profiling or monitoring will bring more than 10X runtime overhead, 
+which cannot be tolerated in production run.
+I would like to build a tool which can collect runtime information in a reasonable overhead 
+and infer approximate complexity from deployed software. 
 
 
 Our empirical study shows that almost half of studied performance bugs need inputs with both special features and large scales to manifest. 
 Existing techniques are designed to generate inputs with good code coverage and focus only on special features.
-How to extend existing input generation techniques with emphasis on large scales remains an open issue. 
+I plan to extend existing input generation techniques with emphasis on large scales. 
 Another important problem during performance testing is to automatically judge whether a performance bug has occurred. 
-How to leverage existing dynamic performance bug detection techniques to build test oracles for performance bugs also remains an open issue.
+I plan to leverage existing dynamic performance bug detection techniques to build test oracles for performance bugs.
 
 Our empirical study also shows that many performance bugs are caused by developers' misunderstanding of API's performance features. 
-Performance-aware annotations, which can help developers maintain and communicate APIs’ performance features, 
+Performance-aware annotations, which can help developers maintain and communicate APIs' performance features, 
 can greatly help avoid performance bugs. 
-How to automatically identify performance features, like existence of locks or IO, 
-through program analysis or document mining on existing software, 
-and how to generate performance annotations through document synthesis remain an open issue. 
+I would like to build tools to identify performance features, like existence of locks or IO, 
+through program analysis or document mining, 
+and to generate performance annotations through document synthesis. 
 
-
-
-
+\vspace{-.1in}
+\paragraph{Reliability.} 
+As big data is changing every single business, 
+more and more developers are working on using big data computing systems, 
+like Hadoop and Spark, to process their massive amount of data. 
+My own experience in leveraging Spark to analyze VirusTotal's data 
+makes me realize the challenges in debugging big data applications. 
+First, it is time-consuming to repeat a failure, and it may take developers several hours to get notice of runtime failure or incorrect output.
+Second, it is difficult to identify failure-triggering input among millions of input records.
+Third, it is difficult to reason failure's root cause, since the failure may propagate across different stages and across different nodes. 
+My longer research goal is to provide tool support for debugging big data applications.
+For example, I would like to build slicing tools which can analyze execution across different nodes, 
+interactive breakpoint tools which can stop the execution for single records specified by developers, 
+and log mining tools which can analyze large quantities of logs and provide precise root cause information. 
+My previous research experience has already prepared me to build these kinds of tools. 
 
 
 
