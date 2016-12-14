@@ -186,7 +186,7 @@ This work won MICRO'14 best paper runner up.
 \section{Future Research}
 
 Going forward, I hope to leverage my area of expertise to improve the performance, 
-reliability, and security of various types of computer systems.
+reliability, and security of various types of computer systems. 
 
 
 \vspace{-.1in}
@@ -195,14 +195,15 @@ in different aspects from what I have already done,
 like on-line workload monitoring, performance test input generation, 
 and building performance-aware annotation systems. 
 
-
 Many performance bugs in our study are caused by conducting computation in superlinear complexity. 
 There are two possible reasons why these performance bugs are introduced. 
 In one case, developers mistakenly assume that workload is small and choose to use superlinear algorithms. 
 In the other case, unnoticed superlinear codes escape from the testing process, due to the small size of test inputs. 
 On-line algorithmic monitoring can detect performance bugs in these two situations. 
-Previous work on algorithmic profiling or monitoring will bring more than 10X runtime overhead, and this cannot be tolerated in production run. 
-How to build a tool which can collect runtime information in a reasonable overhead from deployed software and infer approximate complexity remains an open question. 
+Previous work on algorithmic profiling or monitoring will bring more than 10X runtime overhead, which cannot be tolerated in production run.
+I would like to build a tool which can collect runtime information in a reasonable overhead and infer approximate complexity from deployed software. 
+
+
 
 Our empirical study shows that almost half of studied performance bugs need inputs with both special features and large scales to manifest. 
 Existing techniques are designed to generate inputs with good code coverage and focus only on special features.
