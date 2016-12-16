@@ -20,18 +20,18 @@
 \begin{document}
 \maketitle\vspace{-.2in}
 
-My research interests span in areas of systems, security, and software engineering.
+My research interests span the areas of systems, security, and software engineering.
 The goal of my research is to help developers build more efficient, reliable, and secure software systems.
 
 My dissertation research centers around software performance. 
-Everyone wants software to run fast. 
+Naturally, everyone wants software to run fast. 
 Slow and inefficient software can easily frustrate end users and cause economic loss. 
 The software-inefficiency problem has already caused several highly publicized failures. 
-My research philosophy is to view software-inefficiency problem from the perspective of combating \textit{performance bugs}.
+My research philosophy is to view the software-inefficiency problem from the perspective of combating \textit{performance bugs}.
 Performance bugs are software implementation mistakes that can cause inefficient execution. 
-Performance bugs cannot be optimized away by state-of-practice compilers.
-Many of them escape from in-house testing and manifest in front of end users, 
-causing severe performance degradation and huge energy waste in the field. 
+They cannot be optimized away by state-of-practice compilers,
+and many of them escape in-house testing and manifest in front of end users, 
+causing severe performance degradation and huge a waste of energy in the field. 
 Performance bugs are becoming more critical, with the increasing complexity of modern software and workload, 
 the meager increases of single-core hardware performance, 
 and pressing energy concerns. 
@@ -44,41 +44,41 @@ My experience spans different
 stages of combating performance bugs: real-world bug understanding, bug detection,
 failure diagnosis, and automated bug fixing.
 In particular, I conduct the first characteristics study on performance bugs, based on 110 bugs 
-randomly collected from 5 representative open-source software suites~\cite{jin12perfbug}.
+randomly collected from five representative open-source software suites~\cite{jin12perfbug}.
 I build a static performance bug detection tool suite by using extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug}, 
 and help build a dynamic performance bug detection tool for inefficient nested loops~\cite{Nistor13ICSE}. 
 I explore how to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}, 
 and design a series of static-dynamic hybrid analysis routines to provide more detailed diagnosis information for inefficient loops~\cite{Song17ICSE}.
 I design three source-to-source code transformations to automatically fix performance bugs in 
-parallel applications, which offload computation to Intel Xeon Phi manycore coprocessor~\cite{Song14MICRO}. 
+parallel applications, which offload computation to Intel Xeon Phi manycore coprocessors~\cite{Song14MICRO}. 
 
-Besides software efficiency, I also work on two software reliability projects in my Ph.D. 
+Besides software efficiency, I also work on two software reliability projects as part of my doctoral research. In the first, 
 I help build a concurrency bug fixing system~\cite{jin11afix}, 
 which can automatically eliminate atomicity-violation bugs.
-I help study change histories of critical sections in open-source software~\cite{Gu15FSE} 
-to provide better understanding of synchronization challenges faced by real-world developers. 
+In the second, I help study change histories of critical sections in open-source software~\cite{Gu15FSE} 
+to provide a better understanding of synchronization challenges faced by real-world developers. 
 
 After graduation, I start to work on security, 
 with a focus on applying big data techniques to analyze and predict security incidents. 
 One leveraged data repository is VirusTotal, 
-which contains billions of real-world malwares labeled by state-of-the-art anti-virus engines. 
-I study characteristics of real-world malwares, 
+which contains billions of real-world malware labeled by state-of-the-art anti-virus engines. 
+I study characteristics of real-world malware, 
 model how influence propagates across different anti-virus vendors, 
-and explore the feasibility to build machine learning malware detectors based only on hash values of files~\cite{Song16ApSys,Song17EuroSys}. 
-The studying results can shed light on future research directions 
-and assist both anti-virus vendors and normal users in their fight against malwares.
+and explore the feasibility of building machine learning malware detectors based only on hash values of files~\cite{Song16ApSys,Song17EuroSys}. 
+The study results can shed light on future research directions 
+and assist both anti-virus vendors and normal users in their fight against malware.
 
-My research work has already led to real-world impact. 
-My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} find hundreds of previously unknown performance bugs in mature open-source software, 
+My research work has already had real-world impact. 
+My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} have found hundreds of previously unknown performance bugs in mature open-source software, 
 and many of them have already been confirmed and fixed by developers. 
-My performance bug fixing project~\cite{Song14MICRO} won MICRO'14 best paper runner up, and also leads to an issued patent~\cite{comppatent}.
+My performance bug fixing project~\cite{Song14MICRO} won runner up for the MICRO'14 best paper, and has also led to an issued patent~\cite{comppatent}.
 My concurrency bug fixing system~\cite{jin11afix} won ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
 According to Google Scholar, all my papers have 415 citations. 
 
 \vspace{-.1in}
 \section{Dissertation Research}
 
-To address software-inefficiency problem, my research efforts cover the whole stack of software systems, from hardware to software, 
+To address the software-inefficiency problem, my research efforts cover the whole stack of software systems, from hardware to software, 
 and cover all aspects of combating software bugs, from understanding, to detecting, diagnosing, and fixing. 
 
 \vspace{-.1in}
@@ -92,11 +92,11 @@ Following the lifetime of performance bugs,
 our study is mainly performed in four dimensions. 
 We study the root causes of performance bugs, 
 how they are introduced, how to expose them, and how to fix them. 
-The main findings of our study include that 
+The main findings of our study include: 
 (1) performance bugs have dominating root causes and fix strategies, which are highly correlated with each other; 
 (2) workload mismatch and misunderstanding of APIs' performance features are two major reasons why performance bugs are introduced; 
 and (3) around half of the studied performance bugs require inputs with both special features and large scales to manifest. 
-Our empirical study can guide future research on performance bugs. According to Google Scholar, our paper has already been cited for 125 times since 2012. 
+Our empirical study can guide future research on performance bugs. According to Google Scholar, this paper has already been cited 125 times since 2012. 
 Our empirical study has already motivated our own bug detection and diagnosis projects.
 
 \vspace{-.1in}
