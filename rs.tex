@@ -197,19 +197,19 @@ reliability, and security of various types of computer systems.
 \paragraph{Performance.} 
 My intermediate research goal is to combat performance bugs 
 in different aspects from the work I have already done.
-For example, I would like to explore how to conduct algorithmic monitoring in production run. 
+For example, I would like to explore how to monitor algorithmic complexity during production runs. 
 On-line algorithmic monitoring can help developers understand real-world workloads, 
 identify codes in superlinear complexity, 
 and expose new performance optimization opportunities. 
 Previous works on algorithmic profiling or monitoring will incur more than 10X runtime overhead, which cannot be tolerated in product run. 
-I plan to build a tool that can collect runtime information with a reasonable overhead 
+I plan to build a tool to collect runtime information with a reasonable overhead 
 and infer approximate complexity from deployed software. 
 As another example, I would like to provide tool support for performance testing.
 Our empirical study shows that almost half of studied performance bugs need inputs with both special features and large scales to manifest. 
 Existing techniques are designed to generate inputs with good code coverage and focus only on special features.
 I plan to extend existing input generation techniques with emphasis on large scales. 
 Another important problem during performance testing is to automatically judge whether a performance bug has occurred. 
-I plan to leverage existing dynamic performance bug detection techniques to build performance test oracles.
+I plan to leverage existing dynamic performance bug detection techniques to build performance testing oracles.
 
 \vspace{-.1in}
 \paragraph{Reliability.} 
@@ -220,23 +220,32 @@ My own experience in leveraging Spark to analyze VirusTotal's data
 has given me insight about the challenges in debugging big data applications. 
 First, it is time-consuming to repeat a failure, and it may take developers several hours to receive notice of a runtime failure or an incorrect output.
 Second, it is almost infeasible to identify failure-triggering inputs among millions of input records without tool support. 
-Third, it is difficult to reason a failure's root cause, since the failure may propagate across different stages and across different nodes. 
+Third, it is difficult to reason a failure's root cause, since the failure may propagate across different stages and across different nodes.
+
 My longer term research direction is to provide tool support for debugging big data applications.
-For example, I would like to build slicing tools that can analyze execution across different nodes, 
-interactive breakpoint tools that can stop the execution for single records specified by developers, 
-and log mining tools that can analyze large quantities of logs and provide precise root cause information. 
-%Add study, detection, automatic fixing
+I plan to start by studying real-world bugs in big data applications to figure out whether there are common bug patterns. 
+Then, I would like to build static bug detectors to identify bugs following common patterns before executing big data applications.  
+To quickly reason failures' root causes, I am considering to build slicing tools that can analyze execution across different nodes, 
+interactive breakpoint tools that can stop the execution for single records specified by developers,
+and log mining tools that can analyze large quantities of logs provided in big data applications.
+In order to patch bugs in big data applications, I would like to build automatic fixing tools for big data applications. 
+It is time-consuming to run the patched version from very beginning, and I would like to build tools which can help reuse computation already finished in failure runs. 
 
 
 \vspace{-.1in}
 \paragraph{Security.} 
-I would like to continue my research on security. 
-For example, I would like to explore how to leverage data-centric methods to improve today's security technology. 
-We can study what attackers have done on a large scale to figure out their strategies and predict what they will do in the future. 
-Huge amounts of malware have been labeled by security experts, 
-and we can apply deep learning techniques on these malware samples and build new malware detectors.
-%catch malware writers
-%build better platform
+
+I plan to continue my research on security along two directions. 
+One is to apply big data techniques to security, 
+and the other is to detect vulnerabilities in devices from the Internet of Things (IoT) ecosystem.
+
+Big data in security areas provides opportunities to leverage data-centric methods to improve today's security techniques. 
+For example, we can study what attackers have done on a large scale to figure out their strategies and predict what they will do in the future. 
+As another example, by utilizing hung amounts of malware already been studied and labeled by security experts, 
+we can learn how malware evolves to quickly detect emerging malware. 
+We can also apply deep learning techniques on these labeled malware samples and build new malware detectors. 
+It is also important to think about whether existing big data computing systems suitable for security workload, 
+and look for opportunities to improve current systems.
 
 As another example, I am interested in detecting vulnerabilities in the Internet of Things (IoT) ecosystem. 
 Billions of connected devices are used worldwide, 
