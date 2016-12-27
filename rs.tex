@@ -196,33 +196,20 @@ reliability, and security of various types of computer systems.
 \vspace{-.1in}
 \paragraph{Performance.} 
 My intermediate research goal is to combat performance bugs 
-in different aspects from the work I have already done, 
-including on-line algorithmic monitoring, performance test input generation, 
-and building performance-aware annotation systems. 
-
-
-Many performance bugs in our study are caused by conducting computation in superlinear complexity. 
-There are two possible reasons why these performance bugs are introduced. 
-In one case, developers mistakenly assume that the workload is small and choose to use superlinear algorithms. 
-In the other case, unnoticed superlinear codes escape the testing process, due to the small size of testing inputs. 
-On-line algorithmic monitoring can detect performance bugs in both of these situations. 
-Previous works on algorithmic profiling or monitoring will result in more than 10X runtime overhead, 
-which cannot be tolerated in production run.
-I would like to build a tool that can collect runtime information with a reasonable overhead 
+in different aspects from the work I have already done.
+For example, I would like to explore how to conduct algorithmic monitoring in production run. 
+On-line algorithmic monitoring can help developers understand real-world workloads, 
+identify codes in superlinear complexity, 
+and expose new performance optimization opportunities. 
+Previous works on algorithmic profiling or monitoring will incur more than 10X runtime overhead, which cannot be tolerated in product run. 
+I plan to build a tool that can collect runtime information with a reasonable overhead 
 and infer approximate complexity from deployed software. 
-
+As another example, I would like to provide tool support for performance testing.
 Our empirical study shows that almost half of studied performance bugs need inputs with both special features and large scales to manifest. 
 Existing techniques are designed to generate inputs with good code coverage and focus only on special features.
 I plan to extend existing input generation techniques with emphasis on large scales. 
 Another important problem during performance testing is to automatically judge whether a performance bug has occurred. 
-I plan to leverage existing dynamic performance bug detection techniques to build test oracles for performance bugs.
-
-Our empirical study also shows that many performance bugs are caused by developers' misunderstanding of APIs' performance features. 
-Performance-aware annotations, which can help developers maintain and communicate APIs' performance features, 
-can greatly help avoid performance bugs. 
-I would like to build tools to identify performance features, like existence of locks or IO, 
-through program analysis or document mining, 
-and automatically generate performance annotations. 
+I plan to leverage existing dynamic performance bug detection techniques to build performance test oracles.
 
 \vspace{-.1in}
 \paragraph{Reliability.} 
@@ -238,7 +225,7 @@ My longer term research direction is to provide tool support for debugging big d
 For example, I would like to build slicing tools that can analyze execution across different nodes, 
 interactive breakpoint tools that can stop the execution for single records specified by developers, 
 and log mining tools that can analyze large quantities of logs and provide precise root cause information. 
-
+%Add study, detection, automatic fixing
 
 
 \vspace{-.1in}
@@ -246,7 +233,11 @@ and log mining tools that can analyze large quantities of logs and provide preci
 I would like to continue my research on security. 
 For example, I would like to explore how to leverage data-centric methods to improve today's security technology. 
 We can study what attackers have done on a large scale to figure out their strategies and predict what they will do in the future. 
-Huge amounts of malware have been labeled by security experts, and we can apply deep learning techniques on these malware samples and build new malware detectors. 
+Huge amounts of malware have been labeled by security experts, 
+and we can apply deep learning techniques on these malware samples and build new malware detectors.
+%catch malware writers
+%build better platform
+
 As another example, I am interested in detecting vulnerabilities in the Internet of Things (IoT) ecosystem. 
 Billions of connected devices are used worldwide, 
 and this number is growing rapidly. 
@@ -255,6 +246,9 @@ Due to limited computation resources on a single device,
 antivirus software cannot be used to prevent attacks. 
 To make things worse, security is usually an afterthought for developers, who build firmware for these devices. 
 Therefore, it is critical to detect vulnerabilities in firmware earlier and patch them earlier. 
+%challenges: different platform, different intermediate codes
+
+
 %My background in combating various bugs has already prepared me to work on security issues in IOT.  
 
 \newpage
