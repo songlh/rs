@@ -30,7 +30,7 @@ The software-inefficiency problem has already caused several highly publicized f
 My research philosophy is to view the software-inefficiency problem from the perspective of combating \textit{performance bugs}.
 Performance bugs are software implementation mistakes that can cause inefficient execution. 
 Performance bugs cannot be optimized away by state-of-practice compilers.
-Many of them escape from in-house testing and manifest in front of end users, 
+Many of them escape the in-house testing and manifest in front of end users, 
 causing severe performance degradation and a huge waste of energy in the field. 
 Performance bugs are becoming more critical, with the increasing complexity of modern software and workload, 
 the meager increases of single-core hardware performance, 
@@ -38,46 +38,50 @@ and pressing energy concerns.
 It is urgent to combat performance bugs.
 
 To fight performance bugs, my methodology is to investigate existing approaches originally
-designed for functional bugs and try to apply, adapt, and extend them
-for performance bugs.
+designed for functional bugs and try to apply, adapt, and extend them for performance bugs.
 My experience spans different
-stages of combating performance bugs: real-world bug understanding, bug detection,
+stages of combating performance bugs: 
+real-world bug understanding, bug detection,
 failure diagnosis, and automated bug fixing.
-In particular, I conduct the first characteristics study on performance bugs, based on 110 bugs 
-randomly collected from five representative open-source software suites~\cite{jin12perfbug}.
-I build a static performance bug detection tool suite by using extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug}, 
-and help build a dynamic performance bug detection tool for inefficient nested loops~\cite{Nistor13ICSE}. 
-I explore how to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}, 
-and design a series of static-dynamic hybrid analysis routines to provide more detailed diagnosis information for inefficient loops~\cite{Song17ICSE}.
-I design three source-to-source code transformations to automatically fix performance bugs in 
-parallel applications, which offload computation to Intel Xeon Phi manycore coprocessors~\cite{Song14MICRO}. 
+In particular, 
+I conducted the first characteristics study on performance bugs, 
+based on 110 bugs randomly collected from five representative open-source software suites~\cite{jin12perfbug}.
+I built a static performance bug detection tool suite by using extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug}, 
+and helped build a dynamic performance bug detection tool for inefficient nested loops~\cite{Nistor13ICSE}. 
+I explored how to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}, 
+and designed a series of static-dynamic hybrid analysis routines to provide more detailed diagnosis information for inefficient loops~\cite{Song17ICSE}.
+I designed three source-to-source code transformations to automatically fix performance bugs in parallel applications, 
+which offload computation to Intel Xeon Phi manycore coprocessors~\cite{Song14MICRO}.  
 
-Besides software efficiency, I also work on two software reliability projects as part of my doctoral research. In the first, 
-I help build a concurrency bug fixing system~\cite{jin11afix}, 
+Besides software efficiency, I also worked on two software reliability projects as part of my doctoral research. In the first, 
+I helped build a concurrency bug fixing system~\cite{jin11afix}, 
 which can automatically eliminate atomicity-violation bugs.
-In the second, I help study change histories of critical sections in open-source software~\cite{Gu15FSE} 
+In the second, I helped study change histories of critical sections in open-source software~\cite{Gu15FSE} 
 to provide a better understanding of synchronization challenges faced by real-world developers. 
 
-After graduation, I start to work on security, 
+After graduation, I started to work on security, 
 with a focus on applying big data techniques to analyze and predict security incidents. 
 One leveraged data repository is VirusTotal, 
 which contains billions of real-world malware labeled by state-of-the-art anti-virus engines. 
-I study characteristics of real-world malware, 
-model how influence propagates across different anti-virus vendors, 
-and explore the feasibility of building machine learning malware detectors based only on hash values of files~\cite{Song16ApSys,Song17EuroSys}. 
+I studied characteristics of real-world malware, 
+modeled how influence propagates across different anti-virus vendors, 
+and explored the feasibility of building machine learning malware detectors based only on hash values of files~\cite{Song16ApSys,Song17EuroSys}. 
 The study results can shed light on future research directions 
 and assist both anti-virus vendors and normal users in their fight against malware.
 
-My research work has already had a real-world impact. 
-My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} have found hundreds of previously unknown performance bugs in mature open-source software, 
+My research work has already had industrial and academic impact. 
+My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} 
+found hundreds of previously unknown performance bugs in mature open-source software, 
 many of which have already been confirmed and fixed by developers. 
-My performance bug fixing project~\cite{Song14MICRO} won MICRO'14 best paper runner up, and has also led to an issued patent~\cite{comppatent}.
+My performance bug fixing project~\cite{Song14MICRO} won MICRO'14 best paper runner up, 
+and has also led to an issued patent~\cite{comppatent}.
 My concurrency bug fixing system~\cite{jin11afix} won ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
-According to Google Scholar, all my papers have 415 citations. 
+As of now, my publications have 415 citations in total. 
 
 \vspace{-.1in}
 \section{Dissertation Research}
 
+%\vspace{-.1in}
 To address the software-inefficiency problem, my research efforts cover the whole stack of software systems, from hardware to software, 
 and cover all aspects of combating software bugs, from understanding, to detecting, diagnosing, and fixing. 
 
@@ -86,11 +90,11 @@ and cover all aspects of combating software bugs, from understanding, to detecti
 Like functional bugs, research on performance bugs should also be guided by empirical studies. 
 Poor understanding of performance bugs is part of the causes of today's performance bug problem. 
 In order to improve the understanding of real-world performance bugs, 
-I co-lead the first, to the best of our knowledge, 
+I co-led the first, to the best of our knowledge, 
 empirical study on real-world performance bugs, based on 110 bugs randomly sampled from five open-source software suites~\cite{jin12perfbug}. 
 Following the lifetime of performance bugs, 
-our study is mainly performed in four dimensions. 
-We study the root causes of performance bugs, 
+our study was mainly performed in four dimensions. 
+We studied the root causes of performance bugs, 
 how they are introduced, how to expose them, and how to fix them. 
 The main findings of our study include: 
 (1) performance bugs have dominating root causes and fix strategies, which are highly correlated with each other; 
@@ -103,47 +107,48 @@ Our empirical study has already motivated our own performance bug detection and 
 \paragraph{Static/Dynamic Performance Bug Detection.}
 Our empirical study shows that both statically checkable efficiency rules and violations of these rules exist widely in software. 
 Inspired by this finding,
-we manually inspect final patches of fixed performance bugs in our studied performance bug set, 
-extract efficiency rules from 25 bug patches, 
-and implement static checkers to detect rules' violations~\cite{jin12perfbug}. 
-In total, our static checkers find 332 previously unknown performance bugs from the latest versions of Apache, Mozilla, and MySQL. 
-We report some of identified bugs to developers. 
+we manually inspected final patches of fixed performance bugs in our studied performance bug set, 
+extracted efficiency rules from 25 bug patches, 
+and implemented static checkers to detect rules' violations~\cite{jin12perfbug}. 
+In total, our static checkers found 332 previously unknown performance bugs from the latest versions of Apache, Mozilla, and MySQL. 
+We reported some of identified bugs to developers. 
 77 reported bugs have already been confirmed by developers, including 15 reported bugs already fixed by developers. 
 Our empirical study also finds that 90\% of performance bugs involve loops, 
 and 50\% of performance bugs involve at least two levels of loops. 
-Motivated by this finding, I help a fellow graduate student build a novel automated test oracle named Toddler~\cite{Nistor13ICSE},
+Motivated by this finding, I helped a fellow graduate student build a novel automated test oracle named Toddler~\cite{Nistor13ICSE},
 which enables testing for performance bugs caused by inefficient nested loops to use the well-established and automated process of testing for functional bugs. 
-Using Toddler, we find 42 new bugs in six Java projects.
+Using Toddler, we found 42 new bugs in six Java projects.
 Based on our bug reports, developers so far have fixed 21 bugs and confirmed 6 more as real bugs.
 
 
 
 \vspace{-.1in}
 \paragraph{Performance Failure Diagnosis.}
-Due to the preliminary tool support, many performance bugs escape from in-house performance testing and manifest in front of end users. 
+Due to the preliminary tool support, many performance bugs escape the in-house performance testing and manifest in front of end users. 
 After users report performance bugs, developers need to diagnose them and fix them.
 Diagnosing user-reported performance failure is another key aspect of fighting performance bugs. 
+
 %According to our empirical study, there are dominating root causes and fix strategies for performance bugs, 
 %both of which are correlated with each other. 
 %The goal of our failure diagnosis projects is to identify the root causes for performance failure 
 %and provide fix strategy suggestions to developers. 
-
-We first investigate the feasibility and design space to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}.
+%
+We first investigated the feasibility and design space to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}.
 After studying 65 user-reported performance bugs in our bug set, 
-we find that the majority of performance bugs are observed through comparison, 
+we found that the majority of performance bugs are observed through comparison, 
 and many user-filed performance bug reports contain not only bad inputs, but also similar and good inputs.
 Statistical debugging is a natural fix for user-reported performance bugs. 
-We evaluate three types of widely used predicates and two representative statistical models. 
+We evaluated three types of widely used predicates and two representative statistical models. 
 Our evaluation results show that branch predicate plus two statistical models can effectively diagnose user-reported performance failure. 
 The basic model can help diagnose performance failure caused by wrong branch decision, and the $\Delta$LDA model can identify inefficient loops.  
-We apply sampling to performance failure diagnosis. Our experimental results show that
+We applied sampling to performance failure diagnosis. Our experimental results show that
 special nature of loop-related performance bugs allows sampling to lower runtime overhead without sacrificing diagnosis latency, 
 which is very different from functional failure diagnosis.
 
-We then build LDoctor~\cite{Song17ICSE} to provide more fine-grained diagnosis information for inefficient loops through a two-step process. 
-We first figure out a root-cause taxonomy for common inefficient loops through a comprehensive study on 45 inefficient loops. 
+We then built LDoctor~\cite{Song17ICSE} to provide more fine-grained diagnosis information for inefficient loops through a two-step process. 
+We first figured out a root-cause taxonomy for common inefficient loops through a comprehensive study on 45 inefficient loops. 
 Our taxonomy contains two major categories: resultless and redundancy, as well as several subcategories. 
-Guided by our taxonomy, we then design a series of analysis for inefficient loops. 
+Guided by our taxonomy, we then designed a series of analysis for inefficient loops. 
 Our analysis 
 focuses its checking on suspicious loops pointed out by statistical debugging, 
 hybridizes static and dynamic analysis to balance accuracy and performance, 
@@ -161,28 +166,28 @@ To offload existing parallel loops, developers just need to add simple pragmas.
 However, our recent experience shows that simply adding pragmas does not result in better performance, 
 and too many performance bugs are contained in offloaded parallel loops. 
 
+After careful investigation, we designed three source-to-source code transformations to 
+automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
+The first transformation, data streaming, is designed to overlap data transfers between CPUs and coprocessors
+with computation on coprocessors to hide data transfer overhead and reuse memory on coprocessors. 
+The second transformation, regularization, is designed to re-arrange the order of computation and regularize loops with irregular memory accesses. 
+The last transformation is designed to support the efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
+The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve the performance by 1.16x - 52.21x. 
+This work won MICRO'14 best paper runner up. 
+
 %After careful investigation, we design three source-to-source code transformations to 
 %automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
-%The first transformation, data streaming, is designed to overlap data transfers between CPUs and coprocessors
-%with computation on coprocessors to hide data transfer overhead and reuse memory on coprocessors. 
-%The second transformation, regularization, is designed to re-arrange the order of computation and regularize loops with irregular memory accesses. 
-%The last transformation is designed to support the efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
-%The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve the performance by 1.16x - 52.21x. 
-%This work won MICRO'14 best paper runner up. 
-
-After careful investigation, we design three source-to-source code transformations to 
-automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
-The first transformation, data streaming, is designed to reduce data transfer overhead between CPUs and coprocessors. 
-The transformation automatically changes offloaded codes to stream data to and from coprocessors, 
-which overlap data transfers with computation and reuse memory on coprocessors.
-The second transformation, regularization, is designed to rearrange the order of computation to 
-enable data streaming and vectorization in the presence of irregular memory accesses. 
-The last transformation is designed to support efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
+%The first transformation, data streaming, is designed to reduce data transfer overhead between CPUs and coprocessors. 
+%The transformation automatically changes offloaded codes to stream data to and from coprocessors, 
+%which overlap data transfers with computation and reuse memory on coprocessors.
+%The second transformation, regularization, is designed to rearrange the order of computation to 
+%enable data streaming and vectorization in the presence of irregular memory accesses. 
+%The last transformation is designed to support efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
 %An augmented design of pointers is introduced for fast translating pointers between their CPU and coprocessor memory addresses. 
-The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve the performance by 1.16x - 52.21x. 
-This work won MICRO'14 best paper runner up.  
+%The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve the performance by 1.16x - 52.21x. 
+%This work won MICRO'14 best paper runner up.  
 
-\vspace{-.1in}
+%\vspace{-.1in}
 \section{Future Research}
 
 Going forward, I hope to leverage my area of expertise to improve the performance, 
@@ -199,7 +204,7 @@ and building performance-aware annotation systems.
 Many performance bugs in our study are caused by conducting computation in superlinear complexity. 
 There are two possible reasons why these performance bugs are introduced. 
 In one case, developers mistakenly assume that the workload is small and choose to use superlinear algorithms. 
-In the other case, unnoticed superlinear codes escape from the testing process, due to the small size of testing inputs. 
+In the other case, unnoticed superlinear codes escape the testing process, due to the small size of testing inputs. 
 On-line algorithmic monitoring can detect performance bugs in both of these situations. 
 Previous works on algorithmic profiling or monitoring will result in more than 10X runtime overhead, 
 which cannot be tolerated in production run.
