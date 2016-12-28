@@ -201,7 +201,7 @@ For example, I would like to explore how to monitor algorithmic complexity durin
 On-line algorithmic monitoring can help developers understand real-world workloads, 
 identify codes in superlinear complexity, 
 and expose new performance optimization opportunities. 
-Previous works on algorithmic profiling or monitoring will incur more than 10X runtime overhead, which cannot be tolerated in product run. 
+Previous works on algorithmic profiling or monitoring will incur more than 10X runtime overhead, which cannot be tolerated in production runs. 
 I plan to build a tool to collect runtime information with a reasonable overhead 
 and infer approximate complexity from deployed software. 
 As another example, I would like to provide tool support for performance testing.
@@ -227,9 +227,10 @@ I plan to start by studying real-world bugs in big data applications to figure o
 Then, I would like to build static bug detectors to identify bugs following common patterns before executing big data applications.  
 To quickly reason failures' root causes, I am considering to build slicing tools that can analyze execution across different nodes, 
 interactive breakpoint tools that can stop the execution for single records specified by developers,
-and log mining tools that can analyze large quantities of logs provided in big data applications.
-In order to patch bugs in big data applications, I would like to build automatic fixing tools for big data applications. 
-It is time-consuming to run the patched version from very beginning, and I would like to build tools which can help reuse computation already finished in failure runs. 
+and log mining tools that can analyze large quantities of logs in big data applications.
+In order to patch bugs in big data applications, I would like to build automatic fixing tools. 
+It is time-consuming to run the patched version from the very beginning, 
+and I would like to build tools which can help reuse computation already finished in failure runs. 
 
 
 \vspace{-.1in}
@@ -239,26 +240,27 @@ I plan to continue my research on security along two directions.
 One is to apply big data techniques to security, 
 and the other is to detect vulnerabilities in devices from the Internet of Things (IoT) ecosystem.
 
-Big data in security areas provides opportunities to leverage data-centric methods to improve today's security techniques. 
+Big security data provides opportunities to leverage data-centric methods to improve today's security techniques. 
 For example, we can study what attackers have done on a large scale to figure out their strategies and predict what they will do in the future. 
-As another example, by utilizing hung amounts of malware already been studied and labeled by security experts, 
-we can learn how malware evolves to quickly detect emerging malware. 
+As another example, by utilizing hung amount of malware already been studied and labeled by security experts, 
+we can learn how malware evolves and quickly detect emerging malware. 
 We can also apply deep learning techniques on these labeled malware samples and build new malware detectors. 
 It is also important to think about whether existing big data computing systems suitable for security workload, 
 and look for opportunities to improve current systems.
 
-As another example, I am interested in detecting vulnerabilities in the Internet of Things (IoT) ecosystem. 
-Billions of connected devices are used worldwide, 
-and this number is growing rapidly. 
+Vulnerability detection in the IoT ecosystem is more critical than ever before.
+As of now, there are billions of connected devices used worldwide, 
+and this number is growing rapidly.  
 Hacked devices can leak sensitive information and power denial of service attacks. 
 Due to limited computation resources on a single device, 
 antivirus software cannot be used to prevent attacks. 
 To make things worse, security is usually an afterthought for developers, who build firmware for these devices. 
-Therefore, it is critical to detect vulnerabilities in firmware earlier and patch them earlier. 
-%challenges: different platform, different intermediate codes
+The need to detect vulnerabilities in firmware earlier and patch them earlier is increasing dramatically. 
+To detect vulnerabilities, I plan to study mechanisms for various firmware and devices, 
+and try to extend existing techniques, like symbolic execution and whitebox fuzzing. 
+After identifying a new vulnerability, it is also important to quickly search affected devices. 
+I plan to build an efficient bug search system for IoT products.  
 
-
-%My background in combating various bugs has already prepared me to work on security issues in IOT.  
 
 \newpage
 \bibliographystyle{plainyr-rev}
