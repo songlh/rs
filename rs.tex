@@ -100,7 +100,7 @@ The main findings of our study include:
 (1) performance bugs have dominating root causes and fix strategies, which are highly correlated with each other; 
 (2) workload mismatch and misunderstanding of APIs' performance features are two major reasons why performance bugs are introduced; 
 and (3) around half of the studied performance bugs require inputs with both special features and large scales to manifest. 
-Our empirical study can guide future research on performance bugs. According to Google Scholar, this paper has already been cited 125 times since 2012. 
+Our empirical study can guide future research on performance bugs. According to Google Scholar, our paper has already been cited 125 times since 2012. 
 Our empirical study has already motivated our own performance bug detection and performance failure diagnosis projects.
 
 \vspace{-.1in}
@@ -142,7 +142,7 @@ We evaluated three types of widely used predicates and two representative statis
 Our evaluation results show that branch predicate plus two statistical models can effectively diagnose user-reported performance failure. 
 The basic model can help diagnose performance failure caused by wrong branch decision, and the $\Delta$LDA model can identify inefficient loops.  
 We applied sampling to performance failure diagnosis. Our experimental results show that
-special nature of loop-related performance bugs allows sampling to lower runtime overhead without sacrificing diagnosis latency, 
+some unique nature of loop-related performance bugs allows sampling to lower runtime overhead without sacrificing diagnosis latency, 
 which is very different from functional failure diagnosis.
 
 We then built LDoctor~\cite{Song17ICSE} to provide more fine-grained diagnosis information for inefficient loops through a two-step process. 
@@ -159,7 +159,7 @@ report few false positives, and bring a low runtime overhead.
 
 \vspace{-.1in}
 \paragraph{Performance Bug Fixing.}
-Intel Xeon Phi coprocessors are introduced recently as new members of the manycore family. 
+Intel Xeon Phi coprocessors have recently been introduced as new members of the manycore family. 
 Compared with GPU, Xeon Phi coprocessors are easier to program,
 since they provide x86 compatibility and support many different programming models.
 To offload existing parallel loops, developers just need to add simple pragmas. 
@@ -171,8 +171,8 @@ automatically fix performance bugs contained in offloaded parallel loops~\cite{S
 The first transformation, data streaming, is designed to overlap data transfers between CPUs and coprocessors
 with computation on coprocessors to hide data transfer overhead and reuse memory on coprocessors. 
 The second transformation, regularization, is designed to re-arrange the order of computation and regularize loops with irregular memory accesses. 
-The last transformation is designed to support the efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
-The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve the performance by 1.16x - 52.21x. 
+The last transformation is designed to support efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
+The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve performance by 1.16x - 52.21x. 
 This work won MICRO'14 best paper runner up. 
 
 %After careful investigation, we design three source-to-source code transformations to 
@@ -190,7 +190,7 @@ This work won MICRO'14 best paper runner up.
 %\vspace{-.1in}
 \section{Future Research}
 
-Going forward, I hope to leverage my area of expertise to improve the performance, 
+Going forward, I hope to leverage my areas of expertise to improve the performance, 
 reliability, and security of various types of computer systems. 
 
 \vspace{-.1in}
@@ -201,7 +201,7 @@ For example, I would like to explore how to monitor algorithmic complexity durin
 On-line algorithmic monitoring can help developers understand real-world workloads, 
 identify codes in superlinear complexity, 
 and expose new performance optimization opportunities. 
-Previous works on algorithmic profiling or monitoring will incur more than 10X runtime overhead, which cannot be tolerated in production runs. 
+Previous works on algorithmic profiling or monitoring will incur more than 10x runtime overhead, which cannot be tolerated in production runs. 
 I plan to build a tool to collect runtime information with a reasonable overhead 
 and infer approximate complexity from deployed software. 
 As another example, I would like to provide tool support for performance testing.
@@ -215,17 +215,17 @@ I plan to leverage existing dynamic performance bug detection techniques to buil
 \paragraph{Reliability.} 
 As big data is changing every single business, 
 more and more developers are working on using big data computing systems, 
-like Hadoop and Spark, to process their massive amount of data. 
+like Hadoop and Spark, to process their massive amounts of data. 
 My own experience in leveraging Spark to analyze VirusTotal's data 
-has given me insight about the challenges in debugging big data applications. 
+has given me insight into the challenges of debugging big data applications. 
 First, it is time-consuming to repeat a failure, and it may take developers several hours to receive notice of a runtime failure or an incorrect output.
 Second, it is almost infeasible to identify failure-triggering inputs among millions of input records without tool support. 
-Third, it is difficult to reason a failure's root cause, since the failure may propagate across different stages and across different nodes.
+Third, it is difficult to identify a failure's root cause, since the failure may propagate across different stages and across different nodes.
 
 My longer term research direction is to provide tool support for debugging big data applications.
 I plan to start by studying real-world bugs in big data applications to figure out whether there are common bug patterns. 
-Then, I would like to build static bug detectors to identify bugs following common patterns before executing big data applications.  
-To quickly reason failures' root causes, I am considering to build slicing tools that can analyze execution across different nodes, 
+Then I would like to build static bug detectors to identify bugs following common patterns before executing big data applications.  
+To quickly identify failures' root causes, I plan to build slicing tools that can analyze execution across different nodes, 
 interactive breakpoint tools that can stop the execution for single records specified by developers,
 and log mining tools that can analyze large quantities of logs in big data applications.
 In order to patch bugs in big data applications, I would like to build automatic fixing tools. 
@@ -242,10 +242,10 @@ and the other is to detect vulnerabilities in devices from the Internet of Thing
 
 Big security data provides opportunities to leverage data-centric methods to improve today's security techniques. 
 For example, we can study what attackers have done on a large scale to figure out their strategies and predict what they will do in the future. 
-As another example, by utilizing hung amount of malware already been studied and labeled by security experts, 
+As another example, by utilizing malware that has already been studied and labeled by security experts, 
 we can learn how malware evolves and quickly detect emerging malware. 
 We can also apply deep learning techniques on these labeled malware samples and build new malware detectors. 
-It is also important to think about whether existing big data computing systems suitable for security workload, 
+It is also important to think about whether existing big data computing systems are suitable for security workload, 
 and look for opportunities to improve current systems.
 
 Vulnerability detection in the IoT ecosystem is more critical than ever before.
@@ -253,8 +253,8 @@ As of now, there are billions of connected devices used worldwide,
 and this number is growing rapidly.  
 Hacked devices can leak sensitive information and power denial of service attacks. 
 Due to limited computation resources on a single device, 
-antivirus software cannot be used to prevent attacks. 
-To make things worse, security is usually an afterthought for developers, who build firmware for these devices. 
+anti-virus software cannot be used to prevent attacks. 
+To make things worse, security is usually an afterthought for developers who build firmware for these devices. 
 The need to detect vulnerabilities in firmware earlier and patch them earlier is increasing dramatically. 
 To detect vulnerabilities, I plan to study mechanisms for various firmware and devices, 
 and try to extend existing techniques, like symbolic execution and whitebox fuzzing. 
