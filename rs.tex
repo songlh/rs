@@ -25,12 +25,12 @@ The goal of my research is to help developers build more efficient, reliable, an
 
 My dissertation research centers around software performance. 
 Naturally, everyone wants software to run fast. 
-Slow and inefficient software can easily frustrate end users and cause economic loss. 
-The software-inefficiency problem has already caused several highly publicized failures. 
-My research philosophy is to view the software-inefficiency problem from the perspective of combating \textit{performance bugs}.
-Performance bugs are software implementation mistakes that can cause inefficient execution. 
-Performance bugs cannot be optimized away by state-of-practice compilers.
-Many of them escape the in-house testing and manifest in front of end users, 
+Slow and inefficient software can easily frustrate end users and cause economic loss,
+and it has already caused several highly publicized failures. 
+My research philosophy is to view the software inefficiency problem from the perspective of combating \textit{performance bugs}.
+Performance bugs are software implementation mistakes that can cause inefficient execution.
+Performance bugs cannot be optimized away by state-of-practice compilers. 
+Many of them are overlooked by in-house testing and go on to affect end users, 
 causing severe performance degradation and a huge waste of energy in the field. 
 Performance bugs are becoming more critical, with the increasing complexity of modern software and workload, 
 the meager increases of single-core hardware performance, 
@@ -46,62 +46,61 @@ failure diagnosis, and automated bug fixing.
 In particular, 
 I conducted the first characteristics study on performance bugs, 
 based on 110 bugs randomly collected from five representative open-source software suites~\cite{jin12perfbug}.
-I built a static performance bug detection tool suite by using extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug}, 
+I built a static performance bug detection tool suite by using extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug} 
 and helped build a dynamic performance bug detection tool for inefficient nested loops~\cite{Nistor13ICSE}. 
 I explored how to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}, 
 and designed a series of static-dynamic hybrid analysis routines to provide more detailed diagnosis information for inefficient loops~\cite{Song17ICSE}.
 I designed three source-to-source code transformations to automatically fix performance bugs in parallel applications, 
-which offload computation to Intel Xeon Phi manycore coprocessors~\cite{Song14MICRO}.  
+which offload computation to Intel Xeon Phi manycore coprocessors~\cite{Song14MICRO}. 
 
-Besides software efficiency, I also worked on two software reliability projects as part of my doctoral research. In the first, 
+In addition to my work on software efficiency, I also worked on two software reliability projects as part of my doctoral research. In the first, 
 I helped build a concurrency bug fixing system~\cite{jin11afix}, 
 which can automatically eliminate atomicity-violation bugs.
-In the second, I helped study change histories of critical sections in open-source software~\cite{Gu15FSE} 
+In the second, I studied change histories of critical sections in open-source software~\cite{Gu15FSE} 
 to provide a better understanding of synchronization challenges faced by real-world developers. 
 
-After graduation, I started to work on security, 
+After graduation, I worked in the area of security, 
 with a focus on applying big data techniques to analyze and predict security incidents. 
-One leveraged data repository is VirusTotal, 
-which contains billions of real-world malware labeled by state-of-the-art anti-virus engines. 
+Using the data repository VirusTotal, 
+which contains billions of real-world malware labeled by state-of-the-art anti-virus engines, 
 I studied characteristics of real-world malware, 
 modeled how influence propagates across different anti-virus vendors, 
 and explored the feasibility of building machine learning malware detectors based only on hash values of files~\cite{Song16ApSys,Song17EuroSys}. 
-The study results can shed light on future research directions 
-and assist both anti-virus vendors and normal users in their fight against malware.
+The study results have shed light on directions for future research  
+and are assisting both anti-virus vendors and normal users in their fight against malware.
 
 My research work has already had industrial and academic impact. 
 My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} 
 found hundreds of previously unknown performance bugs in mature open-source software, 
 many of which have already been confirmed and fixed by developers. 
-My performance bug fixing project~\cite{Song14MICRO} won MICRO'14 best paper runner up, 
+My performance bug fixing project~\cite{Song14MICRO} was runner-up in the competition for best paper at MICRO-47 (2014)
 and has also led to an issued patent~\cite{comppatent}.
-My concurrency bug fixing system~\cite{jin11afix} won ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
+My concurrency bug fixing system~\cite{jin11afix} won the ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
 As of now, my publications have 415 citations in total. 
 
 \vspace{-.1in}
 \section{Dissertation Research}
 
-%\vspace{-.1in}
-To address the software-inefficiency problem, my research efforts cover the whole stack of software systems, from hardware to software, 
-and cover all aspects of combating software bugs, from understanding, to detecting, diagnosing, and fixing. 
+My research efforts to address the software inefficiency problem cover the whole stack of software systems, from hardware to software, 
+and all aspects of combating software bugs, from understanding to detecting, diagnosing, and fixing. 
 
 \vspace{-.1in}
 \paragraph{Real-world Performance Bug Understanding.}
-Like functional bugs, research on performance bugs should also be guided by empirical studies. 
-Poor understanding of performance bugs is part of the causes of today's performance bug problem. 
+Research on performance bugs, like that on functional bugs, should  be guided by empirical studies. 
+Poor understanding of performance bugs is one cause of today's performance bug problem. 
 In order to improve the understanding of real-world performance bugs, 
-I co-led the first, to the best of our knowledge, 
-empirical study on real-world performance bugs, based on 110 bugs randomly sampled from five open-source software suites~\cite{jin12perfbug}. 
-Following the lifetime of performance bugs, 
-our study was mainly performed in four dimensions. 
-We studied the root causes of performance bugs, 
+I co-led what we believe to be the first 
+empirical study of real-world performance bugs, based on 110 bugs randomly sampled from five open-source software suites~\cite{jin12perfbug}. 
+Our study examined the four dimensions that cover the complete lifetime of performance bugs:
+their root causes, 
 how they are introduced, how to expose them, and how to fix them. 
-The main findings of our study include: 
-(1) performance bugs have dominating root causes and fix strategies, which are highly correlated with each other; 
-(2) workload mismatch and misunderstanding of APIs' performance features are two major reasons why performance bugs are introduced; 
-and (3) around half of the studied performance bugs require inputs with both special features and large scales to manifest. 
-Our empirical study can guide future research on performance bugs. According to Google Scholar, our paper has already been cited 125 times since 2012. 
-Our empirical study has already motivated our own performance bug detection and performance failure diagnosis projects.
+We found that: 
+(1) the main root causes and fix strategies of performance bugs are highly correlated; 
+(2) many performance bugs are introduced by workload mismatch and misunderstanding of APIs' performance features; 
+and (3) around half of the studied performance bugs will only manifest under inputs with both special features and large scales. 
+This empirical study can guide future research on performance bugs,
+and according to Google Scholar, it has already been cited 125 times since 2012. 
+Our study has also motivated our own performance bug detection and performance failure diagnosis projects.
 
 \vspace{-.1in}
 \paragraph{Static/Dynamic Performance Bug Detection.}
@@ -111,20 +110,20 @@ we manually inspected final patches of fixed performance bugs in our studied per
 extracted efficiency rules from 25 bug patches, 
 and implemented static checkers to detect rules' violations~\cite{jin12perfbug}. 
 In total, our static checkers found 332 previously unknown performance bugs from the latest versions of Apache, Mozilla, and MySQL. 
-We reported some of identified bugs to developers. 
-77 reported bugs have already been confirmed by developers, including 15 reported bugs already fixed by developers. 
+We reported some of the identified bugs to developers. 
+Of these, 77 have  been confirmed by developers so far, and 15 reported bugs have already been fixed.
 Our empirical study also finds that 90\% of performance bugs involve loops, 
 and 50\% of performance bugs involve at least two levels of loops. 
 Motivated by this finding, I helped a fellow graduate student build a novel automated test oracle named Toddler~\cite{Nistor13ICSE},
-which enables testing for performance bugs caused by inefficient nested loops to use the well-established and automated process of testing for functional bugs. 
+which can leverage the well-established testing process for functional bugs to identify performance bugs caused by inefficient nested loops. 
 Using Toddler, we found 42 new bugs in six Java projects.
-Based on our bug reports, developers so far have fixed 21 bugs and confirmed 6 more as real bugs.
+Based on our bug reports, developers so far have fixed 21 of these bugs and confirmed 6 more as real bugs.
 
 
 
 \vspace{-.1in}
 \paragraph{Performance Failure Diagnosis.}
-Due to the preliminary tool support, many performance bugs escape the in-house performance testing and manifest in front of end users. 
+Due to the preliminary tool support, many performance bugs escape in-house performance testing and manifest in front of end users. 
 After users report performance bugs, developers need to diagnose them and fix them.
 Diagnosing user-reported performance failure is another key aspect of fighting performance bugs. 
 
@@ -133,47 +132,46 @@ Diagnosing user-reported performance failure is another key aspect of fighting p
 %The goal of our failure diagnosis projects is to identify the root causes for performance failure 
 %and provide fix strategy suggestions to developers. 
 %
-We first investigated the feasibility and design space to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}.
+We first investigated the feasibility and design space to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}. 
 After studying 65 user-reported performance bugs in our bug set, 
 we found that the majority of performance bugs are observed through comparison, 
-and many user-filed performance bug reports contain not only bad inputs, but also similar and good inputs.
+and many user-filed performance bug reports contain not only bad inputs, but also similar and good inputs. 
 Statistical debugging is a natural fix for user-reported performance bugs. 
 We evaluated three types of widely used predicates and two representative statistical models. 
-Our evaluation results show that branch predicate plus two statistical models can effectively diagnose user-reported performance failure. 
+Our evaluation shows that branch predicate plus two statistical models can effectively diagnose user-reported performance failure. 
 The basic model can help diagnose performance failure caused by wrong branch decision, and the $\Delta$LDA model can identify inefficient loops.  
 We applied sampling to performance failure diagnosis. Our experimental results show that
-some unique nature of loop-related performance bugs allows sampling to lower runtime overhead without sacrificing diagnosis latency, 
+because of the unique nature of loop-related performance bugs, sampling can lower runtime overhead without sacrificing diagnosis latency, 
 which is very different from functional failure diagnosis.
 
-We then built LDoctor~\cite{Song17ICSE} to provide more fine-grained diagnosis information for inefficient loops through a two-step process. 
-We first figured out a root-cause taxonomy for common inefficient loops through a comprehensive study on 45 inefficient loops. 
+We then built LDoctor~\cite{Song17ICSE}, which uses a two-step process to provide more fine-grained diagnosis information about inefficient loops. 
+We first figured out a root-cause taxonomy for common inefficient loops through a comprehensive study of 45 inefficient loops. 
 Our taxonomy contains two major categories: resultless and redundancy, as well as several subcategories. 
 Guided by our taxonomy, we then designed a series of analysis for inefficient loops. 
 Our analysis 
-focuses its checking on suspicious loops pointed out by statistical debugging, 
+checks suspicious loops pointed out by statistical debugging, 
 hybridizes static and dynamic analysis to balance accuracy and performance, 
-and relies on sampling and other designed optimization to further lower runtime overhead. 
-%We evaluate LDoctor by using 18 real-world inefficient loops. 
-Evaluation results under real-world inefficient loops show that LDoctor can cover most root-cause subcategories, 
-report few false positives, and bring a low runtime overhead. 
+and relies on sampling and other designed optimization to further reduce runtime overhead. 
+Evaluation results under real-world inefficient loops show that LDoctor covers most root-cause subcategories, 
+reports few false positives, and brings a low runtime overhead. 
 
 \vspace{-.1in}
 \paragraph{Performance Bug Fixing.}
 Intel Xeon Phi coprocessors have recently been introduced as new members of the manycore family. 
-Compared with GPU, Xeon Phi coprocessors are easier to program,
-since they provide x86 compatibility and support many different programming models.
+Compared with GPUs, Xeon Phi coprocessors are easier to program,
+because they provide x86 compatibility and support many different programming models.
 To offload existing parallel loops, developers just need to add simple pragmas. 
-However, our recent experience shows that simply adding pragmas does not result in better performance, 
-and too many performance bugs are contained in offloaded parallel loops. 
+However, our recent experience shows that this does not result in better performance, 
+and that too many performance bugs are contained in offloaded parallel loops. 
 
 After careful investigation, we designed three source-to-source code transformations to 
 automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
 The first transformation, data streaming, is designed to overlap data transfers between CPUs and coprocessors
 with computation on coprocessors to hide data transfer overhead and reuse memory on coprocessors. 
 The second transformation, regularization, is designed to re-arrange the order of computation and regularize loops with irregular memory accesses. 
-The last transformation is designed to support efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
-The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve performance by 1.16x - 52.21x. 
-This work won MICRO'14 best paper runner up. 
+The last transformation is designed to support the efficient transfer of large pointer-based data structures between CPUs and coprocessors. 
+The designed transformations  benefited 9 out of 12 benchmarks in our experiments and improved performance by 1.16x - 52.21x. 
+This work won MICRO-47 (2014) best paper runner-up.
 
 %After careful investigation, we design three source-to-source code transformations to 
 %automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
@@ -195,42 +193,42 @@ reliability, and security of various types of computer systems.
 
 \vspace{-.1in}
 \paragraph{Performance.} 
-My intermediate research goal is to combat performance bugs 
-in different aspects from the work I have already done.
+My intermediate research goal is to advance new aspects of combating performance bugs.
 For example, I would like to explore how to monitor algorithmic complexity during production runs. 
 On-line algorithmic monitoring can help developers understand real-world workloads, 
 identify codes in superlinear complexity, 
 and expose new performance optimization opportunities. 
-Previous works on algorithmic profiling or monitoring will incur more than 10x runtime overhead, which cannot be tolerated in production runs. 
-I plan to build a tool to collect runtime information with a reasonable overhead 
+Current methods of algorithmic profiling or monitoring incur more than 10x runtime overhead, which cannot be tolerated in production runs. 
+I plan to build a lower-overhead tool that will collect runtime information 
 and infer approximate complexity from deployed software. 
-As another example, I would like to provide tool support for performance testing.
-Our empirical study shows that almost half of studied performance bugs need inputs with both special features and large scales to manifest. 
-Existing techniques are designed to generate inputs with good code coverage and focus only on special features.
-I plan to extend existing input generation techniques with emphasis on large scales. 
-Another important problem during performance testing is to automatically judge whether a performance bug has occurred. 
+I would also like to provide tool support for performance testing.
+Our empirical study shows that almost half of studied performance bugs only manifest 
+under inputs with both special features and large scales.
+Existing techniques, designed to generate inputs with good code coverage, focus only on special features.
+I plan to extend these existing input generation techniques with an emphasis on large scales. 
+Another important challenge that arises during performance testing is how to automatically judge whether a performance bug has occurred. 
 I plan to leverage existing dynamic performance bug detection techniques to build performance testing oracles.
 
 \vspace{-.1in}
 \paragraph{Reliability.} 
-As big data is changing every single business, 
+As big data is changing businesses across the board, 
 more and more developers are working on using big data computing systems, 
 like Hadoop and Spark, to process their massive amounts of data. 
 My own experience in leveraging Spark to analyze VirusTotal's data 
 has given me insight into the challenges of debugging big data applications. 
 First, it is time-consuming to repeat a failure, and it may take developers several hours to receive notice of a runtime failure or an incorrect output.
-Second, it is almost infeasible to identify failure-triggering inputs among millions of input records without tool support. 
+Second, without tool support it is almost impossible to identify failure-triggering inputs among millions of input records. 
 Third, it is difficult to identify a failure's root cause, since the failure may propagate across different stages and across different nodes.
 
 My longer term research direction is to provide tool support for debugging big data applications.
 I plan to start by studying real-world bugs in big data applications to figure out whether there are common bug patterns. 
-Then I would like to build static bug detectors to identify bugs following common patterns before executing big data applications.  
-To quickly identify failures' root causes, I plan to build slicing tools that can analyze execution across different nodes, 
+Then I hope to build static bug detectors that can identify bugs following common patterns before big data applications are executed.  
+To quickly identify the root causes of failures, I plan to build slicing tools that can analyze execution across different nodes, 
 interactive breakpoint tools that can stop the execution for single records specified by developers,
 and log mining tools that can analyze large quantities of logs in big data applications.
-In order to patch bugs in big data applications, I would like to build automatic fixing tools. 
-It is time-consuming to run the patched version from the very beginning, 
-and I would like to build tools which can help reuse computation already finished in failure runs. 
+Finally, I hope to build automatic fixing tools that can patch bugs in big data applications.
+Since it is time-consuming to run a patched version from the very beginning after fixes have been applied, 
+I hope my fixing tools can provide support to reuse the computation completed during failure runs.  
 
 
 \vspace{-.1in}
@@ -242,24 +240,24 @@ and the other is to detect vulnerabilities in devices from the Internet of Thing
 
 Big security data provides opportunities to leverage data-centric methods to improve today's security techniques. 
 For example, we can study what attackers have done on a large scale to figure out their strategies and predict what they will do in the future. 
-As another example, by utilizing malware that has already been studied and labeled by security experts, 
+In addition, by utilizing malware that has already been studied and labeled by security experts, 
 we can learn how malware evolves and quickly detect emerging malware. 
 We can also apply deep learning techniques on these labeled malware samples and build new malware detectors. 
-It is also important to think about whether existing big data computing systems are suitable for security workload, 
-and look for opportunities to improve current systems.
+It is also important to think about whether existing big data computing systems are suitable for security workload
+and to look for opportunities to improve current systems.
 
 Vulnerability detection in the IoT ecosystem is more critical than ever before.
-As of now, there are billions of connected devices used worldwide, 
+Billions of connected devices have already been in use worldwide, 
 and this number is growing rapidly.  
-Hacked devices can leak sensitive information and power denial of service attacks. 
-Due to limited computation resources on a single device, 
+Hacked devices can leak sensitive information and can power denial of service attacks. 
+Due to the limited computation resources on a single device, 
 anti-virus software cannot be used to prevent attacks. 
-To make things worse, security is usually an afterthought for developers who build firmware for these devices. 
-The need to detect vulnerabilities in firmware earlier and patch them earlier is increasing dramatically. 
-To detect vulnerabilities, I plan to study mechanisms for various firmware and devices, 
-and try to extend existing techniques, like symbolic execution and whitebox fuzzing. 
-After identifying a new vulnerability, it is also important to quickly search affected devices. 
-I plan to build an efficient bug search system for IoT products.  
+To make things worse, the developers who build firmware for these devices often treat security as an afterthought. 
+The need to quickly detect and patch vulnerabilities is increasing dramatically. 
+To detect vulnerabilities, I plan to study mechanisms for various firmware and devices 
+and to extend existing techniques, like symbolic execution and whitebox fuzzing. 
+Once a new vulnerability has been identified, it is also important to quickly search affected devices. 
+To that end, I plan to build an efficient bug search system for IoT products.  
 
 
 \newpage
