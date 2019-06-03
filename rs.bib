@@ -6,36 +6,81 @@
  howpublished = {\url{http://www.sigplan.org/Newsletters/CACM/Papers/}}
 }
 
-@Misc{Song17EuroSys,
- author = {\textbf{Linhai Song} and Zhang, Ce and Zhang, Yiying and Huang, Heqing and Zhou, Wu},
- title = {{``Understanding Malwares and Anti-Virus Engines in the Real World''}},
- howpublished = {\url{http://songlh.github.io/eurosys_submission.pdf} (\textbf{Under Submission})}
+@inproceedings{salad,
+ author = {Song, Linhai and Xing, Xinyu},
+ title = {Fine-Grained Library Customization},
+ booktitle = {First International Workshop on SoftwAre debLoating And Delayering (SALAD '18)},
+ year = {2018},
+ address = {Amsterdam, Netherlands},
+} 
+
+
+@misc{imc-peng,
+ author = {Peng, Peng and Yang, Limin and Song, Linhai and Wang, Gang},
+ title = {Opening the Blackbox of VirusTotal: Analyzing Online Phishing Scan Engines},
+ booktitle = {Under Submission},
+} 
+
+@misc{icse-boqin,
+ author = {Qin, Boqin and Tu, Tengfei and Liu, Ziheng and Yu, Tingting and Song, Linhai},
+ title = {Algorithmic Profiling for Real-World Complexity Problems},
+ booktitle = {Under Submission},
+} 
+
+@misc{sosp-boqin,
+ author = {Chen, Yilun and Qin, Boqin and Song, Linhai and Yu, Zeming and Zhang, Yiying},
+ title = {How Safe Is Safe? An Empirical Study on Rust Safety (and Unsafe) Mechanisms},
+ booktitle = {Under Submission},
+} 
+
+@misc{vt-jianjun,
+ author = {Shi, Jianjun and Zhu, Shuofei and Song, Linhai and Zhang, Yiying and Wang, Gang},
+ title = {Understanding Real-World Malware and Anti-Virus Engines},
+ booktitle = {Under Submission},
+} 
+
+@misc{yu2019fearless,
+    title={Fearless Concurrency? Understanding Concurrent Programming Safety in Real-World Rust Software},
+    author={Zeming Yu and Linhai Song and Yiying Zhang},
+    year={2019},
+    eprint={1902.01906},
+    archivePrefix={arXiv},
+    primaryClass={cs.PL}
 }
+
+@inproceedings{go-asplos,
+ author = {Tu, Tengfei and Liu, Xiaoyu and Song, Linhai and Zhang, Yiying},
+ title = {Understanding Real-World Concurrency Bugs in Go},
+ booktitle = {Proceedings of the Twenty-Fourth International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS '19)},
+ year = {2019},
+ address = {Providence, RI, USA},
+} 
+
+
 
 @inproceedings{Song16ApSys,
  author = {\textbf{Linhai Song} and Huang, Heqing and Zhou, Wu and Wu, Wenfei and Zhang, Yiying},
- title = {{``Learning from Big Malwares''}},
- booktitle = {Proceedings of the 7th ACM SIGOPS Asia-Pacific Workshop on Systems},
- series = {\textbf{APSys'16}},
+ title = {{``Learning from Big Malware''}},
+ booktitle = {Proceedings of the 7th ACM SIGOPS Asia-Pacific Workshop on Systems (APSys '16)},
  year = {2016},
+ address = {Hong Kong, Hong Kong},
 } 
 
 
 @inproceedings{Song17ICSE,
  author = {\textbf{Linhai Song} and Lu, Shan},
  title = {{``Performance Diagnosis for Inefficient Loops''}},
- booktitle = {Proceedings of the 2017 International Conference on Software Engineering},
- series = {\textbf{ICSE'17}},
+ booktitle = {Proceedings of the 2017 International Conference on Software Engineering (ICSE '17)},
  year = {2017},
- month = {May},
+ address = {Buenos Aires, Argentina},
 }
 
 @inproceedings{Gu15FSE,
  author = {Gu, Rui and Jin, Guoliang and \textbf{Linhai Song} and Zhu, Linjie and Lu, Shan},
  title = {{``What Change History Tells Us About Thread Synchronization''}},
- booktitle = {Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering},
- series = {\textbf{ESEC/FSE'15}},
+ booktitle = {Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering (FSE '15)},
  year = {2015},
+ address = {Bergamo, Italy},
 } 
 
 @Misc{comppatent,
@@ -48,48 +93,43 @@
 @inproceedings{Song14MICRO,
  author = {\textbf{Linhai Song} and Feng, Min and Ravi, Nishkam and Yang, Yi and Chakradhar, Srimat},
  title = {{``COMP: Compiler Optimizations for Manycore Processors''}},
- booktitle = {Proceedings of the 47th Annual IEEE/ACM International Symposium on Microarchitecture},
- series = {\textbf{MICRO'14}},
+ booktitle = {Proceedings of the 47th Annual IEEE/ACM International Symposium on Microarchitecture (MICRO '14)},
  year = {2014},
- month = {December},
+ address = {Cambridge, United Kingdom},
  note = {(\textbf{Best Paper Runner Up})}
 }
 
 @inproceedings{Song14OOPSLA,
  author = {\textbf{Linhai Song} and Lu, Shan},
  title = {{``Statistical Debugging for Real-world Performance Problems''}},
- booktitle = {Proceedings of the 2014 ACM International Conference on Object Oriented Programming Systems Languages and Applications},
- series = {\textbf{OOPSLA'14}},
+ booktitle = {Proceedings of the 2014 ACM International Conference on Object Oriented Programming Systems Languages and Applications (OOPSLA '14)},
+ address = {Portland, Oregon, USA},
  year = {2014},
- month = {October}
 }
 
 @inproceedings{Nistor13ICSE,
  author = {Nistor, Adrian and \textbf{Linhai Song} and Marinov, Darko and Lu, Shan},
  title = {{``Toddler: Detecting Performance Problems via Similar Memory-access Patterns''}},
- booktitle = {Proceedings of the 2013 International Conference on Software Engineering},
- series = {\textbf{ICSE'13}},
+ booktitle = {Proceedings of the 2013 International Conference on Software Engineering (ICSE '13)},
+ address = {San Francisco, CA, USA},
  year = {2013},
- month = {May}
 }
 
 @inproceedings{jin12perfbug,
  author = {Jin*, Guoliang and \textbf{Linhai Song*} and Shi, Xiaoming and Scherpelz, Joel and Lu, Shan},
  title = {{``Understanding and Detecting Real-World Performance Bugs''}},
- booktitle = {Proceedings of the 33rd ACM SIGPLAN Conference on Programming Language Design and Implementation},
- series = {\textbf{PLDI'12}},
+ booktitle = {Proceedings of the 33rd ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI '12)},
  year = {2012},
- month = {June},
+ address = {Beijing, China},
  note = {*: equal contributions}
 }
 
 @inproceedings{jin11afix,
  author = {Jin, Guoliang and \textbf{Linhai Song} and Zhang, Wei and Lu, Shan and Liblit, Ben},
  title = {{``Automated Atomicity-Violation Fixing''}},
- booktitle = {Proceedings of the 32nd ACM SIGPLAN Conference on Programming Language Design and Implementation},
- series = {\textbf{PLDI'11}},
+ booktitle = {Proceedings of the 32nd ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI '11)},
  year = {2011},
- month = {June},
+ address = {San Jose, California, USA},
  note = {(\textbf{SIGPLAN Research Highlights Award})}
 }
 
