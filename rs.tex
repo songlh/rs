@@ -239,18 +239,19 @@ More than half of the studied bugs are caused by non-traditional, Go-specific pr
 Apart from root causes of these bugs, we also studied their fixes, 
 performed experiments to reproduce them, 
 and evaluated them with two publicly-available Go bug detectors.
-Overall, our study provides a better understanding on Go’s concurrency models
+Overall, our study provides a better understanding on Go's concurrency models
 with many valuable findings and implications, such as message passing is more likely to 
-cause blocking bugs and new programming models and new libraries 
+cause blocking bugs and new programming models
 that Go introduced to ease multi-threaded programming can themselves 
 become the reasons of more concurrency bugs. 
 Our study can guide future researchers and practitioners in writing better, 
 more reliable Go software and in developing novel debugging tools for Go.
 
 \vspace{-.1in}
-\paragraph{Understanding Concurrency Issues in Go}
+\paragraph{Understanding Safety Issues in Rust}
 Rust is a young programming language designed for systems software development. 
-It aims to provide safety guarantees like high-level languages and performance efficiency
+It aims to provide safety guarantees like high-level languages 
+and performance efficiency
 like low-level languages. The core design of Rust is a set
 of strict safety rules enforced by compile-time checking. To
 support more low-level controls, Rust allows programmers
@@ -262,14 +263,20 @@ It is important to understand how well Rust’s safety (and
 unsafe) mechanisms work in real programs. We performed
 the first empirical study of Rust by close, manual inspection of 583 unsafe code usages 
 and 103 bugs in five opensource Rust projects, five widely-used Rust libraries, and two
-online security databases. Our study answers three important 
+online security databases~\cite{sosp-boqin}. Our study answers three important 
 questions: how and why do programmers write unsafe
 code, what memory-safety issues real Rust programs have,
-and what concurrency bugs Rust programmers make. Our
-study reveals interesting real-world Rust program behavior
-and new issues Rust programmers make, many of which can
-help future use and development of the language.
-
+and what concurrency bugs Rust programmers make. 
+We find that programmmers often choose to write unsafe code for good performance 
+and ease of programming, although all memory-safety bugs involve unsafe code, 
+most of them also involve safe code, and 
+most concurrency bugs are caused by programmers' misunderstanding of Rust's safety features 
+and compiler rules. 
+For all the above three aspects, we make insightful suggestions 
+to future Rust programmers and language developers. 
+One key take-away is that a theoretically proven safe language may be hard to 
+use in reality, and as a result, the language includes less safe features, which eventually cause
+problems in the real world.
 
 \section{Future Research}
 
