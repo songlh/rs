@@ -81,114 +81,194 @@ As of now, my publications have 415 citations in total.
 \vspace{-.1in}
 \section{My PhD Work: Combating Real-World Performance Bugs}
 
-My research efforts to address the software inefficiency problem cover the whole stack of software systems, from hardware to software, 
-and all aspects of combating software bugs, from understanding to detecting, diagnosing, and fixing. 
+My PhD work is mainly focused on addressing the software 
+inefficiency problem from the perspective of combating performance bugs. 
+Performance bugs are software defects that can cause inefficient execution. 
+My methodology is to investigate existing approaches originally designed for functional bugs
+and try to apply, adapt, and extend them for performance bugs. 
+
 
 \vspace{-.1in}
 \paragraph{Real-world Performance Bug Understanding.}
-Research on performance bugs, like that on functional bugs, should  be guided by empirical studies. 
-Poor understanding of performance bugs is one cause of today's performance bug problem. 
+Research on performance bugs, like that on functional bugs, 
+should be guided by empirical studies. 
 In order to improve the understanding of real-world performance bugs, 
 I co-led what we believe to be the first 
-empirical study of real-world performance bugs, based on 110 bugs randomly sampled from five open-source software suites~\cite{jin12perfbug}. 
-Our study examined the four dimensions that cover the complete lifetime of performance bugs:
+empirical study of real-world performance bugs, 
+based on 110 bugs randomly sampled from five open-source software suites~\cite{jin12perfbug}. 
+Our study examined four dimensions 
+that cover the complete lifetime of performance bugs:
 their root causes, 
-how they are introduced, how to expose them, and how to fix them. 
-We found that: 
-(1) the main root causes and fix strategies of performance bugs are highly correlated; 
-(2) many performance bugs are introduced by workload mismatch and misunderstanding of APIs' performance features; 
-and (3) around half of the studied performance bugs will only manifest under inputs with both special features and large scales. 
-This empirical study can guide future research on performance bugs,
-and according to Google Scholar, it has already been cited 125 times since 2012. 
-Our study has also motivated our own performance bug detection and performance failure diagnosis projects.
+how they are introduced, their triggering conditions, and their fixing strategies. 
+Our study provides many interesting and important findings, 
+such as many performance bugs are introduced by workload mismatch 
+and misunderstanding of APIs' performance features; 
+and around half of the studied performance bugs 
+will only manifest under inputs with both special features and large scales. 
+Our study can guide future research on performance bugs.
+According to Google Scholar, our study has already been cited 
+242 times since 2012. 
+It has already motivated our own performance bug detection 
+and performance failure diagnosis projects.
+
+
 
 \vspace{-.1in}
 \paragraph{Static/Dynamic Performance Bug Detection.}
-Our empirical study shows that both statically checkable efficiency rules and violations of these rules exist widely in software. 
+Bug detection aims to find previous unknown bugs,
+before they manifest in front of end users. 
+Rule-based detection techniques have been widely used to identify 
+functional bugs in previous literatures.
+Our study shows that both statically checkable efficiency rules 
+and violations of these rules exist widely in software. 
 Inspired by this finding,
-we manually inspected final patches of fixed performance bugs in our studied performance bug set, 
-extracted efficiency rules from 25 bug patches, 
-and implemented static checkers to detect rules' violations~\cite{jin12perfbug}. 
-In total, our static checkers found 332 previously unknown performance bugs from the latest versions of Apache, Mozilla, and MySQL. 
+we built a suite of rule-based static checkers for performance problems~\cite{jin12perfbug}.
+In total, our checkers found 332 previously unknown performance bugs 
+from the latest versions of Apache, Mozilla, and MySQL. 
 We reported some of the identified bugs to developers. 
-Of these, 77 have  been confirmed by developers so far, and 15 reported bugs have already been fixed.
+Of these, 77 have been confirmed by developers so far, 
+and 15 reported bugs have already been fixed.
 Our empirical study also finds that 90\% of performance bugs involve loops, 
 and 50\% of performance bugs involve at least two levels of loops. 
-Motivated by this finding, I helped a fellow graduate student build a novel automated test oracle named Toddler~\cite{Nistor13ICSE},
-which can leverage the well-established testing process for functional bugs to identify performance bugs caused by inefficient nested loops. 
+Motivated by this finding, I helped a fellow graduate student 
+build a novel automated test oracle named Toddler~\cite{Nistor13ICSE},
+which can leverage the well-established testing process for functional bugs to 
+identify performance bugs caused by inefficient nested loops. 
 Using Toddler, we found 42 new bugs in six Java projects.
-Based on our bug reports, developers so far have fixed 21 of these bugs and confirmed 6 more as real bugs.
-
-
+Based on our bug reports, developers so far have fixed 21 of these bugs 
+and confirmed 6 more as real bugs. 
 
 \vspace{-.1in}
 \paragraph{Performance Failure Diagnosis.}
-Due to the preliminary tool support, many performance bugs escape in-house performance testing and manifest in front of end users. 
-After users report performance bugs, developers need to diagnose them and fix them.
-Diagnosing user-reported performance failure is another key aspect of fighting performance bugs. 
-
-%According to our empirical study, there are dominating root causes and fix strategies for performance bugs, 
-%both of which are correlated with each other. 
-%The goal of our failure diagnosis projects is to identify the root causes for performance failure 
-%and provide fix strategy suggestions to developers. 
-%
-We first investigated the feasibility and design space to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}. 
-After studying 65 user-reported performance bugs in our bug set, 
-we found that the majority of performance bugs are observed through comparison, 
-and many user-filed performance bug reports contain not only bad inputs, but also similar and good inputs. 
-Statistical debugging is a natural fix for user-reported performance bugs. 
-We evaluated three types of widely used predicates and two representative statistical models. 
-Our evaluation shows that branch predicate plus two statistical models can effectively diagnose user-reported performance failure. 
-The basic model can help diagnose performance failure caused by wrong branch decision, and the $\Delta$LDA model can identify inefficient loops.  
-We applied sampling to performance failure diagnosis. Our experimental results show that
-because of the unique nature of loop-related performance bugs, sampling can lower runtime overhead without sacrificing diagnosis latency, 
+As another key aspect of fighting performance problems,
+diagnosing a user-perceived performance failure is to figure out which code 
+region is responsible for the observed slowdown and 
+to design a patch to optimize the code region.
+To improve performance failure diagnosis, 
+we first explored how to 
+apply statistical debugging to performance bugs~\cite{Song14OOPSLA}. 
+Our empirical study shows that performance failures are usually observed through comparison,
+and when reporting a performance failure, besides a bug-triggering input, 
+the user usually provides another input similar to the bad one, 
+but with a much better performance.
+Therefore, statistical debugging is a natural fit for performance problems. 
+After evaluating widely used predicates and 
+two representative statistical models, 
+we found that branch predicate plus the two statistical models can effectively 
+pinpoint wrong branch decisions and inefficient loops, 
+causing the diagnosed performance failures. 
+We also found that
+due to the unique nature of inefficient loops, 
+sampling can lower runtime overhead without sacrificing diagnosis latency, 
 which is very different from functional failure diagnosis.
-
-We then built LDoctor~\cite{Song17ICSE} through a two-step process to provide more fine-grained diagnosis information about inefficient loops. 
-We first figured out a root-cause taxonomy for common inefficient loops through a comprehensive study of 45 inefficient loops. 
-Our taxonomy contains two major categories: resultless and redundancy, as well as several subcategories. 
-Guided by our taxonomy, we then designed a series of analysis for inefficient loops. 
-Our analysis 
-checks suspicious loops pointed out by statistical debugging, 
-hybridizes static and dynamic analysis to balance accuracy and performance, 
-and relies on sampling and other designed optimization to further reduce runtime overhead. 
-Evaluation results under real-world inefficient loops show that LDoctor covers most root-cause subcategories, 
-reports few false positives, and brings a low runtime overhead. 
+We then built LDoctor~\cite{Song17ICSE} to provide more 
+fine-grained diagnosis information and fixing strategies for inefficient loops. 
+LDoctor takes suspicious loops reported by 
+statistical debugging as inputs, 
+applies hybridized static and dynamic analysis to 
+balance accuracy and performance, 
+and relies on sampling and other designed optimizations 
+to further reduce runtime overhead. 
+Evaluation results under real-world inefficient loops 
+show that LDoctor covers most common root causes, 
+reports few false positives, and incurs a low runtime overhead. 
 
 \vspace{-.1in}
 \paragraph{Performance Bug Fixing.}
-Intel Xeon Phi coprocessors have recently been introduced as new members of the manycore family. 
+Intel Xeon Phi coprocessors have recently been introduced 
+as new members of the manycore family.
 Compared with GPUs, Xeon Phi coprocessors are easier to program,
 because they provide x86 compatibility and support many different programming models.
-To offload existing parallel loops, developers just need to add simple pragmas. 
-However, our recent experience shows that this does not result in better performance, 
-and that too many performance bugs are contained in offloaded parallel loops. 
-
+Adding simple pragmas can help developers offload existing parallel loops 
+to Xeon Phi coprocessors. 
+However, this does not result in better performance, 
+and too many performance bugs are contained in 
+offloaded parallel loops. 
 After careful investigation, we designed three source-to-source code transformations to 
-automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
-The first transformation, data streaming, is designed to overlap data transfers between CPUs and coprocessors
-with computation on coprocessors to hide data transfer overhead and reuse memory on coprocessors. 
-The second transformation, regularization, is designed to re-arrange the order of computation and regularize loops with irregular memory accesses. 
-The last transformation is designed to support the efficient transfer of large pointer-based data structures between CPUs and coprocessors. 
-The designed transformations  benefited 9 out of 12 benchmarks in our experiments and improved performance by 1.16x - 52.21x. 
+hide data transfer overhead between CPUs and coprocessors, 
+to regularize loops with irregular memory accesses, 
+and to efficiently transfer large pointer-based data structures, respectively~\cite{Song14MICRO}.
+Our transformations can automatically fix performance bugs contained in offloaded parallel loops. 
+Experimental results show that the designed transformations can benefit 9 
+out of 12 evaluated benchmarks and improve performance by 1.16x - 52.21x. 
 This work won MICRO-47 (2014) best paper runner-up.
 
-%After careful investigation, we design three source-to-source code transformations to 
-%automatically fix performance bugs contained in offloaded parallel loops~\cite{Song14MICRO}. 
-%The first transformation, data streaming, is designed to reduce data transfer overhead between CPUs and coprocessors. 
-%The transformation automatically changes offloaded codes to stream data to and from coprocessors, 
-%which overlap data transfers with computation and reuse memory on coprocessors.
-%The second transformation, regularization, is designed to rearrange the order of computation to 
-%enable data streaming and vectorization in the presence of irregular memory accesses. 
-%The last transformation is designed to support efficient transfer for large pointer-based data structures between CPUs and coprocessors. 
-%An augmented design of pointers is introduced for fast translating pointers between their CPU and coprocessor memory addresses. 
-%The designed transformations can benefit 9 out of 12 benchmarks in our experiments, and improve the performance by 1.16x - 52.21x. 
-%This work won MICRO'14 best paper runner up.  
-
-%\vspace{-.1in}
 
 \vspace{-.1in}
 \section{Current and Near-Future Research Directions (Post-PhD)}
+After joining the Pennsylvania State University as an assistant professor,
+I have expanded my research directions to investigate
+emerging reliability and security issues.  
+In the following, I will focus on two main research themes 
+to discuss my initial progress and my plans for the near future. 
+
+\vspace{-.1in}
+\subsection{Issues in New Programming Languages}
+Many new programming languages have been created since 2000, 
+with unique language features trying to accomplish their desired design goals.
+With increasing adoption, it is important to understand 
+whether the design goals are really achieved 
+and whether there are unique bugs in these languages. 
+Working together with my collaborator (Yiying Zhang from Purdue University), 
+I mainly look into Go and Rust, because 
+these two languages are popular choices 
+of developers when implementing 
+data center applications and safety-critical systems. 
+ 
+\vspace{-.1in}
+\paragraph{Understanding Concurrency Issues in Go}
+Go is a statically-typed new programming language that aims to provide 
+a simple, efficient, and safe way to build multi-threaded software.
+For this purpose, Go centers its multi-threading design 
+around two principles: 1) making threads (called goroutines) lightweight 
+and easy to create and 2) using explicit messaging (called channel) 
+to communicate across threads. With these design principles, 
+Go proposes not only new primitives and new libraries 
+but also new implementation of existing semantics.
+Due to its powerful and expressive concurrency mechanisms, 
+Go is widely used in data center environments,
+like building container systems and implementing microservices.
+
+It is important to understand how Go's new concurrency mechanisms impact concurrency bugs, 
+since concurrency bugs are difficult to debug and severely degrade 
+the reliability of concurrent systems. 
+We conducted the first empirical study on Go concurrency bugs, based on 171 bugs collected from  
+six famous Go software 
+including Docker, Kubernetes and gRPC~\cite{go-asplos}.
+More than half of the studied bugs are caused by non-traditional, Go-specific problems. 
+Apart from root causes of these bugs, we also studied their fixes, 
+performed experiments to reproduce them, 
+and evaluated them with two publicly-available Go bug detectors.
+Overall, our study provides a better understanding on Go’s concurrency models
+with many valuable findings and implications, such as message passing is more likely to 
+cause blocking bugs and new programming models and new libraries 
+that Go introduced to ease multi-threaded programming can themselves 
+become the reasons of more concurrency bugs. 
+Our study can guide future researchers and practitioners in writing better, 
+more reliable Go software and in developing novel debugging tools for Go.
+
+\vspace{-.1in}
+\paragraph{Understanding Concurrency Issues in Go}
+Rust is a young programming language designed for systems software development. 
+It aims to provide safety guarantees like high-level languages and performance efficiency
+like low-level languages. The core design of Rust is a set
+of strict safety rules enforced by compile-time checking. To
+support more low-level controls, Rust allows programmers
+to bypass these compiler checks to write unsafe code. 
+Programmers can also encapsulate their unsafe code within safe
+function interfaces (i.e., interior unsafe).
+
+It is important to understand how well Rust’s safety (and
+unsafe) mechanisms work in real programs. We performed
+the first empirical study of Rust by close, manual inspection of 583 unsafe code usages 
+and 103 bugs in five opensource Rust projects, five widely-used Rust libraries, and two
+online security databases. Our study answers three important 
+questions: how and why do programmers write unsafe
+code, what memory-safety issues real Rust programs have,
+and what concurrency bugs Rust programmers make. Our
+study reveals interesting real-world Rust program behavior
+and new issues Rust programmers make, many of which can
+help future use and development of the language.
 
 
 \section{Future Research}
