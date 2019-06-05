@@ -203,7 +203,7 @@ In the following, I will focus on two main research themes
 to discuss my initial progress and my plans for the near future. 
 
 \vspace{-.1in}
-\subsection{Issues in New Programming Languages}
+\subsection{Fighting Issues in New Programming Languages}
 Many new programming languages have been created since 2000, 
 with unique language features trying to accomplish their desired design goals.
 With increasing adoption, it is important to understand 
@@ -263,7 +263,7 @@ It is important to understand how well Rust’s safety (and
 unsafe) mechanisms work in real programs. We performed
 the first empirical study of Rust by close, manual inspection of 583 unsafe code usages 
 and 103 bugs in five opensource Rust projects, five widely-used Rust libraries, and two
-online security databases~\cite{sosp-boqin}. Our study answers three important 
+online security databases~\cite{sosp-boqin,yu2019fearless}. Our study answers three important 
 questions: how and why do programmers write unsafe
 code, what memory-safety issues real Rust programs have,
 and what concurrency bugs Rust programmers make. 
@@ -277,6 +277,82 @@ to future Rust programmers and language developers.
 One key take-away is that a theoretically proven safe language may be hard to 
 use in reality, and as a result, the language includes less safe features, which eventually cause
 problems in the real world.
+
+\vspace{-.1in}
+\paragraph{Future Plan (1-3 years)}
+Understanding real-world issues in Go and Rust is just a starting point.
+My next step is to build tools to automatically pinpoint previously unknown issues. 
+From the developers' perspective, patching an issue is the final 
+stage to really improve systems' realibility and safety. 
+I plan to explore the following key research questions for Go and Rust 
+under the guidance of our empirical studies: 
+1) How to statically detect concurrency bugs, 
+while solving or avoiding traditional, difficult problems, 
+like alias analysis in a large software
+and identifying variables accessed by multiple threads?
+2) How to dynamically detect concurrency bugs with a low 
+runtime overhead to deploy the detection in production runs?
+3) How to extend existing techniques designed for traditional programming languages, 
+such as fuzz testing and symbolic execution?
+4) How to systhesize patches for identified bugs and validate 
+their correctness and performance?
+
+\vspace{-.1in}
+\subsection{Applying Data Analytics to Big Malware Data}
+VirusTotal is a free online malware scanning service that applies 
+more than 60 state-of-the-art anti-virus engines to analyze user-submitted files (or URLs)
+and sends aggragated detection reports back to users. 
+VirusTotal receives millions of submissions every day and 
+provides public access to all 
+its submitted files and analysis results.
+It is valuable resource to study and understand real-world malware 
+and anti-virus engines~\cite{Song16ApSys}.  
+
+VirusTotal is heavily used by the research community for malware sample collection,
+data labelling and system evaluation. 
+Our literature review~\cite{vt-jianjun} shows that 
+VirusTotal has already been used by more than 100 academic 
+papers in top-tier venues 
+in security, network and measurements including SP, CCS, 
+USENIX Security, NDSS, IMC, and WWW.
+Our literature review also shows that when using VirusTotal, 
+most researchers simply treat all anti-virus engines equally, 
+while failing to take engines' possible difference into account, 
+and most researchers do not consider possible changes of analysis results due to 
+periodical updates of VirusTotal engines. 
+I am working my my collobrator (Gang Wang from UIUC) to look into whether 
+researchers are using VirusTotal in the right way. 
+We find that 
+there are more influential vendors on VirusTotal and some vendors' 
+detection decisions are highly influenced by others. 
+We also find that detection decision changes are very common on VirusTotal,
+and users should not trust labels on VirusTotal until they become stable. 
+Our findings demonstrate the misusing of VirusTotal 
+in research community.
+
+
+
+
+We build two data sets to validate the two underlying assumptions. 
+One data set contains all submissions to VirusTotal over four months with 151 million sub, 
+and the other one  
+
+
+\vspace{-.1in}
+\paragraph{the Properties of VirusTotal Data}
+13883597926
+
+
+\vspace{-.1in}
+\paragraph{Academic Usage} 
+
+
+
+\vspace{-.1in}
+\paragraph{Future Plan (1-3 years)}
+(1) How to better aggregate VirusTotal's data
+(2) How to build tools to predict whether labels have become stable
+(3)
 
 \section{Future Research}
 
@@ -310,7 +386,8 @@ My own experience in leveraging Spark to analyze VirusTotal's data
 has given me insight into the challenges of debugging big data applications. 
 First, it is time-consuming to repeat a failure, and it may take developers several hours to receive notice of a runtime failure or an incorrect output.
 Second, without tool support it is almost impossible to identify failure-triggering inputs among millions of input records. 
-Third, it is difficult to identify a failure's root cause, since the failure may propagate across different stages and across different nodes.
+Third, it is difficult to identify a failure's root cause, 
+since the failure may propagate across different stages and across different nodes.
 
 My longer term research direction is to provide tool support for debugging big data applications.
 I plan to start by studying real-world bugs in big data applications to figure out whether there are common bug patterns. 
