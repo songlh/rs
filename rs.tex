@@ -306,8 +306,7 @@ VirusTotal is a free online malware scanning service that applies
 more than 60 state-of-the-art anti-virus engines to analyze user-submitted files (or URLs)
 and sends aggragated detection results (e.g., labels, malware families) back to users. 
 VirusTotal receives millions of submissions every day and 
-provides public access to all 
-its submitted files and analysis results.
+provides public access to all its submitted files and analysis results.
 VirusTotal is a valuable resource to study and understand real-world malware 
 and anti-virus engines~\cite{Song16ApSys}.  
 
@@ -316,34 +315,57 @@ data labelling and system evaluation.
 Our literature review~\cite{vt-jianjun} shows that 
 VirusTotal has already been used by more than 100 academic 
 papers in top-tier venues 
-in security, network and measurements including SP, CCS, 
+in security, network and measurements including S\&P, CCS, 
 USENIX Security, NDSS, IMC, and WWW.
-Our literature review also finds that when using VirusTotal 
-most researchers simply treat all anti-virus engines equally, 
-without taking engines' different labelling capabilities into account, 
-and most researchers fail to consider possible label changes 
-due to the periodical updates of VirusTotal engines. 
-I am working with my collobrator (Gang Wang from UIUC) to look into whether 
-researchers are using VirusTotal in the right way. 
+A closer examination shows that researchers use VirusTotal under two assumptions. 
+First, VirusTotal periodically updates its engines, 
+so that VirusTotal labels possibly change over time due to the updates. 
+However, most researchers simply query VirusTotal once, 
+with the assumption that label changes are rare, 
+generating negligible impact. 
+Second, the more than 60 VirusTotal engines 
+may disagree with each other, 
+such as some engines label a submission as benign, 
+while others label the submission as malicious. 
+To aggregate labels from different engines and determine whether a submission is malicious,
+researchers usually use a threshold --- 
+if at least $t$ engines return a malicious label,
+researchers regard the submission as malicious. 
+When computing $t$, most researchers assume all engines have the 
+same labeling quality and treat all engines equally. 
+
+I am working with my collobrator (Gang Wang from UIUC) to look into 
+whether the two assumptions are true in reality
+and whether researchers are using VirusTotal in the right way~\cite{vt-jianjun,imc-peng}. 
 After comprehensive measurements on two large data sets collected from VirusTotal
 over a long period of time, 
-we find that some vendors' 
-labeling decisions are highly influenced by others,  
-and label changes are very common on VirusTotal.
-Our findings are contrary to the common practices 
-when researchers are using VirusTotal, 
-raising an alarm for future VirusTotal users.
-Beside measurements, we also build a machine learning model
-to predict whether a submission's labels have become stable and 
-can be trusted.
-Our model can help researchers and practioners 
-better utilize the malware labelling functionality of VirusTotal. 
+we find that label changes are very common on VirusTotal and 
+some engines' labeling decisions are highly influenced by others. 
+Our findings are contrary to the common practices when researchers are using VirusTotal
+and raise an alarm for future VirusTotal users. 
+Besides measurements, we also use machine learning models to quantify the influence 
+among vendors and to predict when a submission's labels have become stable
+and can be trusted. 
+%Our models can help researchers and practioners better utilize the malware labeling 
+%functionality of VirusTotal. 
 
 \vspace{-.1in}
 \paragraph{Future Plan (1-3 years)}
-(1) How to better aggregate VirusTotal's data
-(2) How to build tools to predict whether labels have become stable
-(3)
+In the near future, I will continue my work to help researchers and practioners 
+better interpret and utilize VirusTotal data. 
+For example, I will examine whether using a threshold to aggregate VirusTotal labels   
+is reasonable and integrate vendors' influence into the label aggregation. 
+As another example, an engine may have different capabilities when analyzing 
+different types of malware. I plan to build a fine-grained 
+engine influence model after categorizing malware based on their families. 
+I will also try to defend possible attacks launched through VirusTotal. 
+For example, more and more engines are built based on machine learning models. 
+VirusTotal serves as a valuable resource for training data.
+Since VirusTotal is publicly accessible to everyone, it also provides 
+a convenient channel for attackers to distribute adversial samples, 
+which can enable real malware to bypass machine learning models behind VirusTotal engines.
+I plan to investigate how to identify adversial samples on VirusTotal.  
+
 
 \section{Future Research}
 
