@@ -21,65 +21,53 @@
 \maketitle\vspace{-.2in}
 
 My research interests span the areas of systems, security, and software engineering.
-The goal of my research is to help developers build more efficient, reliable, and secure software systems.
+The goal of my research is to help developers deliver more efficient, reliable, and secure software systems
+from the perspective of combating various types of software bugs.  
+In particular, my PhD research focuses on performance bugs, while my post-PhD
+research centers around concurrency and safety issues in new programming languages (e.g., Go, Rust).
+My experience spans different stages of fighting software bugs:
+real-world bug understanding~\cite{jin12perfbug,go-asplos,yu2019fearless,sosp-boqin}, 
+bug detection during testing~\cite{jin12perfbug,Nistor13ICSE,icse-boqin}, 
+bug diagnosis for user-reported failures~\cite{Song14OOPSLA,Song17ICSE}, 
+and automated bug fixing~\cite{jin11afix,Song14MICRO}. 
+My expertise covers the whole stack of systems, 
+from hardware to operating systems and applications. 
 
-My dissertation research centers around software performance. 
-Naturally, everyone wants software to run fast. 
-Slow and inefficient software can easily frustrate end users and cause economic loss,
-and it has already caused several highly publicized failures. 
-My research philosophy is to view the software inefficiency problem from the perspective of combating \textit{performance bugs}.
-Performance bugs are software implementation mistakes that can cause inefficient execution.
-Performance bugs cannot be optimized away by state-of-practice compilers. 
-Many of them are overlooked by in-house testing and go on to affect end users, 
-causing severe performance degradation and a huge waste of energy in the field. 
-Performance bugs are becoming more critical, with the increasing complexity of modern software and workload, 
-the meager increases of single-core hardware performance, 
-and pressing energy concerns. 
-It is urgent to combat performance bugs.
+Two characteristics describe my research. 
+First, it is driven by a deep understanding of real-world problems. 
+Before diving into a solution, 
+I always validate the importance and relavence of 
+the problem I am going to address. 
+As a result, I led several empirical studies to understand real-world bugs and 
+malware, which offer benchmarks to evaluate my built techniques 
+and also reveal new research problems I did not perceive.
+Second, my research is interdisciplinary.
+I applied classic algorithms in programming languages, 
+new hardware and machine learning models to solve various problems 
+in operating systems, software engineering and security. 
+As a result, I have built up a solid understanding of both 
+techniques and practical problems, and my research
+has appeared in a diverse set of top-tier 
+venues in programming languages, 
+operating systems and software engineering including 
+PLDI, ASPLOS, OOSPLS, ICSE, FSE and MICRO.
 
-To fight performance bugs, my methodology is to investigate existing approaches originally
-designed for functional bugs and try to apply, adapt, and extend them for performance bugs.
-My experience spans different
-stages of combating performance bugs: 
-real-world bug understanding, bug detection,
-failure diagnosis, and automated bug fixing.
-In particular, 
-I conducted the first characteristics study on performance bugs, 
-based on 110 bugs randomly collected from five representative open-source software suites~\cite{jin12perfbug}.
-I built a static performance bug detection tool suite by using extracted efficiency rules from fixed performance bugs~\cite{jin12perfbug} 
-and helped build a dynamic performance bug detection tool for inefficient nested loops~\cite{Nistor13ICSE}. 
-I explored how to apply statistical debugging to performance failure diagnosis~\cite{Song14OOPSLA}, 
-and designed a series of static-dynamic hybrid analysis routines to provide 
-more detailed diagnosis information for inefficient loops~\cite{Song17ICSE}.
-I designed three source-to-source code transformations to automatically fix performance bugs in parallel applications, 
-which offload computation to Intel Xeon Phi manycore coprocessors~\cite{Song14MICRO}. 
-
-In addition to my work on software efficiency, I also worked on two 
-software reliability projects as part of my doctoral research. In the first, 
-I helped build a concurrency bug fixing system~\cite{jin11afix}, 
-which can automatically eliminate atomicity-violation bugs.
-In the second, I studied change histories of critical sections in open-source software~\cite{Gu15FSE} 
-to provide a better understanding of synchronization challenges faced by real-world developers. 
-
-After graduation, I worked in the area of security, 
-with a focus on applying big data techniques to analyze and predict security incidents. 
-Using the data repository VirusTotal, 
-which contains billions of real-world malware labeled by state-of-the-art anti-virus engines, 
-I studied characteristics of real-world malware, 
-modeled how influence propagates across different anti-virus vendors, 
-and explored the feasibility of building machine learning malware detectors 
-based only on hash values of files~\cite{Song16ApSys,Song17EuroSys}. 
-The study results have shed light on directions for future research  
-and are assisting both anti-virus vendors and normal users in their fight against malware.
-
-My research work has already had industrial and academic impact. 
+My research work has already gained industrial and academic impact. 
 My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} 
 found hundreds of previously unknown performance bugs in mature open-source software, 
 many of which have already been confirmed and fixed by developers. 
-My performance bug fixing project~\cite{Song14MICRO} was runner-up in the competition for best paper at MICRO-47 (2014)
+My performance bug fixing project~\cite{Song14MICRO} was 
+runner-up in the competition 
+for best paper at MICRO-47 (2014)
 and has also led to an issued patent~\cite{comppatent}.
-My concurrency bug fixing system~\cite{jin11afix} won the ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
-As of now, my publications have 415 citations in total. 
+My concurrency bug fixing system~\cite{jin11afix} won 
+the ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
+As of now, my publications have 717 citations in total. 
+My research also gets media coverage 
+from {\it the Morning Paper}, {\it Jexia}, 
+{\it I Programmer} and {\it InfoQ}.
+In the following, I will describe previous research experience 
+and future research directions. 
 
 \vspace{-.1in}
 \section{My PhD Work: Combating Real-World Performance Bugs}
@@ -252,7 +240,7 @@ more reliable Go software and in developing novel debugging tools for Go.
 
 \vspace{-.1in}
 \paragraph{Understanding Safety Issues in Rust}
-Rust is a young programming language designed for systems software development. 
+Rust is a young programming language designed for system software development. 
 It aims to provide safety guarantees like high-level languages 
 and performance efficiency
 like low-level languages. The core design of Rust is a set
@@ -265,7 +253,7 @@ function interfaces (i.e., interior unsafe).
 It is important to understand how well Rust’s safety (and
 unsafe) mechanisms work in real programs. We performed
 the first empirical study of Rust by close, manual inspection of 583 unsafe code usages 
-and 103 bugs in five opensource Rust projects, five widely-used Rust libraries, and two
+and 103 bugs in five open-source Rust projects, five widely-used Rust libraries, and two
 online security databases~\cite{sosp-boqin,yu2019fearless}. Our study answers three important 
 questions: how and why do programmers write unsafe
 code, what memory-safety issues real Rust programs have,
@@ -297,7 +285,7 @@ and identifying variables accessed by multiple threads?
 runtime overhead to deploy the detection in production runs?
 3) How to extend existing techniques designed for traditional programming languages, 
 such as fuzz testing and symbolic execution?
-4) How to systhesize patches for identified bugs and validate 
+4) How to synthesize patches for identified bugs and validate 
 their correctness and performance?
 
 \vspace{-.1in}
@@ -308,7 +296,7 @@ and sends aggragated detection results (e.g., labels, malware families) back to 
 VirusTotal receives millions of submissions every day and 
 provides public access to all its submitted files and analysis results.
 VirusTotal is a valuable resource to study and understand real-world malware 
-and anti-virus engines~\cite{Song16ApSys}.  
+and anti-virus engines, especially in today's big data era~\cite{Song16ApSys}.  
 
 VirusTotal is heavily used by the research community for malware sample collection,
 data labelling and system evaluation. 
@@ -332,7 +320,7 @@ researchers usually use a threshold ---
 if at least $t$ engines return a malicious label,
 researchers regard the submission as malicious. 
 When computing $t$, most researchers assume all engines have the 
-same labeling quality and treat all engines equally. 
+same labeling capability and treat all engines equally. 
 
 I am working with my collobrator (Gang Wang from UIUC) to look into 
 whether the two assumptions are true in reality
@@ -344,8 +332,8 @@ some engines' labeling decisions are highly influenced by others.
 Our findings are contrary to the common practices when researchers are using VirusTotal
 and raise an alarm for future VirusTotal users. 
 Besides measurements, we also use machine learning models to quantify the influence 
-among vendors and to predict when a submission's labels have become stable
-and can be trusted. 
+among vendors and to predict when a submission's labels will not change any more, 
+the goal to judge whether a submission's labels have become stable and can be trusted. 
 %Our models can help researchers and practioners better utilize the malware labeling 
 %functionality of VirusTotal. 
 
@@ -359,87 +347,83 @@ As another example, an engine may have different capabilities when analyzing
 different types of malware. I plan to build a fine-grained 
 engine influence model after categorizing malware based on their families. 
 I will also try to defend possible attacks launched through VirusTotal. 
-For example, more and more engines are built based on machine learning models. 
+More and more engines are built based on machine learning models these days. 
 VirusTotal serves as a valuable resource for training data.
 Since VirusTotal is publicly accessible to everyone, it also provides 
 a convenient channel for attackers to distribute adversial samples, 
-which can enable real malware to bypass machine learning models behind VirusTotal engines.
-I plan to investigate how to identify adversial samples on VirusTotal.  
+which can enable real malware to bypass machine learning models inside VirusTotal engines.
+I plan to investigate how to detect adversial samples on VirusTotal.  
+
+\begin{table*}[th]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+						\multicolumn{4}{|c|}{\textbf{Other Completed Works}}  \\ \hline
+\multicolumn{1}{|c|}{Automated Bug Fixing}   & \multicolumn{1}{c|}{Mining Software Repositories} & \multicolumn{1}{c|}{Software Profiling} 		& \multicolumn{1}{c|}{Software Debloating} \\ \hline
+ 				~\cite{jin11afix}	   	    &              ~\cite{Gu15FSE}                                     &         ~\cite{icse-boqin}                              &  ~\cite{bangwen}~\cite{salad}        \\ \hline
+\end{tabular}
+\end{table*}
 
 
-\section{Future Research}
 
-Going forward, I hope to leverage my areas of expertise to improve the performance, 
-reliability, and security of various types of computer systems. 
+\section{Long-term Research Directions}
 
-\vspace{-.1in}
-\paragraph{Performance.} 
-My intermediate research goal is to advance new aspects of combating performance bugs.
-For example, I would like to explore how to monitor algorithmic complexity during production runs. 
-On-line algorithmic monitoring can help developers understand real-world workloads, 
-identify codes in superlinear complexity, 
-and expose new performance optimization opportunities. 
-Current methods of algorithmic profiling or monitoring incur more than 10x runtime overhead, which cannot be tolerated in production runs. 
-I plan to build a lower-overhead tool that will collect runtime information 
-and infer approximate complexity from deployed software. 
-I would also like to provide tool support for performance testing.
-Our empirical study shows that almost half of studied performance bugs only manifest 
-under inputs with both special features and large scales.
-Existing techniques, designed to generate inputs with good code coverage, focus only on special features.
-I plan to extend these existing input generation techniques with an emphasis on large scales. 
-Another important challenge that arises during performance testing is how to automatically judge whether a performance bug has occurred. 
-I plan to leverage existing dynamic performance bug detection techniques to build performance testing oracles.
-
-\vspace{-.1in}
-\paragraph{Reliability.} 
-As big data is changing businesses across the board, 
-more and more developers are working on using big data computing systems, 
-like Hadoop and Spark, to process their massive amounts of data. 
-My own experience in leveraging Spark to analyze VirusTotal's data 
-has given me insight into the challenges of debugging big data applications. 
-First, it is time-consuming to repeat a failure, and it may take developers several hours to receive notice of a runtime failure or an incorrect output.
-Second, without tool support it is almost impossible to identify failure-triggering inputs among millions of input records. 
-Third, it is difficult to identify a failure's root cause, 
-since the failure may propagate across different stages and across different nodes.
-
-My longer term research direction is to provide tool support for debugging big data applications.
-I plan to start by studying real-world bugs in big data applications to figure out whether there are common bug patterns. 
-Then I hope to build static bug detectors that can identify bugs following common patterns before big data applications are executed.  
-To quickly identify the root causes of failures, I plan to build slicing tools that can analyze execution across different nodes, 
-interactive breakpoint tools that can stop the execution for single records specified by developers,
-and log mining tools that can analyze large quantities of logs in big data applications.
-Finally, I hope to build automatic fixing tools that can patch bugs in big data applications.
-Since it is time-consuming to run a patched version from the very beginning after fixes have been applied, 
-I hope my fixing tools can provide support to reuse the computation completed during failure runs.  
+While my ongoing projects and recent research plans have been discussed as above,
+in the long term, I plan to explore how to apply machine learning to solve
+traditional problems in system and programming languages area and 
+how to address performance, reliability and security issues 
+in emerging computing platforms. 
 
 
 \vspace{-.1in}
-\paragraph{Security.} 
+\paragraph{Machine Learning for Systems and Programming Languages.} 
+In system and programming languages areas, 
+many traditional problems (e.g., alias analysis, cache eviction, I/O scheduling) 
+are tentatively solved by heuristic rules, which have to be revisted as 
+workloads change over time. 
+Systems themselves can generate a huge amount of data, 
+and these data can automatically be labeled by 
+referring system status in the near future. 
+Therefore, I plan to explore how to leverage machine learning
+to address traditional problems in system area.
+I plan to work on the following fundermental questions:
+(1) How to select suitable representations for system status 
+and system decisions to feed traditional system problems 
+into machine learning models?
+(2) How to select machine learning models suitable 
+to the system problems to be solved?
+(3) How to explain trained machine learning models 
+and verify their underlying properties?
+(4) How to efficiently integrate machine 
+learning solutions to existing systems?
+My industrial collobrations (e.g., ByteDance, FireEye) 
+can help access systems in a large scale and test my machine learning 
+solutions under production-run workloads. 
 
-I plan to continue my research on security along two directions. 
-One is to apply big data techniques to security, 
-and the other is to detect vulnerabilities in devices from the Internet of Things (IoT) ecosystem.
 
-Big security data provides opportunities to leverage data-centric methods to improve today's security techniques. 
-For example, we can study what attackers have done on a large scale to figure out their strategies and predict what they will do in the future. 
-In addition, by utilizing malware that has already been studied and labeled by security experts, 
-we can learn how malware evolves and quickly detect emerging malware. 
-We can also apply deep learning techniques on these labeled malware samples and build new malware detectors. 
-It is also important to think about whether existing big data computing systems are suitable for security workload
-and to look for opportunities to improve current systems.
+\vspace{-.1in}
+\paragraph{Improve Performance, Reliability and Security for Emerging Computing Platforms.} 
 
-Vulnerability detection in the IoT ecosystem is more critical than ever before.
-Billions of connected devices have already been in use worldwide, 
-and this number is growing rapidly.  
-Hacked devices can leak sensitive information and can power denial of service attacks. 
-Due to the limited computation resources on a single device, 
-anti-virus software cannot be used to prevent attacks. 
-To make things worse, the developers who build firmware for these devices often treat security as an afterthought. 
-The need to quickly detect and patch vulnerabilities is increasing dramatically. 
-To detect vulnerabilities, I plan to study mechanisms for various firmware and devices 
-and to extend existing techniques, like symbolic execution and whitebox fuzzing. 
-Once a new vulnerability has been identified, it is also important to quickly search affected devices. 
-To that end, I plan to build an efficient bug search system for IoT products.  
+Novel computing platforms appear every year. 
+They leverage new hardware and new programming models,
+providing different services for people's daily life. 
+Of course, there could be completely new challenges 
+in performance, reliability and security.
+For example, there are billions of connected IoT devices in use worldwide, 
+and the number is still growing rapidly. 
+The real device hardware may not be available during development, 
+causing troubles during in-house tesing. 
+The computation power on these devices is usually limited, 
+so that many existing security tools cannot be deployed on these devices. 
+Many of them are home devices and wearable devices,  
+so that privacy is a bigger concerns compared with traditional platforms (e.g. personal computer, 
+cloud cluster).
+I plat to identify and solve reliability, performance and security issues 
+for emerging platforms. 
+I will understand the problems firstl. Then I will systematically evaluate existing techniques.
+Eventually, I will design novel solutions. 
+My technical background and expertise can help achieve this research agenda. 
+
 
 
 \newpage
