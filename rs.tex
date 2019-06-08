@@ -28,31 +28,34 @@ research centers around concurrency and safety issues in new programming languag
 My experience spans different stages of fighting software bugs:
 real-world bug understanding~\cite{jin12perfbug,go-asplos,yu2019fearless,sosp-boqin}, 
 bug detection during testing~\cite{jin12perfbug,Nistor13ICSE,icse-boqin}, 
-bug diagnosis for user-reported failures~\cite{Song14OOPSLA,Song17ICSE}, 
+diagnosing user-reported failures~\cite{Song14OOPSLA,Song17ICSE}, 
 and automated bug fixing~\cite{jin11afix,Song14MICRO}. 
 My expertise covers the whole stack of systems, 
 from hardware to operating systems and applications. 
 
-Two characteristics describe my research. 
+Two characteristics can describe my research. 
 First, it is driven by a deep understanding of real-world problems. 
 Before diving into a solution, 
-I always validate the importance and relavence of 
+I always validate the importance and the relavence of 
 the problem I am going to address. 
 As a result, I led several empirical studies to understand real-world bugs and 
-malware, which offer benchmarks to evaluate my built techniques 
-and also reveal new research problems I did not perceive.
+malware~\cite{jin12perfbug,go-asplos,yu2019fearless,sosp-boqin,Song14OOPSLA,Song17ICSE,Song16ApSys}, 
+which offer genuine benchmarks to evaluate my built techniques 
+and also reveal new research problems I did not perceive before.
 Second, my research is interdisciplinary.
-I applied classic algorithms in programming languages, 
-new hardware and machine learning models to solve various problems 
+I applied classic algorithms in programming languages~\cite{salad,icse-boqin,Song17ICSE}, 
+new hardware~\cite{Song14MICRO,Song14OOPSLA} and 
+machine learning models~\cite{Song16ApSys,Song14OOPSLA,vt-jianjun} 
+to solve various problems 
 in operating systems, software engineering and security. 
-As a result, I have built up a solid understanding of both 
-techniques and practical problems, and my research
+As a result, I have built up a comprehensive understanding of both 
+practical techniques and real-world problems, and my research
 has appeared in a diverse set of top-tier 
 venues in programming languages, 
-operating systems and software engineering including 
-PLDI, ASPLOS, OOSPLS, ICSE, FSE and MICRO.
+operating systems, architecture, and software engineering including 
+PLDI, ASPLOS, OOSPLA, ICSE, FSE and MICRO.
 
-My research work has already gained industrial and academic impact. 
+My research work has already gained both industrial and academic impact. 
 My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} 
 found hundreds of previously unknown performance bugs in mature open-source software, 
 many of which have already been confirmed and fixed by developers. 
@@ -63,21 +66,20 @@ and has also led to an issued patent~\cite{comppatent}.
 My concurrency bug fixing system~\cite{jin11afix} won 
 the ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
 As of now, my publications have 717 citations in total. 
-My research also gets media coverage 
-from {\it the Morning Paper}, {\it Jexia}, 
-{\it I Programmer} and {\it InfoQ}.
-In the following, I will describe previous research experience 
+%My research also gets media coverage 
+%from {\it the Morning Paper}, {\it Jexia}, 
+%{\it I Programmer}, and {\it InfoQ}.
+In the following, I will describe my previous research experience 
 and future research directions. 
 
 \vspace{-.1in}
 \section{My PhD Work: Combating Real-World Performance Bugs}
 
 My PhD work is mainly focused on addressing the software 
-inefficiency problem from the perspective of combating performance bugs. 
+inefficiency problem through combating {\it performance bugs}. 
 Performance bugs are software defects that can cause inefficient execution. 
 My methodology is to investigate existing approaches originally designed for functional bugs
 and try to apply, adapt, and extend them for performance bugs. 
-
 
 \vspace{-.1in}
 \paragraph{Real-world Performance Bug Understanding.}
@@ -93,7 +95,7 @@ their root causes,
 how they are introduced, their triggering conditions, and their fixing strategies. 
 Our study provides many interesting and important findings, 
 such as many performance bugs are introduced by workload mismatch 
-and misunderstanding of APIs' performance features; 
+and misunderstanding of APIs' performance features
 and around half of the studied performance bugs 
 will only manifest under inputs with both special features and large scales. 
 Our study can guide future research on performance bugs.
@@ -101,8 +103,6 @@ According to Google Scholar, our study has already been cited
 242 times since 2012. 
 It has already motivated our own performance bug detection 
 and performance failure diagnosis projects.
-
-
 
 \vspace{-.1in}
 \paragraph{Static/Dynamic Performance Bug Detection.}
@@ -162,7 +162,7 @@ and relies on sampling and other designed optimizations
 to further reduce runtime overhead. 
 Evaluation results under real-world inefficient loops 
 show that LDoctor covers most common root causes, 
-reports few false positives, and incurs a low runtime overhead. 
+reports few false positives, and incurs a very low runtime overhead. 
 
 \vspace{-.1in}
 \paragraph{Performance Bug Fixing.}
@@ -173,13 +173,14 @@ because they provide x86 compatibility and support many different programming mo
 Adding simple pragmas can help developers offload existing parallel loops 
 to Xeon Phi coprocessors. 
 However, this does not result in better performance, 
-and too many performance bugs are contained in 
+and too many performance bugs exist in  
 offloaded parallel loops. 
 After careful investigation, we designed three source-to-source code transformations to 
 hide data transfer overhead between CPUs and coprocessors, 
 to regularize loops with irregular memory accesses, 
-and to efficiently transfer large pointer-based data structures, respectively~\cite{Song14MICRO}.
-Our transformations can automatically fix performance bugs contained in offloaded parallel loops. 
+and to efficiently transfer large pointer-based data structures respectively~\cite{Song14MICRO}.
+Our transformations can automatically fix performance bugs in parallel loops offloaded 
+to Intel Xeon Phi coprocessors. 
 Experimental results show that the designed transformations can benefit 9 
 out of 12 evaluated benchmarks and improve performance by 1.16x - 52.21x. 
 This work won MICRO-47 (2014) best paper runner-up.
@@ -333,7 +334,7 @@ Our findings are contrary to the common practices when researchers are using Vir
 and raise an alarm for future VirusTotal users. 
 Besides measurements, we also use machine learning models to quantify the influence 
 among vendors and to predict when a submission's labels will not change any more, 
-the goal to judge whether a submission's labels have become stable and can be trusted. 
+so that the labels can be trusted. 
 %Our models can help researchers and practioners better utilize the malware labeling 
 %functionality of VirusTotal. 
 
@@ -346,12 +347,13 @@ is reasonable and integrate vendors' influence into the label aggregation.
 As another example, an engine may have different capabilities when analyzing 
 different types of malware. I plan to build a fine-grained 
 engine influence model after categorizing malware based on their families. 
-I will also try to defend possible attacks launched through VirusTotal. 
+I will also defend possible attacks launched through VirusTotal. 
 More and more engines are built based on machine learning models these days. 
 VirusTotal serves as a valuable resource for training data.
 Since VirusTotal is publicly accessible to everyone, it also provides 
 a convenient channel for attackers to distribute adversial samples, 
-which can enable real malware to bypass machine learning models inside VirusTotal engines.
+which can facilitate real malware to bypass machine learning 
+models inside VirusTotal engines.
 I plan to investigate how to detect adversial samples on VirusTotal.  
 
 \begin{table*}[th]
@@ -364,20 +366,18 @@ I plan to investigate how to detect adversial samples on VirusTotal.
 \end{tabular}
 \end{table*}
 
-
-
 \section{Long-term Research Directions}
 
 While my ongoing projects and recent research plans have been discussed as above,
 in the long term, I plan to explore how to apply machine learning to solve
-traditional problems in system and programming languages area and 
-how to address performance, reliability and security issues 
+traditional problems in systems and programming languages area and 
+how to address reliability, performance and security issues 
 in emerging computing platforms. 
 
 
 \vspace{-.1in}
 \paragraph{Machine Learning for Systems and Programming Languages.} 
-In system and programming languages areas, 
+In systems and programming languages areas, 
 many traditional problems (e.g., alias analysis, cache eviction, I/O scheduling) 
 are tentatively solved by heuristic rules, which have to be revisted as 
 workloads change over time. 
@@ -385,16 +385,16 @@ Systems themselves can generate a huge amount of data,
 and these data can automatically be labeled by 
 referring system status in the near future. 
 Therefore, I plan to explore how to leverage machine learning
-to address traditional problems in system area.
+to address traditional problems in systems.
 I plan to work on the following fundermental questions:
-(1) How to select suitable representations for system status 
+1) How to select suitable representations for system status 
 and system decisions to feed traditional system problems 
 into machine learning models?
-(2) How to select machine learning models suitable 
+2) How to select machine learning models suitable 
 to the system problems to be solved?
-(3) How to explain trained machine learning models 
+3) How to explain trained machine learning models 
 and verify their underlying properties?
-(4) How to efficiently integrate machine 
+4) How to efficiently integrate machine 
 learning solutions to existing systems?
 My industrial collobrations (e.g., ByteDance, FireEye) 
 can help access systems in a large scale and test my machine learning 
@@ -402,27 +402,30 @@ solutions under production-run workloads.
 
 
 \vspace{-.1in}
-\paragraph{Improve Performance, Reliability and Security for Emerging Computing Platforms.} 
-
-Novel computing platforms appear every year. 
+\paragraph{Emerging Computing Platforms.} 
+Innovative computing platforms appear every year. 
 They leverage new hardware and new programming models,
-providing different services for people's daily life. 
-Of course, there could be completely new challenges 
-in performance, reliability and security.
-For example, there are billions of connected IoT devices in use worldwide, 
+providing various services for people's daily life. 
+There would be completely new challenges 
+in reliability, performance and security on these platforms.
+For example, billions of connected IoT devices are in use worldwide
 and the number is still growing rapidly. 
-The real device hardware may not be available during development, 
-causing troubles during in-house tesing. 
-The computation power on these devices is usually limited, 
-so that many existing security tools cannot be deployed on these devices. 
-Many of them are home devices and wearable devices,  
-so that privacy is a bigger concerns compared with traditional platforms (e.g. personal computer, 
+When implementing drivers for these devices, 
+the real hardware may not be available, 
+causing problems for the in-house testing 
+and reducing the reliability of released IoT systems. 
+The computation power on these IoT devices tends to be limited, 
+so that many advanced anti-virus tools cannot be deployed, sacrifying security. 
+Many of IoT devices are home devices or even wearable devices,  
+so that privacy is a bigger concerns compared 
+with traditional platforms (e.g. personal computer, 
 cloud cluster).
-I plat to identify and solve reliability, performance and security issues 
-for emerging platforms. 
-I will understand the problems firstl. Then I will systematically evaluate existing techniques.
-Eventually, I will design novel solutions. 
-My technical background and expertise can help achieve this research agenda. 
+I plan to identify and solve reliability, performance and security issues 
+for emerging platforms following my research philosophy:
+understanding real-world problems, 
+systematically evaluating existing techniques
+and building novel solutions. 
+
 
 
 
