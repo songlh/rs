@@ -20,11 +20,13 @@
 \begin{document}
 \maketitle\vspace{-.2in}
 
-My research interests span the areas of systems, security, and software engineering.
-The goal of my research is to help developers deliver more efficient, reliable, and secure software systems
+My research interests span the areas of systems, 
+security and software engineering.
+The goal of my research is to help developers deliver more efficient, reliable, and secure software systems 
 from the perspective of combating various types of software bugs.  
 In particular, my PhD research focuses on performance bugs, while my post-PhD
-research centers around concurrency and safety issues in new programming languages (e.g., Go, Rust).
+research centers around concurrency and safety issues 
+in new programming languages (e.g., Go, Rust).
 My experience spans different stages of fighting software bugs:
 real-world bug understanding~\cite{jin12perfbug,go-asplos,yu2019fearless,sosp-boqin}, 
 bug detection during testing~\cite{jin12perfbug,Nistor13ICSE,icse-boqin}, 
@@ -36,14 +38,15 @@ from hardware to operating systems and applications.
 Two characteristics can describe my research. 
 First, it is driven by a deep understanding of real-world problems. 
 Before diving into a solution, 
-I always validate the importance and the relavence of 
+I always validate the importance and the relevance of 
 the problem I am going to address. 
-As a result, I led several empirical studies to understand real-world bugs and 
+As a result, I have led several empirical studies to 
+understand real-world bugs and 
 malware~\cite{jin12perfbug,go-asplos,yu2019fearless,sosp-boqin,Song14OOPSLA,Song17ICSE,Song16ApSys}, 
 which offer genuine benchmarks to evaluate my built techniques 
 and also reveal new research problems I did not perceive before.
 Second, my research is interdisciplinary.
-I applied classic algorithms in programming languages~\cite{salad,icse-boqin,Song17ICSE}, 
+I have applied classic algorithms in programming languages~\cite{salad,icse-boqin,Song17ICSE}, 
 new hardware~\cite{Song14MICRO,Song14OOPSLA} and 
 machine learning models~\cite{Song16ApSys,Song14OOPSLA,vt-jianjun} 
 to solve various problems 
@@ -52,10 +55,10 @@ As a result, I have built up a comprehensive understanding of both
 practical techniques and real-world problems, and my research
 has appeared in a diverse set of top-tier 
 venues in programming languages, 
-operating systems, architecture, and software engineering including 
+operating systems, architecture, and software engineering, including 
 PLDI, ASPLOS, OOSPLA, ICSE, FSE and MICRO.
 
-My research work has already gained both industrial and academic impact. 
+My research work has already made both industrial and academic impact. 
 My two performance bug detection techniques~\cite{jin12perfbug, Nistor13ICSE} 
 found hundreds of previously unknown performance bugs in mature open-source software, 
 many of which have already been confirmed and fixed by developers. 
@@ -66,11 +69,9 @@ and has also led to an issued patent~\cite{comppatent}.
 My concurrency bug fixing system~\cite{jin11afix} won 
 the ACM SIGPLAN Research Highlights Award~\cite{afixnom}. 
 As of now, my publications have 717 citations in total. 
-%My research also gets media coverage 
-%from {\it the Morning Paper}, {\it Jexia}, 
-%{\it I Programmer}, and {\it InfoQ}.
 In the following, I will describe my previous research experience 
 and future research directions. 
+
 
 \vspace{-.1in}
 \section{My PhD Work: Combating Real-World Performance Bugs}
@@ -79,34 +80,35 @@ My PhD work is mainly focused on addressing the software
 inefficiency problem through combating {\it performance bugs}. 
 Performance bugs are software defects that can cause inefficient execution. 
 My methodology is to investigate existing approaches originally designed for functional bugs
-and try to apply, adapt, and extend them for performance bugs. 
+and try to apply, adapt, and extend them to performance bugs. 
 
 \vspace{-.1in}
-\paragraph{Real-world Performance Bug Understanding.}
+\paragraph{Real-World Performance Bug Understanding.}
 Research on performance bugs, like that on functional bugs, 
 should be guided by empirical studies. 
 In order to improve the understanding of real-world performance bugs, 
-I co-led what we believe to be the first 
+I co-led what it is believed to be the first 
 empirical study of real-world performance bugs, 
 based on 110 bugs randomly sampled from five open-source software suites~\cite{jin12perfbug}. 
 Our study examined four dimensions 
 that cover the complete lifetime of performance bugs:
 their root causes, 
-how they are introduced, their triggering conditions, and their fixing strategies. 
+their introduction during implementation, 
+their triggering conditions, and their fixing strategies. 
 Our study provides many interesting and important findings, 
-such as many performance bugs are introduced by workload mismatch 
+such as that many performance bugs are introduced by workload mismatch 
 and misunderstanding of APIs' performance features
-and around half of the studied performance bugs 
+and that around half of the studied performance bugs 
 will only manifest under inputs with both special features and large scales. 
 Our study can guide future research on performance bugs.
 According to Google Scholar, our study has already been cited 
 242 times since 2012. 
-It has already motivated our own performance bug detection 
+Moreover, it has already motivated our own performance bug detection 
 and performance failure diagnosis projects.
 
 \vspace{-.1in}
 \paragraph{Static/Dynamic Performance Bug Detection.}
-Bug detection aims to find previous unknown bugs,
+Bug detection aims to find previously unknown bugs
 before they manifest in front of end users. 
 Rule-based detection techniques have been widely used to identify 
 functional bugs in previous literatures.
@@ -164,11 +166,12 @@ Evaluation results under real-world inefficient loops
 show that LDoctor covers most common root causes, 
 reports few false positives, and incurs a very low runtime overhead. 
 
+
 \vspace{-.1in}
 \paragraph{Performance Bug Fixing.}
 Intel Xeon Phi coprocessors have recently been introduced 
 as new members of the manycore family.
-Compared with GPUs, Xeon Phi coprocessors are easier to program,
+Compared with GPUs, Xeon Phi coprocessors are easier to program
 because they provide x86 compatibility and support many different programming models.
 Adding simple pragmas can help developers offload existing parallel loops 
 to Xeon Phi coprocessors. 
@@ -186,6 +189,7 @@ out of 12 evaluated benchmarks and improve performance by 1.16x - 52.21x.
 This work won MICRO-47 (2014) best paper runner-up.
 
 
+
 \vspace{-.1in}
 \section{Current and Near-Future Research Directions (Post-PhD)}
 After joining the Pennsylvania State University as an assistant professor,
@@ -196,19 +200,20 @@ to discuss my initial progress and my plans for the near future.
 
 \vspace{-.1in}
 \subsection{Fighting Issues in New Programming Languages}
-Many new programming languages have been created since 2000, 
+Many new programming languages have been created since 2000
 with unique language features trying to accomplish their desired design goals.
-With increasing adoption, it is important to understand 
-whether the design goals are really achieved 
+As these new languages are increasingly adopted, it is important to understand 
+whether the design goals have really been achieved 
 and whether there are unique bugs in these languages. 
 Working together with my collaborator (Yiying Zhang from Purdue University), 
-I mainly look into Go and Rust, because 
+I mainly look into Go and Rust because 
 these two languages are popular choices 
 of developers when implementing 
 data center applications and safety-critical systems. 
- 
+
+
 \vspace{-.1in}
-\paragraph{Understanding Concurrency Issues in Go}
+\paragraph{Understanding Concurrency Issues in Go.}
 Go is a statically-typed new programming language that aims to provide 
 a simple, efficient, and safe way to build multi-threaded software.
 For this purpose, Go centers its multi-threading design 
@@ -218,33 +223,36 @@ to communicate across threads. With these design principles,
 Go proposes not only new primitives and new libraries 
 but also new implementation of existing semantics.
 Due to its powerful and expressive concurrency mechanisms, 
-Go is widely used in data center environments,
-like building container systems and implementing microservices.
+Go is widely used in data center environments for such tasks 
+as building container systems and implementing microservices.
 
-It is important to understand how Go's new concurrency mechanisms impact concurrency bugs, 
+It is important to understand how Go's new concurrency mechanisms 
+impact concurrency bugs, 
 since concurrency bugs are difficult to debug and severely degrade 
 the reliability of concurrent systems. 
 We conducted the first empirical study on Go concurrency bugs, based on 171 bugs collected from  
 six famous Go software 
 including Docker, Kubernetes and gRPC~\cite{go-asplos}.
 More than half of the studied bugs are caused by non-traditional, Go-specific problems. 
-Apart from root causes of these bugs, we also studied their fixes, 
+Apart from the root causes of these bugs, we also studied their fixes, 
 performed experiments to reproduce them, 
 and evaluated them with two publicly-available Go bug detectors.
-Overall, our study provides a better understanding on Go's concurrency models
-with many valuable findings and implications, such as message passing is more likely to 
-cause blocking bugs and new programming models
+Overall, our study provides a better understanding of Go's concurrency models
+with many valuable findings and implications, such as 
+that message passing is more likely to 
+cause blocking bugs and that new programming models
 that Go introduced to ease multi-threaded programming can themselves 
-become the reasons of more concurrency bugs. 
+become the reasons for more concurrency bugs. 
 Our study can guide future researchers and practitioners in writing better, 
 more reliable Go software and in developing novel debugging tools for Go.
 
+
 \vspace{-.1in}
-\paragraph{Understanding Safety Issues in Rust}
+\paragraph{Understanding Safety Issues in Rust.}
 Rust is a young programming language designed for system software development. 
-It aims to provide safety guarantees like high-level languages 
-and performance efficiency
-like low-level languages. The core design of Rust is a set
+It aims to provide the same safety guarantees as high-level languages 
+and the same performance efficiency
+as low-level languages. The core design of Rust is a set
 of strict safety rules enforced by compile-time checking. To
 support more low-level controls, Rust allows programmers
 to bypass these compiler checks to write unsafe code. 
@@ -259,7 +267,7 @@ online security databases~\cite{sosp-boqin,yu2019fearless}. Our study answers th
 questions: how and why do programmers write unsafe
 code, what memory-safety issues real Rust programs have,
 and what concurrency bugs Rust programmers make. 
-We find that programmmers often choose to write unsafe code for good performance 
+We find that programmers often choose to write unsafe code for good performance 
 and ease of programming, although all memory-safety bugs involve unsafe code, 
 most of them also involve safe code, and 
 most concurrency bugs are caused by programmers' misunderstanding of Rust's safety features 
@@ -267,36 +275,38 @@ and compiler rules.
 For all the above three aspects, we make insightful suggestions 
 to future Rust programmers and language developers. 
 One key take-away is that a theoretically proven safe language may be hard to 
-use in reality, and as a result, the language includes less safe features, which eventually cause
+use in reality, and as a result, the language 
+includes less safe features, which eventually cause
 problems in the real world.
 
 \vspace{-.1in}
-\paragraph{Future Plan (1-3 years)}
+\paragraph{Future Plan (1-3 years).}
 Understanding real-world issues in Go and Rust is just a starting point.
 My next step is to build tools to automatically pinpoint previously unknown issues. 
 From the developers' perspective, patching an issue is the final 
-stage to really improve systems' realibility and safety. 
+stage of really improving systems' reliability and safety. 
 I plan to explore the following key research questions for Go and Rust 
 under the guidance of our empirical studies: 
-1) How to statically detect concurrency bugs, 
+1) How can we statically detect concurrency bugs
 while solving or avoiding traditional, difficult problems, 
 like alias analysis in a large software
 and identifying variables accessed by multiple threads?
-2) How to dynamically detect concurrency bugs with a low 
+2) How can we dynamically detect concurrency bugs with a low 
 runtime overhead to deploy the detection in production runs?
-3) How to extend existing techniques designed for traditional programming languages, 
+3) How can we extend existing techniques designed for traditional programming languages, 
 such as fuzz testing and symbolic execution?
-4) How to synthesize patches for identified bugs and validate 
+And 4) How can we synthesize patches for identified bugs and validate 
 their correctness and performance?
+
 
 \vspace{-.1in}
 \subsection{Applying Data Analytics to Big Malware Data}
 VirusTotal is a free online malware scanning service that applies 
 more than 60 state-of-the-art anti-virus engines to analyze user-submitted files (or URLs)
-and sends aggragated detection results (e.g., labels, malware families) back to users. 
+and sends aggregated detection results (e.g., labels, malware families) back to users. 
 VirusTotal receives millions of submissions every day and 
 provides public access to all its submitted files and analysis results.
-VirusTotal is a valuable resource to study and understand real-world malware 
+As a result, VirusTotal is a valuable resource to study and understand real-world malware 
 and anti-virus engines, especially in today's big data era~\cite{Song16ApSys}.  
 
 VirusTotal is heavily used by the research community for malware sample collection,
@@ -304,7 +314,7 @@ data labelling and system evaluation.
 Our literature review~\cite{vt-jianjun} shows that 
 VirusTotal has already been used by more than 100 academic 
 papers in top-tier venues 
-in security, network and measurements including S\&P, CCS, 
+in security, network and measurements, including S\&P, CCS, 
 USENIX Security, NDSS, IMC, and WWW.
 A closer examination shows that researchers use VirusTotal under two assumptions. 
 First, VirusTotal periodically updates its engines, 
@@ -314,8 +324,8 @@ with the assumption that label changes are rare,
 generating negligible impact. 
 Second, the more than 60 VirusTotal engines 
 may disagree with each other, 
-such as some engines label a submission as benign, 
-while others label the submission as malicious. 
+so that some engines label a submission as benign, 
+while others may label the submission as malicious. 
 To aggregate labels from different engines and determine whether a submission is malicious,
 researchers usually use a threshold --- 
 if at least $t$ engines return a malicious label,
@@ -323,7 +333,7 @@ researchers regard the submission as malicious.
 When computing $t$, most researchers assume all engines have the 
 same labeling capability and treat all engines equally. 
 
-I am working with my collobrator (Gang Wang from UIUC) to look into 
+I am working with my collaborator (Gang Wang from UIUC) to look into 
 whether the two assumptions are true in reality
 and whether researchers are using VirusTotal in the right way~\cite{vt-jianjun,imc-peng}. 
 After comprehensive measurements on two large data sets collected from VirusTotal
@@ -333,14 +343,15 @@ some engines' labeling decisions are highly influenced by others.
 Our findings are contrary to the common practices when researchers are using VirusTotal
 and raise an alarm for future VirusTotal users. 
 Besides measurements, we also use machine learning models to quantify the influence 
-among vendors and to predict when a submission's labels will not change any more, 
+among vendors and to predict when a submission's labels will not change anymore, 
 so that the labels can be trusted. 
+
 %Our models can help researchers and practioners better utilize the malware labeling 
 %functionality of VirusTotal. 
 
 \vspace{-.1in}
-\paragraph{Future Plan (1-3 years)}
-In the near future, I will continue my work to help researchers and practioners 
+\paragraph{Future Plan (1-3 years).}
+In the near future, I will continue my work in helping researchers and practitioners 
 better interpret and utilize VirusTotal data. 
 For example, I will examine whether using a threshold to aggregate VirusTotal labels   
 is reasonable and integrate vendors' influence into the label aggregation. 
@@ -348,13 +359,14 @@ As another example, an engine may have different capabilities when analyzing
 different types of malware. I plan to build a fine-grained 
 engine influence model after categorizing malware based on their families. 
 I will also defend possible attacks launched through VirusTotal. 
-More and more engines are built based on machine learning models these days. 
+More and more engines are being built based on machine learning models these days. 
 VirusTotal serves as a valuable resource for training data.
 Since VirusTotal is publicly accessible to everyone, it also provides 
-a convenient channel for attackers to distribute adversial samples, 
+a convenient channel for attackers to distribute adversarial samples, 
 which can facilitate real malware to bypass machine learning 
 models inside VirusTotal engines.
-I plan to investigate how to detect adversial samples on VirusTotal.  
+I plan to investigate how to detect adversarial samples on VirusTotal. 
+
 
 \begin{table*}[th]
 \centering
@@ -368,46 +380,44 @@ I plan to investigate how to detect adversial samples on VirusTotal.
 
 \section{Long-term Research Directions}
 
-While my ongoing projects and recent research plans have been discussed as above,
+While my ongoing projects and recent research plans have been discussed above,
 in the long term, I plan to explore how to apply machine learning to solve
-traditional problems in systems and programming languages area and 
+traditional problems in systems and programming languages and 
 how to address reliability, performance and security issues 
 in emerging computing platforms. 
 
-
 \vspace{-.1in}
 \paragraph{Machine Learning for Systems and Programming Languages.} 
-In systems and programming languages areas, 
+In systems and programming languages, 
 many traditional problems (e.g., alias analysis, cache eviction, I/O scheduling) 
-are tentatively solved by heuristic rules, which have to be revisted as 
+are tentatively solved by heuristic rules, which have to be revisited as 
 workloads change over time. 
 Systems themselves can generate a huge amount of data, 
 and these data can automatically be labeled by 
 referring system status in the near future. 
 Therefore, I plan to explore how to leverage machine learning
 to address traditional problems in systems.
-I plan to work on the following fundermental questions:
-1) How to select suitable representations for system status 
+I plan to work on the following fundamental questions:
+1) How can we select suitable representations for system status 
 and system decisions to feed traditional system problems 
 into machine learning models?
-2) How to select machine learning models suitable 
+2) How can we select machine learning models suitable 
 to the system problems to be solved?
-3) How to explain trained machine learning models 
+3) How can we explain trained machine learning models 
 and verify their underlying properties?
-4) How to efficiently integrate machine 
+And 4) How can we efficiently integrate machine 
 learning solutions to existing systems?
-My industrial collobrations (e.g., ByteDance, FireEye) 
+My industrial collaborations (e.g., ByteDance, FireEye, Inc.) 
 can help access systems in a large scale and test my machine learning 
 solutions under production-run workloads. 
-
 
 \vspace{-.1in}
 \paragraph{Emerging Computing Platforms.} 
 Innovative computing platforms appear every year. 
 They leverage new hardware and new programming models,
-providing various services for people's daily life. 
-There would be completely new challenges 
-in reliability, performance and security on these platforms.
+providing various services for people's daily lives. 
+As they emerge, they present completely new challenges 
+in terms of reliability, performance and security.
 For example, billions of connected IoT devices are in use worldwide
 and the number is still growing rapidly. 
 When implementing drivers for these devices, 
@@ -415,16 +425,17 @@ the real hardware may not be available,
 causing problems for the in-house testing 
 and reducing the reliability of released IoT systems. 
 The computation power on these IoT devices tends to be limited, 
-so that many advanced anti-virus tools cannot be deployed, sacrifying security. 
-Many of IoT devices are home devices or even wearable devices,  
+so that many advanced anti-virus tools cannot be deployed, sacrificing security. 
+Many IoT devices are home devices or even wearable devices,  
 so that privacy is a bigger concerns compared 
 with traditional platforms (e.g. personal computer, 
 cloud cluster).
 I plan to identify and solve reliability, performance and security issues 
-for emerging platforms following my research philosophy:
-understanding real-world problems, 
-systematically evaluating existing techniques
-and building novel solutions. 
+for emerging platforms by following my research philosophy:
+understand real-world problems, 
+systematically evaluate existing techniques
+and build novel solutions. 
+
 
 
 
